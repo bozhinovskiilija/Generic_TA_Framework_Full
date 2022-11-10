@@ -22,6 +22,7 @@ public class WebDriverUtils extends LoggerUtils {
 
     public static WebDriver setupDriver() {
 
+        log.info("setupDriver()");
         WebDriver driver = null;
 
         String browser = PropertiesUtils.getBrowser();
@@ -100,14 +101,14 @@ public class WebDriverUtils extends LoggerUtils {
         }
 
         //Setup implicit wait
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Time.IMPLICIT_TIMEOUT));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Time.TIME_LONG));
         //wait for the DOM strucure to be loaded(that doesn't mean page is fully loaded)
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Time.PAGE_LOAD_TIMEOUT));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Time.TIME_LONG));
         //only for asinc script
-        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(Time.ASYNC_SCRIPT_TIMEOUT));
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(Time.TIME_LONGEST));
 
 
-        //maximize the browser (not work on headless browser)
+        //maximize the browser (not work on headless browser) - you should set manualy window size
         driver.manage().window().maximize();
 
         return driver;
@@ -128,7 +129,7 @@ public class WebDriverUtils extends LoggerUtils {
 
     //QuitDriver()
     public static void QuitDriver(WebDriver driver){
-        log.debug("Quit driver");
+        log.info("Quit driver");
         if(!hasDriverQuit(driver)){
             driver.quit();
         }

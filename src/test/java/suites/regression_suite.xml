@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Regression Suite" parallel="tests" thread-count="4">
-
-    <test name="Login Tests" verbose="2">
-        <classes>
-            <class name="tests.login.LoginTest"/>
-        </classes>
+<suite name="Regression Suite" parallel="methods" thread-count="8">
+    <test name="Login Tests">
+        <groups>
+            <run>
+                <include name="regression"/>
+                <exclude name="broke"/>
+                <exclude name="deprecated"/>
+                <exclude name="bugs"/>
+            </run>
+        </groups>
     </test>
+    <packages>
+        <package name="tests.*"></package>
+    </packages>
+
 </suite>
+

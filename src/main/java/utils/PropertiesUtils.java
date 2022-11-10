@@ -4,12 +4,11 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Locale;
 import java.util.Properties;
 
 public class PropertiesUtils extends LoggerUtils {
 
-    private static final String commonPropertiesFilePath = "common.properties";
+    private static final String commonPropertiesFilePath = "application.properties";
     private static final Properties properties = loadPropertiesFile();
 
     //generic method for reading all property files
@@ -106,6 +105,31 @@ public class PropertiesUtils extends LoggerUtils {
             }
         }
         return baseUrl;
+    }
+
+    public static String getAdminUsername(){
+        return getProperty("adminUsername");
+    }
+
+    public static String getAdminPassword(){
+        return getProperty("adminPasswod");
+    }
+
+    public static String getLocale(){
+        return getProperty("locale");
+    }
+
+    public static boolean getTakeScreenshot(){
+        String takeScreenShots = getProperty("takeScreenshots").toLowerCase();
+        if(!(takeScreenShots.equals("true")||takeScreenShots.equals("false"))){
+            Assert.fail("Can not convert remote property value '"+takeScreenShots+" to boolean value");
+        }
+        return Boolean.parseBoolean(takeScreenShots);
+    }
+
+    public static String getScreenshotsFolder(){
+
+        return getProperty("screenshotsFolder");
     }
 
 }

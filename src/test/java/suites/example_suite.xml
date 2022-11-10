@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression Suite" parallel="methods" thread-count="8">
+    <test name="Login Tests">
+        <classes>
+            <class name="tests.login.SuccessfulLoginLogout"/>
+            <class name="tests.login.UnsuccessfulLoginWrongPassword"/>
+<!--            <class name="tests.login.LoginTest2"/>-->
+        </classes>
+    </test>
+
+<!--    <test name="Heroes Tests">-->
+<!--        <classes>-->
+<!--            <class name="tests.login.HeroesTest"/>-->
+<!--            <class name="tests.login.HeroesTest2"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+</suite>
+
+<!--     Different type of parallelization in testng:
+
+parallel="true"     - by default will execute all tests in parallel
+
+parallel="methods"   -will execute all tests in parallel - same as parallel=true
+
+parallel="classes"  -will execute all tests classes in parallel
+                    -each class in separate thread
+                    -tests in each class will be executed sequentially
+
+parallel="tests"    - well execite each test group
+                    (<test name="Login Tests"> and <test name="Heroes Tests">
+                    in parallel is separate thread, but tests(test methods)
+                    in those classes will be executed sequentially
+
+
+-->
