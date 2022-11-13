@@ -23,7 +23,7 @@ public class LoginTest extends BaseTestClass {
         try {
             String username = PropertiesUtils.getAdminUsername();
             String password = PropertiesUtils.getAdminPassword();
-            String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
+           // String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
             DateTimeUtils.wait(Time.TIME_SHORT);
 
             LoginPage loginPage = new LoginPage(driver);
@@ -61,7 +61,7 @@ public class LoginTest extends BaseTestClass {
         try {
             String username = PropertiesUtils.getAdminUsername();
             String password = PropertiesUtils.getAdminPassword() + "!";
-            String expectedErrorMessage = CommonString.getLoginErrorMessage();
+          //  String expectedErrorMessage = CommonString.getLoginErrorMessage();
             DateTimeUtils.wait(Time.TIME_SHORT);
 
             LoginPage loginPage = new LoginPage(driver);
