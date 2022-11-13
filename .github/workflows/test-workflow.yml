@@ -28,6 +28,11 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
 
+      - name: Install Google Chrome # Using shell script to install Google Chrome
+        run: |
+              chmod +x ./scripts/InstallChrome.sh
+                          ./scripts/InstallChrome.sh
+
       - name: Run tests from maven
         run: mvn clean test -U
 

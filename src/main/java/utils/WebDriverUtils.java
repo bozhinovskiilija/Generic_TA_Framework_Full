@@ -53,8 +53,8 @@ public class WebDriverUtils extends LoggerUtils {
 
                         WebDriverManager.chromedriver().setup();
                         driver = new ChromeDriver();
-                        System.setProperty("webdriver.chrome.driver", pathDriverChrome);
-                        driver = new ChromeDriver(options);
+                        //System.setProperty("webdriver.chrome.driver", pathDriverChrome);
+                       // driver = new ChromeDriver(options);
                     }
                     break;
                 }
