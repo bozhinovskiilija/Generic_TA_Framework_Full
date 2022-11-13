@@ -52,9 +52,17 @@ public class WebDriverUtils extends LoggerUtils {
                     } else {
 
                         WebDriverManager.chromedriver().setup();
-                        driver = new ChromeDriver();
+                        ChromeOptions opt = new ChromeOptions();
+
+                        opt.addArguments("--no-sandbox");
+
+                        opt.addArguments("--disable-dev-shm-usage");
+
+                        opt.addArguments("--headless");
+
+                        driver = new ChromeDriver(opt);
                         //System.setProperty("webdriver.chrome.driver", pathDriverChrome);
-                       // driver = new ChromeDriver(options);
+                        //driver = new ChromeDriver(options);
                     }
                     break;
                 }
