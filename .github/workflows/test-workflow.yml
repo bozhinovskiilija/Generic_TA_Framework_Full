@@ -24,11 +24,11 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Set up JDK 17
-          uses: actions/setup-java@v3
-          with:
-            java-version: 17
-            distribution: 'adopt'
-            cache: 'maven'
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'adopt'
+          cache: 'maven'
 
       - name: Run tests from maven
         run: mvn clean test -U
