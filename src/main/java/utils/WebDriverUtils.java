@@ -1,6 +1,7 @@
 package utils;
 
 import data.Time;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -49,6 +50,9 @@ public class WebDriverUtils extends LoggerUtils {
                         driver = remoteDriver;
 
                     } else {
+
+                        WebDriverManager.chromedriver().setup();
+                        driver = new ChromeDriver();
                         System.setProperty("webdriver.chrome.driver", pathDriverChrome);
                         driver = new ChromeDriver(options);
                     }
@@ -66,8 +70,10 @@ public class WebDriverUtils extends LoggerUtils {
                         driver = remoteDriver;
 
                     } else {
-                        System.setProperty("webdriver.gecko.driver", pathDriverFirefox);
-                        driver = new FirefoxDriver(options);
+                        WebDriverManager.firefoxdriver().setup();
+                        driver=new FirefoxDriver();
+                        //System.setProperty("webdriver.gecko.driver", pathDriverFirefox);
+                       // driver = new FirefoxDriver(options);
                     }
 
 
