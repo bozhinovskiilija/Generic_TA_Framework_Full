@@ -1,6 +1,6 @@
 package tests.login;
 
-import data.CommonString;
+//import data.CommonString;
 import data.Groups;
 import data.Time;
 import org.openqa.selenium.WebDriver;
@@ -45,7 +45,7 @@ public  class UnsuccessfulLoginWrongPassword extends BaseTestClass {
 
         String username = PropertiesUtils.getAdminUsername();
         String password = PropertiesUtils.getAdminPassword() + "!";
-        String expectedErrorMessage = CommonString.getLoginErrorMessage();
+       // String expectedErrorMessage = CommonString.getLoginErrorMessage();
 
         log.debug("[START TEST] " + sTestName);
         LoginPage loginPage = new LoginPage(driver);

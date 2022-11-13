@@ -1,6 +1,6 @@
 package tests.login;
 
-import data.CommonString;
+//import data.CommonString;
 import data.Groups;
 import data.Time;
 import org.openqa.selenium.WebDriver;
@@ -43,7 +43,7 @@ public class SuccessfulLoginLogout extends BaseTestClass {
 
         String username = PropertiesUtils.getAdminUsername();
         String password = PropertiesUtils.getAdminPassword();
-        String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
+       // String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
 
         log.debug("[START TEST] " + sTestName);
         LoginPage loginPage = new LoginPage(driver);
