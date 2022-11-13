@@ -50,17 +50,17 @@ public  class UnsuccessfulLoginWrongPassword extends BaseTestClass {
         log.debug("[START TEST] " + sTestName);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
-        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
-
-        loginPage.typeUsername(username);
-        loginPage.typePassword(password);
-        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
-
-        loginPage = loginPage.clickLoginButtonWithNoProgress();
-        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
-
-        String actualErrorMessage = loginPage.getErrorMessage();
-        Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Wrong login error message");
+        // DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
+        //
+        // loginPage.typeUsername(username);
+        // loginPage.typePassword(password);
+        // DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
+        //
+        // loginPage = loginPage.clickLoginButtonWithNoProgress();
+        // DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
+        //
+        // String actualErrorMessage = loginPage.getErrorMessage();
+        // Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Wrong login error message");
 
     }
 

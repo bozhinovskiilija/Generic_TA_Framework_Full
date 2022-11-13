@@ -9,7 +9,8 @@ import org.testng.Assert;
 
 public class LoginPage extends CommonLoggedOutPage {
 
-    private final String LOGIN_PAGE_URL = getPageUrl(PageUrlPaths.LOGIN_PAGE);
+    //private final String LOGIN_PAGE_URL = getPageUrl(PageUrlPaths.LOGIN_PAGE);
+    private final String LOGIN_PAGE_URL = "www.google.com";
 
     //locators(not web elements) for Login Page
     private final String loginBoxLocator = "//div[@id='loginbox']";
