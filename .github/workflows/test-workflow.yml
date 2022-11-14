@@ -37,9 +37,9 @@ jobs:
         env:
           DEFAULT_ENV_TEST: 'test-environment'
           DEFAULT_TEST_SUITE: 'regression_suite'
-        run:
+        run: |
           echo "ENVIRONMENT=${{ github.event.inputs.environment || env.DEFAULT_ENV_TESTS}}" >> $GITHUB_ENV
-         # echo "TEST_SUITE=${{ github.event.inputs.type || env.DEFAULT_TEST_SUITE}}" >> $GITHUB_ENV
+          echo "TEST_SUITE=${{ github.event.inputs.type || env.DEFAULT_TEST_SUITE}}" >> $GITHUB_ENV
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
         uses: actions/checkout@v3
@@ -57,9 +57,7 @@ jobs:
                           ./scripts/InstallChrome.sh
 
       - name: Run tests from maven
-        run: mvn clean test -U -P=${{ env.ENVIRONMENT }}
-
-        ##'-D test.suite=${{ env.TEST_SUITE }}'
+        run: mvn clean test -U -P=${{ env.ENVIRONMENT }} '-D test.suite=${{ env.TEST_SUITE }}'
 
 #      - name: Deploy report to GH Pages
 #        run: JamesIves/github-pages-deploy-actions@4.1.5
