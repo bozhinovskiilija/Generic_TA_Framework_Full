@@ -39,7 +39,7 @@ jobs:
           DEFAULT_TEST_SUITE: 'regression_suite'
         run:
           echo "ENVIRONMENT=${{ github.event.inputs.environment || env.DEFAULT_ENV_TESTS}}" >> $GITHUB_ENV
-          echo "TEST_SUITE=${{ github.event.inputs.type || env.DEFAULT_TEST_SUITE}}" >> $GITHUB_ENV
+         # echo "TEST_SUITE=${{ github.event.inputs.type || env.DEFAULT_TEST_SUITE}}" >> $GITHUB_ENV
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
         uses: actions/checkout@v3
