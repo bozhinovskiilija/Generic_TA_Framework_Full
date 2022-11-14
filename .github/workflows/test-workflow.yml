@@ -57,7 +57,7 @@ jobs:
                           ./scripts/InstallChrome.sh
 
       - name: Run tests from maven
-        run: mvn clean test -U -P=${{ env.ENVIRONMENT }} '-Dtest.suite=${{ env.TEST_SUITE }}'
+        run: mvn clean test -U -am -P=${{ env.ENVIRONMENT }} '-Dtest.suite=${{ env.TEST_SUITE }}'
 
 #      - name: Deploy report to GH Pages
 #        run: JamesIves/github-pages-deploy-actions@4.1.5
