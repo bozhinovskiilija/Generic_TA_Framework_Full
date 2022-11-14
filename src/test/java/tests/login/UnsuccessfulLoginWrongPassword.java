@@ -20,7 +20,7 @@ import static data.Groups.LOGIN;
 import static data.Groups.REGRESSION;
 
 
-@Test(groups = { LOGIN})
+@Test(groups = {REGRESSION, LOGIN})
 public  class UnsuccessfulLoginWrongPassword extends BaseTestClass {
 
     /*If we want to you all the benefits from ITestContext and
