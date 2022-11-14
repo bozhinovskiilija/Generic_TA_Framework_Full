@@ -110,7 +110,7 @@
             </activation>
             <properties>
                 <environment>prod</environment>
-                <testBaseUrl>prodBaseUrl</testBaseUrl>
+                <prod>www.prod-host-name.com</prod>
                 <browser>chrome</browser>
                 <headless>false</headless>
                 <remote>false</remote>
