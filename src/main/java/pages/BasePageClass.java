@@ -1,9 +1,11 @@
 package pages;
 
+import data.Time;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -12,6 +14,7 @@ import utils.PropertiesUtils;
 import utils.WebDriverUtils;
 
 import java.time.Duration;
+import java.util.List;
 
 
 //wrapper class for all wrapper methods (re-usable class)
@@ -27,6 +30,7 @@ public abstract class BasePageClass extends LoggerUtils {
     protected BasePageClass(WebDriver driver) {
         Assert.assertFalse(WebDriverUtils.hasDriverQuit(driver), "Driver instance has quit");
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
 
@@ -61,12 +65,87 @@ public abstract class BasePageClass extends LoggerUtils {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
+    protected WebElement getNestedWebElement(WebElement parentElement,By childLocator){
+        log.trace("getNestedWebElement(" + parentElement + "," + childLocator + ")");
+        return parentElement.findElement(childLocator);
+    }
+
+    protected WebElement getNestedWebElement(WebElement parentElement,By childLocator,int timeout){
+        log.trace("getNestedWebElement(" + parentElement + "," + childLocator +","+timeout+ ")");
+        WebDriverWait wait = getWebDriverWait(timeout);
+
+        return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(parentElement,childLocator));
+    }
+
+    protected List<WebElement> getWebElements (By locator){
+        log.trace("getWebElements()");
+        return driver.findElements(locator);
+    }
+
+    protected List<WebElement> getNestedWebElements(WebElement parentElement,By locator){
+        log.trace("getNestedWebElements()");
+        return parentElement.findElements(locator);
+    }
 
     protected WebElement waitForWebElementToBeClickable(WebElement element, int timeout) {
         log.trace("waitForWebElementToBeClickable(" + element + "," + timeout + ")");
         WebDriverWait wait = getWebDriverWait(timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 
+
+    protected WebElement waitForWebElementToBeVisible(By locator, int timeout) {
+        log.trace("waitForWebElementToBeVisible(" + locator + "," + timeout + ")");
+        WebDriverWait wait = getWebDriverWait(timeout);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+
+    protected WebElement waitForWebElementToBeVisible(WebElement element, int timeout) {
+        log.trace("waitForWebElementToBeVisible(" + element + "," + timeout + ")");
+        WebDriverWait wait = getWebDriverWait(timeout);
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+
+    protected boolean waitForWebElementToBeInvisible(By locator, int timeout) {
+        log.trace("waitForWebElementToBeInvisible(" + locator + "," + timeout + ")");
+        WebDriverWait wait = getWebDriverWait(timeout);
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+
+    protected boolean waitForWebElementToBeInvisible(WebElement element, int timeout) {
+        log.trace("waitForWebElementToBeInvisible(" + element + "," + timeout + ")");
+        WebDriverWait wait = getWebDriverWait(timeout);
+        return wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+
+    protected boolean isWebElementVisible(By locator, int timeout) {
+        log.trace("isWebElementVisible(" + locator + ", " + timeout + ")");
+        try {
+            WebElement element = waitForWebElementToBeVisible(locator, timeout);
+            return element != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+    /**
+     * @param locator
+     * @param timeout
+     * @return
+     */
+    protected boolean isWebElementInvisible(By locator, int timeout) {
+        log.trace("isWebElementInvisible(" + locator + ", " + timeout + ")");
+        try {
+            return waitForWebElementToBeInvisible(locator, timeout);
+
+        } catch (Exception e) {
+            return true;
+        }
     }
 
 
@@ -100,7 +179,6 @@ public abstract class BasePageClass extends LoggerUtils {
         log.trace("clickOnWebElementJS(" + element + ")");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("argument[0].click();", element);
-
     }
 
 
@@ -126,7 +204,6 @@ public abstract class BasePageClass extends LoggerUtils {
         log.trace("getAttributeFromWebElement(" + element + ")");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return (String) js.executeScript("return arguments[0].value", element);
-
     }
 
 
@@ -152,23 +229,50 @@ public abstract class BasePageClass extends LoggerUtils {
     }
 
 
-    protected boolean isWebElementEnabled(WebElement element) {
-        log.trace("isWebElementEnabled(" + element + ")");
-        return element.isEnabled();
+    //used for page factory
+    //workaround for setting additional wait in page factory
+    protected boolean isWebElementDisplayed(WebElement element, int timeout) {
 
+        log.trace("getWebElement(" + element + ", " + timeout + ")");
+        try {
+            //override default implicit wait
+            WebDriverUtils.setImplicitWait(driver, timeout);
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }finally {
+            log.info("");
+            WebDriverUtils.setImplicitWait(driver, Time.IMPLICIT_TIMEOUT);
+        }
     }
 
-    protected boolean isWebElementEnabled(WebElement element,int timeout) {
-        log.trace("isWebElementEnabled(" + element + ", "+timeout+")");
-
+    public boolean isNestedWebElementDisplayed(WebElement parentElement,By locator){
+        log.trace("isNestedWebElementDisplayed(" + parentElement + ", " + locator + ")");
         try{
-            waitForWebElementToBeClickable(element,timeout);
-            return true;
+            WebElement element = getWebElement(locator);
+            return element.isDisplayed();
 
         }catch (Exception e){
             return false;
         }
+    }
 
+
+    protected boolean isWebElementEnabled(WebElement element) {
+        log.trace("isWebElementEnabled(" + element + ")");
+        return element.isEnabled();
+    }
+
+
+    protected boolean isWebElementEnabled(WebElement element, int timeout) {
+        log.trace("isWebElementEnabled(" + element + ", " + timeout + ")");
+        try {
+            WebElement webElement = waitForWebElementToBeClickable(element, timeout);
+            return webElement != null;
+
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 

@@ -91,6 +91,8 @@
                 <locale>en</locale>
                 <takeScreenshots>true</takeScreenshots>
                 <screenshotsFolder>\\screenshots\\</screenshotsFolder>
+                <endUserUsername>username</endUserUsername>
+                <endUserPassword>password</endUserPassword>
             </properties>
 
             <build>

@@ -1,6 +1,7 @@
 package utils;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,9 @@ public class ScreenshotUtils extends LoggerUtils {
             log.warn("Screenshot for test '" + testName + "' could not be taken!. Driver instance has quit!");
             return null;
         }
+
+       // String sessionID=WebDriverUtils.getSessionID(driver).toString();
+        //String screenshotName=testName + "_" + sessionID;
         String pathToFile = createScreenShotPath(testName);
 
         TakesScreenshot screenshot = ((TakesScreenshot) driver);

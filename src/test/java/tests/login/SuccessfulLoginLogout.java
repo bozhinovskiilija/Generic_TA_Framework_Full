@@ -1,6 +1,8 @@
 package tests.login;
 
 //import data.CommonString;
+
+import data.CommonString;
 import data.Groups;
 import data.Time;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +17,7 @@ import pages.WelcomePage;
 import tests.BaseTestClass;
 import utils.DateTimeUtils;
 import utils.PropertiesUtils;
+
 import static data.Groups.LOGIN;
 import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
@@ -32,36 +35,38 @@ public class SuccessfulLoginLogout extends BaseTestClass {
     private final String sTestName = this.getClass().getName();
     private WebDriver driver;
 
+
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
     }
 
+
     @Test
     public void testSuccessfulLoginLogout() {
 
         String username = PropertiesUtils.getAdminUsername();
         String password = PropertiesUtils.getAdminPassword();
-       // String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
+        String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
 
         log.debug("[START TEST] " + sTestName);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        // WelcomePage welcomePage = loginPage
-        //     .typeUsername(username)
-        //     .typePassword(password)
-        //     .clickLoginButton();
-        //
-        // DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
-        //
-        // loginPage = welcomePage.clickLogoutLink();
-        // DateTimeUtils.wait(Time.TIME_SHORT);
-        //
-        // String actualSuccessMessage = loginPage.getSuccessLogoutMessage();
-        // Assert.assertEquals(actualSuccessMessage, expectedLogoutSuccessMessage, "Wrong logout success message");
+        WelcomePage welcomePage = loginPage
+            .typeUsername(username)
+            .typePassword(password)
+            .clickLoginButton();
+
+        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
+
+        loginPage = welcomePage.clickLogoutLink();
+        DateTimeUtils.wait(Time.TIME_SHORT);
+
+        String actualSuccessMessage = loginPage.getSuccessLogoutMessage();
+        Assert.assertEquals(actualSuccessMessage, expectedLogoutSuccessMessage, "Wrong logout success message");
 
     }
 
@@ -69,7 +74,18 @@ public class SuccessfulLoginLogout extends BaseTestClass {
     @AfterMethod(alwaysRun = true)
     public void tearDownTest(ITestResult testResult) {
         log.debug("[END TEST] " + sTestName);
-        tearDown(driver,testResult);
+        tearDown(driver, testResult);
+        //cleanUp();
     }
+
+    //
+    // private void cleanUp() {
+    //     try {
+    //         //cleaning up things... delete smth from database
+    //         //related only to this test
+    //     } catch (AssertionError | Exception e) {
+    //         log.error("Cleaning up failed! Message: " + e.getMessage());
+    //     }
+    // }
 
 }

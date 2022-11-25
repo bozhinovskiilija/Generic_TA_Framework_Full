@@ -2,11 +2,17 @@ package pages;
 
 import data.PageUrlPaths;
 import data.Time;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class HomePage extends CommonLoggedInPage{
 
     private final String HOME_PAGE_URL = getPageUrl(PageUrlPaths.HOME_PAGE);
+
+    //it is different from all other pages
+    private final By pageTitleLocator = By.xpath("//div[@class='my-jumbotron']/h1");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -32,6 +38,19 @@ public class HomePage extends CommonLoggedInPage{
             verifyHomePage();
         }
         return this;
+    }
+
+    @Override
+    public boolean isPageTitleDisplayed(){
+        log.debug("isPageTitleDisplayed()");
+        return isWebElementDisplayed(pageTitleLocator);
+    }
+    @Override
+    public String getPageTitle(){
+        log.debug("isPageTitleDisplayed()");
+        Assert.assertTrue(isPageTitleDisplayed(),"Page title element is not displayed");
+        WebElement title = getWebElement(pageTitleLocator);
+        return getTextFromWebElement(title);
     }
 
 

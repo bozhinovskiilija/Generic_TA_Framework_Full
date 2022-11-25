@@ -12,4 +12,8 @@ public final class Groups {
     public static final String FLAKY = "flaky";
     public static final String BUGS = "bugs";
 
+    public static final String EVALUATION = "evaluation";
+
+    public static final String USERS = "users";
+
 }

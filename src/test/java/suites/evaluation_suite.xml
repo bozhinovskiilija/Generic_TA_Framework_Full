@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Evaluation Suite" parallel="methods" thread-count="8">
+    <test name="Evaluation Tests">
+        <groups>
+            <run>
+                <include name="evaluation"/>
+                <exclude name="broke"/>
+                <exclude name="deprecated"/>
+                <exclude name="bugs"/>
+            </run>
+        </groups>
+    </test>
+    <packages>
+        <package name="tests.*"></package>
+    </packages>
+
+</suite>
+

@@ -9,19 +9,25 @@ import org.testng.Assert;
 
 public class LoginPage extends CommonLoggedOutPage {
 
-   // private final String LOGIN_PAGE_URL = getPageUrl(PageUrlPaths.LOGIN_PAGE);
-    private final String LOGIN_PAGE_URL = "https://www.google.com";
+    private final String LOGIN_PAGE_URL = getPageUrl(PageUrlPaths.LOGIN_PAGE);
+    //private final String LOGIN_PAGE_URL = "https://www.google.com";
 
     //locators(not web elements) for Login Page
     private final String loginBoxLocator = "//div[@id='loginbox']";
     private final By usernameTextFieldLocator = By.id("username");
     private final By passwordTextFieldLocator = By.id("password");
 
-    //you you use conatains if you have multiple classes in the class attribute
+    //you use conatains if you have multiple classes in the class attribute
     private final By loginButtonLocator = By.xpath(loginBoxLocator + "//input[contains(@class,'btn-primary')]");
     private final By successLogoutMessageLocator = By.xpath(
         loginBoxLocator + "//div[contains(@class,'alert-success')]");
     private final By loginErrorMessageLocator = By.xpath(loginBoxLocator + "//div[contains(@class,'alert-danger')]");
+
+    private final By createAccountLinkLocator = By.xpath(
+        loginBoxLocator + "//a[@href='" + PageUrlPaths.REGISTER_PAGE + "']");
+    private final By resetPasswordLinkLocator = By.xpath(
+        loginBoxLocator + "//a[@href='" + PageUrlPaths.RESET_PASSWORD_PAGE + "']");
+
 
     //private final By loginButtonLocator = By.cssSelector("div#loginbox input.btn-primary");
     //not good approach - because of stale element exception(element not in DOM yet, or DOM structure is changed)
@@ -83,7 +89,7 @@ public class LoginPage extends CommonLoggedOutPage {
 
 
     public boolean isPasswordTextFieldDisplayed() {
-        log.debug("isUsernameTextFieldDisplayed()");
+        log.debug("isPasswordTextFieldDisplayed()");
         return isWebElementDisplayed(passwordTextFieldLocator);
     }
 
@@ -169,5 +175,64 @@ public class LoginPage extends CommonLoggedOutPage {
         WebElement errorMessage = getWebElement(loginErrorMessageLocator);
         return getTextFromWebElement(errorMessage);
     }
+
+
+    public boolean isCreateAccountLinkDisplayed() {
+        log.debug("isCreateAccountLinkDisplayed()");
+        return isWebElementDisplayed(createAccountLinkLocator);
+    }
+
+
+    public RegisterPage clickCreateAccountLink() {
+        log.debug("clickCreateAccountLink()");
+        Assert.assertTrue(isCreateAccountLinkDisplayed(), "Create account link is NOT displayed on Login Page!");
+        WebElement createAccountLink = getWebElement(createAccountLinkLocator, 10);
+        clickOnWebElement(createAccountLink);
+        RegisterPage registerPage = new RegisterPage(driver);
+        return registerPage.verifyRegisterPage();
+
+    }
+
+
+    public String getCreateAccountLinkTitle() {
+        log.debug("getCreateAccountLinkTitle()");
+        Assert.assertTrue(isCreateAccountLinkDisplayed(), "Create account link is NOT displayed on Login Page!");
+        WebElement createAccount = getWebElement(createAccountLinkLocator);
+        return getTextFromWebElement(createAccount);
+    }
+
+
+    public boolean isResetPasswordLinkDisplayed() {
+        log.debug("isResetPasswordLinkDisplayed()");
+        return isWebElementDisplayed(resetPasswordLinkLocator);
+    }
+
+
+    public ResetPasswordPage clickResetPasswordLink() {
+        log.debug("clickResetPasswordLink()");
+        Assert.assertTrue(isResetPasswordLinkDisplayed(), "Reset password link is NOT displayed on Login Page!");
+        WebElement resetPasswordLink = getWebElement(createAccountLinkLocator, 10);
+        clickOnWebElement(resetPasswordLink);
+        ResetPasswordPage resetPasswordPage = new ResetPasswordPage(driver);
+        return resetPasswordPage.verifyResetPasswordPage();
+
+    }
+
+
+    public String getResetPasswordLinkTitle() {
+        log.debug("getResetPasswordLinkTitle()");
+        Assert.assertTrue(isResetPasswordLinkDisplayed(), "Reset password link is NOT displayed on Login Page!");
+        WebElement resetPassword = getWebElement(resetPasswordLinkLocator);
+        return getTextFromWebElement(resetPassword);
+    }
+
+
+    public WelcomePage login(String username, String password) {
+        log.info("Login(" + username + "," + password + ")");
+        typeUsername(username);
+        typePassword(password);
+        return clickLoginButton();
+    }
+
 
 }
