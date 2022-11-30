@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class UsersPage extends CommonLoggedInPage{
 
     // Page Url Path
@@ -19,12 +21,17 @@ public class UsersPage extends CommonLoggedInPage{
 
     // //table[@id='users-table']//tbody//td[1]/self::td[text()='dedoje']/following-sibling::td[1]
 
+    //complex parametrized locator (dynamic created locators)
     private String createXpathForUsernameInUsersTable(String username){
-        return "//tbody//td[1]/self::td[text()='"+username+"']";
+        return ".//tbody//td[1]/self::td[text()='"+username+"']";
     }
 
     private String createXpathForDisplayNameInUsersTable(String username){
         return createXpathForUsernameInUsersTable(username) + "/following-sibling::td[1]";
+    }
+
+    private String createXpathForHeroCountInUsersTable(String username){
+        return createXpathForUsernameInUsersTable(username) + "/following-sibling::td[2]";
     }
 
     // Constructor
@@ -68,6 +75,15 @@ public class UsersPage extends CommonLoggedInPage{
         return addUserDialogBox.verifyAdduserDialogBox();
     }
 
+    public int getNumberOfRowsInUsersTable(){
+        log.debug("getNumberOfRowsInUsersTable()");
+        WebElement userTable = getWebElement(usersTableLocator);
+        // dot in (.//tbody/tr) means start from the parent element
+        String xpath = ".//tbody/tr";
+        List<WebElement> usersTableRows = getNestedWebElements(userTable,By.xpath(xpath));
+        return usersTableRows.size();
+    }
+
     //https://www.w3schools.com/xml/xpath_axes.asp
 
     public boolean isUserPresentInUsersTable(String username){
@@ -76,6 +92,41 @@ public class UsersPage extends CommonLoggedInPage{
         String xPath = createXpathForUsernameInUsersTable(username);
 
         return isNestedWebElementDisplayed(usersTable,By.xpath(xPath));
+
+    }
+
+    public String getDisplayNameInUsersTable(String username){
+        log.debug("getDisplayNameInUsersTable()");
+        Assert.assertTrue(isUserPresentInUsersTable(username),"User: '"+username+"' is not present in Users table");
+        WebElement usersTable = getWebElement(usersTableLocator);
+        String xpath = createXpathForDisplayNameInUsersTable(username);
+        WebElement displayName = getNestedWebElement(usersTable,By.xpath(xpath));
+        return getTextFromWebElement(displayName);
+    }
+
+    private WebElement getHeroCountLinkWebElementInUsersTable(String username){
+
+        Assert.assertTrue(isUserPresentInUsersTable(username),"User: '"+username+"' is NOT present in Users table");
+        WebElement usersTable = getWebElement(usersTableLocator);
+        String xpath = createXpathForHeroCountInUsersTable(username);
+        return getNestedWebElement(usersTable,By.xpath(xpath));
+
+    }
+
+    public int getHeroCountInUsersTable(String username){
+        log.debug("getHeroCountInUsersTable("+username+")");
+        WebElement heroCountLink = getHeroCountLinkWebElementInUsersTable(username);
+        return Integer.parseInt(getTextFromWebElement(heroCountLink));
+    }
+
+    public UserHeroesDialogBox clickHeroCountLinkInUsersTable(String username){
+        log.debug("clickHeroCountLinkInUsersPage("+username+")");
+        WebElement heroCountLink = getHeroCountLinkWebElementInUsersTable(username);
+        clickOnWebElement(heroCountLink);
+
+        //return new instance of User Hero Page
+        UserHeroesDialogBox userHeroesDialogBox = new UserHeroesDialogBox(driver);
+        return userHeroesDialogBox.verifyUserHeroesDialogBox();
 
     }
 

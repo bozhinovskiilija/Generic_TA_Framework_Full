@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -31,6 +32,9 @@ public abstract class BasePageClass extends LoggerUtils {
         Assert.assertFalse(WebDriverUtils.hasDriverQuit(driver), "Driver instance has quit");
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        //lazy load concept (it is again implicit wait that override the existing one)
+        //it will reflect on all web elements
+        //PageFactory.initElements(new AjaxElementLocatorFactory(driver,10),this);
     }
 
 

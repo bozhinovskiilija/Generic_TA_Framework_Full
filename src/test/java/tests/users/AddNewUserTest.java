@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AddUserDialogBox;
 import pages.LoginPage;
+import pages.UserHeroesDialogBox;
 import pages.UsersPage;
 import pages.WelcomePage;
 import tests.BaseTestClass;
@@ -32,6 +33,7 @@ public class AddNewUserTest extends BaseTestClass {
     String username;
     String password;
 
+
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
@@ -50,17 +52,29 @@ public class AddNewUserTest extends BaseTestClass {
         LoginPage loginPage = new LoginPage(driver).open();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        WelcomePage welcomePage= loginPage.login(username,password);
+        WelcomePage welcomePage = loginPage.login(username, password);
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         UsersPage usersPage = welcomePage.clickUsersTab();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         //Check if some user is present in users table
-       log.info("Is username dedoje exists? "+usersPage.isUserPresentInUsersTable("dedoje"));
-       log.info("Is username fddefef exists?"+usersPage.isUserPresentInUsersTable("fddefef"));
+        log.info("Is username dedoje exists? " + usersPage.isUserPresentInUsersTable("dedoje"));
+        log.info("Is username fddefef exists?" + usersPage.isUserPresentInUsersTable("fddefef"));
+        log.info("Display name" + usersPage.getDisplayNameInUsersTable("dedoje"));
+        log.info("Number of heroes: " + usersPage.getHeroCountInUsersTable("dedoje"));
+        log.info("Number of users is users table is: "+ usersPage.getNumberOfRowsInUsersTable());
 
-      // Assert.assertTrue(usersPage.isUserPresentInUsersTable("dedoje"),"Username does not exists");
+
+        UserHeroesDialogBox userHeroesDialogBox = usersPage.clickHeroCountLinkInUsersTable("dedoje");
+        DateTimeUtils.wait(Time.TIME_SHORTER);
+
+        usersPage = userHeroesDialogBox.clickCloseButton();
+        DateTimeUtils.wait(Time.TIME_SHORTER);
+
+        log.info("Number of users is users table is: "+ usersPage.getNumberOfRowsInUsersTable());
+
+        // Assert.assertTrue(usersPage.isUserPresentInUsersTable("dedoje"),"Username does not exists");
 
         // AddUserDialogBox addNewUserDialogBox = usersPage.clickAddNewUsersButton();
         // DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
@@ -76,10 +90,11 @@ public class AddNewUserTest extends BaseTestClass {
 
     }
 
+
     @AfterMethod(alwaysRun = true)
     public void tearDownTest(ITestResult testResult) {
         log.debug("[END TEST] " + sTestName);
-        tearDown(driver,testResult);
+        tearDown(driver, testResult);
     }
 
 
