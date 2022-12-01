@@ -11,7 +11,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AddUserDialogBox;
+import pages.AdminPage;
 import pages.LoginPage;
+import pages.UserDetailsDialogBox;
 import pages.UserHeroesDialogBox;
 import pages.UsersPage;
 import pages.WelcomePage;
@@ -69,10 +71,25 @@ public class AddNewUserTest extends BaseTestClass {
         UserHeroesDialogBox userHeroesDialogBox = usersPage.clickHeroCountLinkInUsersTable("dedoje");
         DateTimeUtils.wait(Time.TIME_SHORTER);
 
-        usersPage = userHeroesDialogBox.clickCloseButton();
+        usersPage = userHeroesDialogBox.clickCloseButtonToUsersPage();
         DateTimeUtils.wait(Time.TIME_SHORTER);
 
         log.info("Number of users is users table is: "+ usersPage.getNumberOfRowsInUsersTable());
+
+        UserDetailsDialogBox userDetailsDialogBox = usersPage.clickUserDetailsIconInUsersTable("dedoje");
+        log.info("DialogBox title: "+userDetailsDialogBox.getDialogBoxTitle());
+        DateTimeUtils.wait(Time.TIME_SHORTER);
+
+        usersPage = userDetailsDialogBox.clickCloseButton();
+
+        AdminPage adminPage = new AdminPage(driver);
+
+        adminPage = usersPage.clickAdminTab();
+        DateTimeUtils.wait(Time.TIME_SHORTER);
+        adminPage = adminPage.checkAllowUserToShareRegistrationCode();
+        DateTimeUtils.wait(Time.TIME_SHORTER);
+        adminPage = adminPage.uncheckAllowUserToShareRegistrationCode();
+        DateTimeUtils.wait(Time.TIME_SHORTER);
 
         // Assert.assertTrue(usersPage.isUserPresentInUsersTable("dedoje"),"Username does not exists");
 

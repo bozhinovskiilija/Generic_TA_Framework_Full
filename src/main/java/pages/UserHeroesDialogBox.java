@@ -53,14 +53,27 @@ public class UserHeroesDialogBox extends BasePageClass{
         return isWebElementDisplayed(closeButtonLocator);
     }
 
-    public UsersPage clickCloseButton() {
+    private void  clickCloseButton() {
         log.debug("clickCloseButton()");
         Assert.assertTrue(isCloseButtonDisplayed(), "Close button is NOT displayed on User heroes Dialog box");
         WebElement closeButton = getWebElement(closeButtonLocator, Time.TIME_SHORTER);
         clickOnWebElement(closeButton);
         Assert.assertTrue(isAddUserDialogBoxClosed(Time.TIME_SHORTER),"User heroes dialog box is NOT closed!");
+
+    }
+
+    public UsersPage clickCloseButtonToUsersPage(){
+        log.debug("clickCloseButtonToUsersPage()");
+        clickCloseButton();
         UsersPage usersPage = new UsersPage(driver);
         return usersPage.verifyUsersPage();
+    }
+
+    public HeroesPage clickCloseButtonToHeroesPage(){
+        log.debug("clickCloseButtonToHeroesPage()");
+        clickCloseButton();
+        HeroesPage heroesPage = new HeroesPage(driver);
+        return heroesPage.verifyHeroesPage();
     }
 
 

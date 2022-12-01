@@ -125,6 +125,12 @@ public abstract class BasePageClass extends LoggerUtils {
         return wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
+    protected Boolean waitForWebElementToBeSelected(WebElement element,int timeout){
+        log.trace("waitForWebElementToBeSelected(" + element + "," + timeout + ")");
+        WebDriverWait wait = getWebDriverWait(timeout);
+        return wait.until(ExpectedConditions.elementToBeSelected(element));
+    }
+
 
     protected boolean isWebElementVisible(By locator, int timeout) {
         log.trace("isWebElementVisible(" + locator + ", " + timeout + ")");
@@ -279,6 +285,20 @@ public abstract class BasePageClass extends LoggerUtils {
         }
     }
 
+    protected boolean isWebElementSelected(WebElement element){
+        log.trace("isWebElementSelected(" + element + ")");
+        return element.isSelected();
+    }
+
+    protected boolean isWebElementSelected(WebElement element, int timeout){
+        log.trace("isWebElementSelected(" + element + ", "+timeout+")");
+        try{
+           return waitForWebElementToBeSelected(element,timeout);
+
+        }catch (Exception e){
+            return false;
+        }
+    }
 
     private WebDriverWait getWebDriverWait(int timeout) {
         return new WebDriverWait(driver, Duration.ofSeconds(timeout));

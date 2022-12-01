@@ -5,6 +5,7 @@ import data.Time;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 import java.util.List;
@@ -18,6 +19,11 @@ public class UsersPage extends CommonLoggedInPage{
     private final By addNewUsersButton = By.xpath("//a[contains(@class,'btn-info') and contains(@onclick,'openAddUserModal')]");
     private final By usersTableLocator = By.id("users-table");
 
+    @FindBy(id="users-table")
+    WebElement usersTable;
+
+    @FindBy(xpath = "//table[@id='users-table']/tbody/tr")
+    List<WebElement> usersTableRows;
 
     // //table[@id='users-table']//tbody//td[1]/self::td[text()='dedoje']/following-sibling::td[1]
 
@@ -32,6 +38,14 @@ public class UsersPage extends CommonLoggedInPage{
 
     private String createXpathForHeroCountInUsersTable(String username){
         return createXpathForUsernameInUsersTable(username) + "/following-sibling::td[2]";
+    }
+
+    private String createXpathForUserIconsInUsersTable(String username){
+        return createXpathForUsernameInUsersTable(username) + "/following-sibling::td[3]";
+    }
+
+    private String createXpathForUserDetailIconInUsersTable(String username){
+        return createXpathForUserIconsInUsersTable(username) + "//a[contains(@class,'btn-info')]";
     }
 
     // Constructor
@@ -129,6 +143,28 @@ public class UsersPage extends CommonLoggedInPage{
         return userHeroesDialogBox.verifyUserHeroesDialogBox();
 
     }
+
+    public boolean isUserDetailsIconIsPresentInUsersTable(String username){
+        log.debug("isUserDetailsIconIsPresentInUsersTable("+username+")");
+        WebElement usersTable = getWebElement(usersTableLocator);
+        String xpath = createXpathForUserDetailIconInUsersTable(username);
+        return isNestedWebElementDisplayed(usersTable,By.xpath(xpath));
+    }
+
+    public UserDetailsDialogBox clickUserDetailsIconInUsersTable(String username){
+        log.debug("clickUserDetailsIconInUsersTable("+username+")");
+        Assert.assertTrue(isUserDetailsIconIsPresentInUsersTable(username),"User detail icon is not present in Users table for user '"+username+"' ! ");
+        WebElement usersTable = getWebElement(usersTableLocator);
+        String xpath = createXpathForUserDetailIconInUsersTable(username);
+        WebElement userDetailsIcon = getNestedWebElement(usersTable,By.xpath(xpath));
+        clickOnWebElement(userDetailsIcon);
+        //return UserDetailsDialogBox
+        UserDetailsDialogBox userDetailsDialogBox = new UserDetailsDialogBox(driver);
+        return userDetailsDialogBox.verifyUserDetailsDialogBox();
+
+    }
+
+
 
 
 }
