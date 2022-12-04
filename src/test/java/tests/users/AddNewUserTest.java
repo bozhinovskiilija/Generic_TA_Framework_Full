@@ -3,6 +3,7 @@ package tests.users;
 import data.CommonString;
 import data.Groups;
 import data.Time;
+import objects.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -35,6 +36,8 @@ public class AddNewUserTest extends BaseTestClass {
     String username;
     String password;
 
+    public User user;
+
 
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
@@ -43,6 +46,8 @@ public class AddNewUserTest extends BaseTestClass {
 
         username = PropertiesUtils.getAdminUsername();
         password = PropertiesUtils.getAdminPassword();
+
+
     }
 
 

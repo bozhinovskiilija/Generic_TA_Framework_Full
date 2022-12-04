@@ -141,4 +141,7 @@ public class PropertiesUtils extends LoggerUtils {
     }
 
 
+    public static String getDefaultPassword(){
+        return getProperty("defaultPassword");
+    }
 }
