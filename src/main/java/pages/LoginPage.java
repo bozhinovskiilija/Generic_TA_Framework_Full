@@ -19,7 +19,9 @@ public class LoginPage extends CommonLoggedOutPage {
 
     //you use conatains if you have multiple classes in the class attribute
     private final By loginButtonLocator = By.xpath(loginBoxLocator + "//input[contains(@class,'btn-primary')]");
-    private final By successLogoutMessageLocator = By.xpath(
+
+    //contains message for successful logout and successful register
+    private final By successMessageLocator = By.xpath(
         loginBoxLocator + "//div[contains(@class,'alert-success')]");
     private final By loginErrorMessageLocator = By.xpath(loginBoxLocator + "//div[contains(@class,'alert-danger')]");
 
@@ -151,14 +153,14 @@ public class LoginPage extends CommonLoggedOutPage {
 
     public boolean isSuccessLogoutMessageDisplayed() {
         log.debug("isSuccessLogoutMessageDisplayed()");
-        return isWebElementDisplayed(successLogoutMessageLocator);
+        return isWebElementDisplayed(successMessageLocator);
     }
 
 
-    public String getSuccessLogoutMessage() {
+    public String getSuccessMessage() {
         log.debug("getSuccessLogoutMessage()");
         Assert.assertTrue(isSuccessLogoutMessageDisplayed(), "Success logout message is not displayed");
-        WebElement logoutMessage = getWebElement(successLogoutMessageLocator);
+        WebElement logoutMessage = getWebElement(successMessageLocator);
         return getTextFromWebElement(logoutMessage);
     }
 

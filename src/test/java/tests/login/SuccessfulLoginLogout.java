@@ -3,7 +3,6 @@ package tests.login;
 //import data.CommonString;
 
 import data.CommonString;
-import data.Groups;
 import data.Time;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -65,7 +64,7 @@ public class SuccessfulLoginLogout extends BaseTestClass {
         loginPage = welcomePage.clickLogoutLink();
         DateTimeUtils.wait(Time.TIME_SHORT);
 
-        String actualSuccessMessage = loginPage.getSuccessLogoutMessage();
+        String actualSuccessMessage = loginPage.getSuccessMessage();
         Assert.assertEquals(actualSuccessMessage, expectedLogoutSuccessMessage, "Wrong logout success message");
 
     }

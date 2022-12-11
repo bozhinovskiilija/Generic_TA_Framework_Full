@@ -32,6 +32,11 @@ public class CommonString {
         return getLocaleString("LOGIN_ERROR_MESSAGE");
     }
 
+    public static String getRegisterSuccessMessage() {
+        return getLocaleString("REGISTER_SUCCESS_MESSAGE");
+    }
+
+
     // public static final String SUCCESSFUL_LOGOUT_MESSAGE = "You have been logged out.";
     // public static final String LOGIN_ERROR_MESSAGE = "Invalid username and password.";
 

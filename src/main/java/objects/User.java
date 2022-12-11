@@ -8,6 +8,7 @@ import utils.PropertiesUtils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 //Pojo - Plain Old Java Object
 //for registering new users
@@ -26,7 +27,8 @@ public class User {
     private List<Hero> heroes;//contains no duplicate elements
 
 
-    //general constructor for with all needed information
+    //general constructor for with all needed information(constructor that accept all parameters)
+    //constructors can be private if you don't want tester to directly access them and create one public method for creating new users
     public User(final String username, final String password, final String mail, final String firstName,
                 final String lastName, final String about,
                 final String secretQuestion, final String secretAnswer, final Date createdAt, final Integer heroCount,
@@ -45,7 +47,7 @@ public class User {
     }
 
 
-    //for user that is not created in the DB
+    //for user that is not created in the DB (newly created user) - hardcoded
     public User(final String username, final String password, final String mail, final String firstName,
                 final String lastName, final String about,
                 final String secretQuestion, final String secretAnswer) {
@@ -63,7 +65,7 @@ public class User {
     }
 
 
-    //for unique user
+    //for creating new unique user (include test data)
     public User(final String username) {
         this.username = username;
         this.password = PropertiesUtils.getDefaultPassword();
@@ -206,6 +208,7 @@ public class User {
     public void addHero(Hero hero) {
         if (this.heroes == null) {
             heroes = new ArrayList<>();
+            heroCount = 0;
         }
         if (!heroes.contains(hero)) {
             heroes.add(hero);
@@ -222,14 +225,34 @@ public class User {
             heroes.remove(hero);
             heroCount = heroes.size();
         } else {
-            Assert.fail("User '" +getUsername() + "' does not have hero with the name");
+            Assert.fail("User '" + getUsername() + "' does not have hero with the name");
         }
 
     }
 
-    public static User createNewUniqueUser(String username){
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final User user = (User) o;
+        return username.equals(user.username);
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username);
+    }
+
+
+    public static User createNewUniqueUser(String username) {
         String user = username.toLowerCase() + DateTimeUtils.getDateTimeStamp(); //datetimeStamp
-        if(user.length()>35){
+        if (user.length() > 35) {
             Assert.fail("Username '" + username + "' can not be longer than 35 characters");
         }
         return new User(username);
@@ -239,16 +262,16 @@ public class User {
     @Override
     public String toString() {
         return "User {"
-                 +"Username: " + getUsername() + ", "
-                 +"Password: " + getPassword() + ", "
-                 +"Email: " + getMail() + ", "
-                 +"Name: " + getFullName() + ", "
-                 +"About: " + getAbout() + ", "
-                 +"Secret Question: " + getSecretQuestion() + ", "
-                 +"Secret Answer: " + getSecretAnswer() + ", "
-                 +"Created at: " + getCreatedAt() + ", "
-                 +"Hero count: " + getHeroCount() + ", "
-                 +"Heroes: " + getHeroes() + "}";
+            + "Username: " + getUsername() + ", "
+            + "Password: " + getPassword() + ", "
+            + "Email: " + getMail() + ", "
+            + "Name: " + getFullName() + ", "
+            + "About: " + getAbout() + ", "
+            + "Secret Question: " + getSecretQuestion() + ", "
+            + "Secret Answer: " + getSecretAnswer() + ", "
+            + "Created at: " + getCreatedAt() + ", "
+            + "Hero count: " + getHeroCount() + ", "
+            + "Heroes: " + getHeroes() + "}";
     }
 
 }

@@ -44,7 +44,7 @@ public abstract class BasePageClass extends LoggerUtils {
     }
 
 
-    private static String getBaseUrl() {
+    public static String getBaseUrl() {
 
         return BASE_URL;
     }

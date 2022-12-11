@@ -16,7 +16,7 @@ public class ScreenshotUtils extends LoggerUtils {
         "user.dir") + PropertiesUtils.getScreenshotsFolder();
 
     private static String createScreenShotPath(String testName) {
-        return screenshotsFolder + testName + ".png";
+        return screenshotsFolder + testName +"_"+DateTimeUtils.getDateTimeStamp() +".png";
     }
 
 
