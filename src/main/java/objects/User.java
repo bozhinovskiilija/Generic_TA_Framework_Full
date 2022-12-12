@@ -1,6 +1,7 @@
 package objects;
 
 
+import com.github.javafaker.Faker;
 import org.testng.Assert;
 import utils.DateTimeUtils;
 import utils.PropertiesUtils;
@@ -70,9 +71,9 @@ public class User {
         this.username = username;
         this.password = PropertiesUtils.getDefaultPassword();
         this.mail = username + "@mail.com";
-        this.firstName = "Name";
-        this.lastName = "Surename";
-        this.about = "About me text";
+        this.firstName = createRandomFirstName();
+        this.lastName = createRandomLastName();
+        this.about = createRandomAbout();
         this.secretQuestion = "Question?";
         this.secretAnswer = "Answer";
         this.createdAt = null;
@@ -247,6 +248,22 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(username);
+    }
+
+
+    private String createRandomFirstName() {
+        Faker faker = new Faker();
+        return faker.name().firstName();
+    }
+
+    private String createRandomLastName() {
+        Faker faker = new Faker();
+        return faker.name().lastName();
+    }
+
+    private String createRandomAbout() {
+        Faker faker = new Faker();
+        return faker.chuckNorris().fact();
     }
 
 

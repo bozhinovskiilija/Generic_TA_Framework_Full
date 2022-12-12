@@ -4,6 +4,7 @@ package tests.login;
 
 import data.CommonString;
 import data.Time;
+import objects.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -16,6 +17,7 @@ import pages.WelcomePage;
 import tests.BaseTestClass;
 import utils.DateTimeUtils;
 import utils.PropertiesUtils;
+import utils.RestApiUtils;
 
 import static data.Groups.LOGIN;
 import static data.Groups.REGRESSION;
@@ -33,20 +35,29 @@ public class SuccessfulLoginLogout extends BaseTestClass {
 
     private final String sTestName = this.getClass().getName();
     private WebDriver driver;
+    private User user;
+
+    private boolean isCreated = false;
 
 
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
+        log.info("User: "+ user);
+        user = User.createNewUniqueUser("SuccessfulLoginLogout");
+        RestApiUtils.postUser(user);
+        isCreated = true;
+        user.setCreatedAt(RestApiUtils.getUser(user.getUsername()).getCreatedAt());
+        log.info("User: "+ user);
     }
 
 
     @Test
     public void testSuccessfulLoginLogout() {
 
-        String username = PropertiesUtils.getAdminUsername();
-        String password = PropertiesUtils.getAdminPassword();
+       // String username = PropertiesUtils.getAdminUsername();
+       // String password = PropertiesUtils.getAdminPassword();
         String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
 
         log.debug("[START TEST] " + sTestName);
@@ -55,8 +66,8 @@ public class SuccessfulLoginLogout extends BaseTestClass {
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         WelcomePage welcomePage = loginPage
-            .typeUsername(username)
-            .typePassword(password)
+            .typeUsername(user.getUsername())
+            .typePassword(user.getPassword())
             .clickLoginButton();
 
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
@@ -74,17 +85,19 @@ public class SuccessfulLoginLogout extends BaseTestClass {
     public void tearDownTest(ITestResult testResult) {
         log.debug("[END TEST] " + sTestName);
         tearDown(driver, testResult);
-        //cleanUp();
+        if (isCreated){
+            cleanUp();
+        }
     }
 
-    //
-    // private void cleanUp() {
-    //     try {
-    //         //cleaning up things... delete smth from database
-    //         //related only to this test
-    //     } catch (AssertionError | Exception e) {
-    //         log.error("Cleaning up failed! Message: " + e.getMessage());
-    //     }
-    // }
+    private void cleanUp() {
+        log.debug("cleanUp()");
+        try {
+            RestApiUtils.deleteUser(user.getUsername());
+        } catch (AssertionError | Exception e) {
+            log.error("Exception occurred in cleanUp(" + sTestName + ")! Message: " + e.getMessage());
+        }
+    }
+
 
 }

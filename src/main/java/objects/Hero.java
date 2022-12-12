@@ -1,5 +1,7 @@
 package objects;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import utils.DateTimeUtils;
 
 import java.util.Date;
@@ -7,12 +9,16 @@ import java.util.Objects;
 
 public class Hero {
 
-    //name
+   // @Expose  // if you want to read only certain fields from the response json
+    @SerializedName("name")
     private String heroName;
-    //type
+
+    @SerializedName("type")
     private String heroClass;
-    //level
+
+    @SerializedName("level")
     private Integer heroLevel;
+
     //username
     private String username;
     //createdAt

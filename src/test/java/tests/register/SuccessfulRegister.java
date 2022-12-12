@@ -35,7 +35,6 @@ public class SuccessfulRegister extends BaseTestClass {
     //String password;
 
     private User user;
-
     private boolean isCreated = false;
 
 
@@ -47,7 +46,7 @@ public class SuccessfulRegister extends BaseTestClass {
         //username = "user1";
         //password = "password123";
 
-        user=User.createNewUniqueUser("SuccessfulRegister");
+        user = User.createNewUniqueUser("SuccessfulRegister");
     }
 
 
@@ -67,17 +66,16 @@ public class SuccessfulRegister extends BaseTestClass {
         log.info("New user " + user);
 
         loginPage = registerPage.registerUser(user);
-        isCreated=true;
+        isCreated = true;
         Date date = DateTimeUtils.getCurrentDateTime();
         user.setCreatedAt(date);
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
 
         String sActualRegisterSuccessMessage = loginPage.getSuccessMessage();
-        Assert.assertEquals(sActualRegisterSuccessMessage, expectedRegisterSuccessMessage, "Wrong Register Success Message!");
+        Assert.assertEquals(sActualRegisterSuccessMessage, expectedRegisterSuccessMessage,
+            "Wrong Register Success Message!");
 
-        //log.info(RestApiUtils.checkIfUserExists(user.getUsername()));
-        //log.info(RestApiUtils.checkIfUserExists("fwfwfw"));
 
         User savedUser = RestApiUtils.getUser(user.getUsername());
 
@@ -89,22 +87,32 @@ public class SuccessfulRegister extends BaseTestClass {
         softAssert.assertEquals(savedUser.getFirstName(), user.getFirstName(), "First Name is NOT correct!");
         softAssert.assertEquals(savedUser.getLastName(), user.getLastName(), "Last Name is NOT correct!");
         softAssert.assertEquals(savedUser.getAbout(), user.getAbout(), "About Text is NOT correct!");
-        //softAssert.assertTrue(DateTimeUtils.compareDateTimes(savedUser.getCreatedAt(), user.getCreatedAt(), 5));
-        softAssert.assertEquals(savedUser.getSecretQuestion(), user.getSecretQuestion(), "Secret Question is NOT correct!");
+        softAssert.assertTrue(DateTimeUtils.compareDateTimes(savedUser.getCreatedAt(), user.getCreatedAt(), 5));
+        softAssert.assertEquals(savedUser.getSecretQuestion(), user.getSecretQuestion(),
+            "Secret Question is NOT correct!");
         softAssert.assertEquals(savedUser.getSecretAnswer(), user.getSecretAnswer(), "Secret Answer is NOT correct!");
         softAssert.assertEquals(savedUser.getHeroCount(), user.getHeroCount(), "Hero Count is NOT correct!");
         softAssert.assertAll("Wrong User Details are saved in Database for User '" + user.getUsername() + "'!");
 
-
-
-
-
     }
+
 
     @AfterMethod(alwaysRun = true)
     public void tearDownTest(ITestResult testResult) {
         log.debug("[END TEST] " + sTestName);
-        tearDown(driver,testResult);
+        tearDown(driver, testResult);
+        if (isCreated) {
+            cleanUp();
+        }
+    }
+
+    private void cleanUp() {
+        log.debug("cleanUp()");
+        try {
+            RestApiUtils.deleteUser(user.getUsername());
+        } catch (AssertionError | Exception e) {
+            log.error("Exception occurred in cleanUp(" + sTestName + ")! Message: " + e.getMessage());
+        }
     }
 
 }

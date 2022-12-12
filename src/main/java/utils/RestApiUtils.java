@@ -62,7 +62,6 @@ public class RestApiUtils extends LoggerUtils {
     }
 
 
-
     private static Response getUserApiCall(String username, String authUser, String authPassword) {
         String apiCall = BASE_URL + ApiCalls.createGetUserApiCall(username);
         Response response = null;
@@ -76,24 +75,29 @@ public class RestApiUtils extends LoggerUtils {
         return response;
     }
 
+
     public static String getUserJsonFormat(String username, String authUser, String authPassword) {
         log.debug("getUserJsonFormat(" + username + ")");
 
-        Assert.assertTrue(checkIfUserExists(username, authUser, authPassword), "User '" + username + "' doesn't exist!");
+        Assert.assertTrue(checkIfUserExists(username, authUser, authPassword),
+            "User '" + username + "' doesn't exist!");
 
         Response response = getUserApiCall(username, authUser, authPassword);
 
         int status = response.getStatusCode();
 
         String responseBody = response.getBody().asPrettyString();
-        Assert.assertEquals(status, 200, "Wrong Response Status Code in getUser(" + username + ") Api Call! Response Body: " + responseBody);
+        Assert.assertEquals(status, 200,
+            "Wrong Response Status Code in getUser(" + username + ") Api Call! Response Body: " + responseBody);
 
         return responseBody;
     }
 
+
     public static String getUserJsonFormat(String username) {
         return getUserJsonFormat(username, ADMIN_USERNAME, ADMIN_PASSWORD);
     }
+
 
     public static User getUser(String username, String authUser, String authPass) {
         log.debug("getUser(" + username + ")");
@@ -103,8 +107,75 @@ public class RestApiUtils extends LoggerUtils {
         return gson.fromJson(json, User.class);
     }
 
+
     public static User getUser(String sUsername) {
         return getUser(sUsername, ADMIN_USERNAME, ADMIN_PASSWORD);
     }
+
+
+    private static Response deleteUserApiCall(String sUsername, String sAuthUser, String sAuthPass) {
+        String sApiCall = BASE_URL + ApiCalls.createDeleteUserApiCall(sUsername);
+        Response response = null;
+        try {
+            response = RestAssured.given().auth().basic(sAuthUser, sAuthPass)
+                .headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON)
+                .when().redirects().follow(false)
+                .delete(sApiCall);
+        } catch (Exception e) {
+            Assert.fail("Exception in deleteUserApiCall(" + sUsername + ") Api Call: " + e.getMessage());
+        }
+        return response;
+    }
+
+
+    public static void deleteUser(String sUsername, String authUser, String authPassword) {
+        log.debug("deleteUser(" + sUsername + ")");
+        Assert.assertTrue(checkIfUserExists(sUsername, authUser, authPassword), "User '" + sUsername + " doesn't exist!");
+        Response response = deleteUserApiCall(sUsername, authUser, authPassword);
+        int status = response.getStatusCode();
+        String sResponseBody = response.getBody().asString();
+        Assert.assertEquals(status, 200,
+            "Wrong Response Status Code in deleteUser(" + sUsername + ") Api Call! Response Body: " + sResponseBody);
+        log.debug("User Deleted: " + !checkIfUserExists(sUsername, authUser, authPassword));
+    }
+
+    public static void deleteUser(String sUsername) {
+        deleteUser(sUsername, ADMIN_USERNAME, ADMIN_PASSWORD);
+    }
+
+
+    private static Response postUserApiCall(User user, String authUser, String authPassword) {
+        String sApiCall = BASE_URL + ApiCalls.createPostUserApiCall();
+        Response response = null;
+        try {
+            Gson gson = new Gson();
+            String json = gson.toJson(user, User.class);
+            response = RestAssured.given().auth().basic(authUser, authPassword)
+                .headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON)
+                .body(json)
+                .when().redirects().follow(false)
+                .post(sApiCall);
+        } catch (Exception e) {
+            Assert.fail("Exception in postUserApiCall(" + user.getUsername() + ") Api Call: " + e.getMessage());
+        }
+        return response;
+    }
+
+    public static void postUser(User user, String authUser, String authPassword) {
+        log.debug("postUser(" + user.getUsername() + ")");
+        Assert.assertFalse(checkIfUserExists(user.getUsername(), authUser, authPassword), "User '" + user.getUsername() + " already exists!");
+        Response response = postUserApiCall(user, authUser, authPassword);
+        int status = response.getStatusCode();
+        String sResponseBody = response.getBody().asString();
+        Assert.assertEquals(status, 200, "Wrong Response Status Code in postUser(" + user.getUsername() + ") Api Call! Response Body: " + sResponseBody);
+        log.debug("User Created: " + checkIfUserExists(user.getUsername(), authUser, authPassword));
+    }
+
+    public static void postUser(User user) {
+        postUser(user, ADMIN_USERNAME, ADMIN_PASSWORD);
+    }
+
+
+
 
 }
