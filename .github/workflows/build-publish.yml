@@ -53,7 +53,7 @@ jobs:
       - name: Get repository name
         id: repositoryname
         shell: bash
-        # gets repository name e.g., "Maersk-Global/some-repo" -> "some-repo".
+        # gets repository name e.g., "Maersk-Global/some-repo" -> "some-repo". add smth
         run: |
           NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')
           echo "::set-output name=REPOSITORY_NAME::$NAME"
