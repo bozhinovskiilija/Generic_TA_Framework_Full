@@ -187,10 +187,28 @@
 
 <!--    </profiles>-->
 
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/bozhinovskiilija/*</url>
+        </repository>
+        <repository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/bozhinovskiilija/Generic_TA_Framework_Full.git
+        </developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GenericTAFrameworkFull</name>
+            <name>Generic_TA_Framework_Full</name>
             <url>https://maven.pkg.github.com/bozhinovskiilija/Generic_TA_Framework_Full</url>
         </repository>
     </distributionManagement>
