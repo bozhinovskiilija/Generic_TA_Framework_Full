@@ -1,5 +1,0 @@
-tests\login\LoginTest.class
-tests\BaseTestClass.class
-tests\login\UnsuccessfulLoginWrongPassword.class
-tests\login\SuccessfulLoginLogout.class
-listeners\TestListener.class
