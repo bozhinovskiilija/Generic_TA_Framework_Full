@@ -1,0 +1,51 @@
+[ {
+  "uid" : "add423770f5b89ae",
+  "name" : "testSuccessfulLoginLogout",
+  "time" : {
+    "start" : 1670978634860,
+    "stop" : 1670978634861,
+    "duration" : 1
+  },
+  "status" : "skipped",
+  "severity" : "critical"
+}, {
+  "uid" : "f3ed2c3a8aeb0abc",
+  "name" : "testRegisterNewUser",
+  "time" : {
+    "start" : 1670978623918,
+    "stop" : 1670978649077,
+    "duration" : 25159
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "7df6179749cb1342",
+  "name" : "testUnsuccessfulLoginWrongPassword",
+  "time" : {
+    "start" : 1670978622844,
+    "stop" : 1670978649755,
+    "duration" : 26911
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cc96456f757cfb62",
+  "name" : "setupTest",
+  "time" : {
+    "start" : 1670978634806,
+    "stop" : 1670978634810,
+    "duration" : 4
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "f6236476c0724db8",
+  "name" : "testAddingNewUser",
+  "time" : {
+    "start" : 1670978622845,
+    "stop" : 1670978683282,
+    "duration" : 60437
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

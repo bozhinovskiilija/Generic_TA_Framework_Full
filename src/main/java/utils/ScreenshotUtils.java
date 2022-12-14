@@ -1,5 +1,7 @@
 package utils;
 
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.openqa.selenium.OutputType;
@@ -19,7 +21,6 @@ public class ScreenshotUtils extends LoggerUtils {
         return screenshotsFolder + testName +"_"+DateTimeUtils.getDateTimeStamp() +".png";
     }
 
-
     public static String takeScreenShot(WebDriver driver, String testName) {
         log.trace("takeScreenShot(" + testName + ")");
         if (WebDriverUtils.hasDriverQuit(driver)) {
@@ -36,6 +37,7 @@ public class ScreenshotUtils extends LoggerUtils {
         File dstFile=new File(pathToFile);
         try {
             FileUtils.copyFile(srcFile,dstFile);
+            Allure.addAttachment("Screenshot", FileUtils.openInputStream(srcFile));
             log.info("Screenshot for test '"+testName+"' is saved in file: "+ pathToFile);
         } catch (IOException e) {
             log.warn("Screenshot for test '"+testName+"' could not be saved in file '"+pathToFile+"'. Message: "+e.getMessage());

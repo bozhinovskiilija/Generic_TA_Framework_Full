@@ -1,0 +1,41 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "'SignUp' button is not enabled expected [true] but found [false]",
+      "children" : [ {
+        "name" : "testRegisterNewUser",
+        "uid" : "f3ed2c3a8aeb0abc",
+        "parentUid" : "6095f277c93aeb64f5c0d8d34b164bf0",
+        "status" : "failed",
+        "time" : {
+          "start" : 1670978623918,
+          "stop" : 1670978649077,
+          "duration" : 25159
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "6095f277c93aeb64f5c0d8d34b164bf0"
+    }, {
+      "name" : "Wrong Response Status Code in postUser(SuccessfulLoginLogout) Api Call! Response Body: {\"timestamp\":1670978631612,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of Username!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
+      "children" : [ {
+        "name" : "setupTest",
+        "uid" : "cc96456f757cfb62",
+        "parentUid" : "b18ae225df837d5f9b3cb696c30c7c56",
+        "status" : "failed",
+        "time" : {
+          "start" : 1670978634806,
+          "stop" : 1670978634810,
+          "duration" : 4
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "b18ae225df837d5f9b3cb696c30c7c56"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

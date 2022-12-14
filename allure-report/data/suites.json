@@ -1,0 +1,89 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "Regression Suite",
+    "children" : [ {
+      "name" : "Login Tests",
+      "children" : [ {
+        "name" : "tests.login.UnsuccessfulLoginWrongPassword",
+        "children" : [ {
+          "name" : "testUnsuccessfulLoginWrongPassword",
+          "uid" : "7df6179749cb1342",
+          "parentUid" : "6c64c200a390813600a6fa848ac4250f",
+          "status" : "passed",
+          "time" : {
+            "start" : 1670978622844,
+            "stop" : 1670978649755,
+            "duration" : 26911
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "6c64c200a390813600a6fa848ac4250f"
+      }, {
+        "name" : "tests.users.AddNewUserTest",
+        "children" : [ {
+          "name" : "testAddingNewUser",
+          "uid" : "f6236476c0724db8",
+          "parentUid" : "39142c972b72fce80265c0fb7f16bd59",
+          "status" : "passed",
+          "time" : {
+            "start" : 1670978622845,
+            "stop" : 1670978683282,
+            "duration" : 60437
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "39142c972b72fce80265c0fb7f16bd59"
+      }, {
+        "name" : "tests.register.SuccessfulRegister",
+        "children" : [ {
+          "name" : "testRegisterNewUser",
+          "uid" : "f3ed2c3a8aeb0abc",
+          "parentUid" : "86da1a15b92f3a5cdfcf25ebfa8bea13",
+          "status" : "failed",
+          "time" : {
+            "start" : 1670978623918,
+            "stop" : 1670978649077,
+            "duration" : 25159
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "86da1a15b92f3a5cdfcf25ebfa8bea13"
+      }, {
+        "name" : "tests.login.SuccessfulLoginLogout",
+        "children" : [ {
+          "name" : "setupTest",
+          "uid" : "cc96456f757cfb62",
+          "parentUid" : "a965f92b71427968b096674b31a1b861",
+          "status" : "failed",
+          "time" : {
+            "start" : 1670978634806,
+            "stop" : 1670978634810,
+            "duration" : 4
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "testSuccessfulLoginLogout",
+          "uid" : "add423770f5b89ae",
+          "parentUid" : "a965f92b71427968b096674b31a1b861",
+          "status" : "skipped",
+          "time" : {
+            "start" : 1670978634860,
+            "stop" : 1670978634861,
+            "duration" : 1
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "a965f92b71427968b096674b31a1b861"
+      } ],
+      "uid" : "3b764e859d06f588047ba5e1d7419c40"
+    } ],
+    "uid" : "7401a688339d5b358289996f300eed3e"
+  } ]
+}

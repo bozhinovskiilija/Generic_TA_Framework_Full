@@ -2,6 +2,7 @@ package pages;
 
 import data.PageUrlPaths;
 import data.Time;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,11 +44,13 @@ public class LoginPage extends CommonLoggedOutPage {
     }
 
 
+    @Step("Open login page")
     public LoginPage open() {
         return open(false);
     }
 
 
+    @Step("Open Login Page")
     public LoginPage open(boolean verify) {
         log.debug("Open LoginPage(" + LOGIN_PAGE_URL + ")");
         openUrl(LOGIN_PAGE_URL);
@@ -58,6 +61,7 @@ public class LoginPage extends CommonLoggedOutPage {
     }
 
 
+    @Step("Verify login page")
     public LoginPage verifyLoginPage() {
         log.debug("Verify login page");
         waitForUrlChange(LOGIN_PAGE_URL, Time.TIME_SHORTER);
@@ -73,6 +77,7 @@ public class LoginPage extends CommonLoggedOutPage {
     }
 
 
+    @Step("Type user name")
     public LoginPage typeUsername(String username) {
         log.info("typeUsername(" + username + ")");
         Assert.assertTrue(isUsernameTextFieldDisplayed(), "Username text field is not present on login page");
@@ -95,7 +100,7 @@ public class LoginPage extends CommonLoggedOutPage {
         return isWebElementDisplayed(passwordTextFieldLocator);
     }
 
-
+    @Step("Type password")
     public LoginPage typePassword(String password) {
         log.info("typePassword(" + password + ")");
         Assert.assertTrue(isUsernameTextFieldDisplayed(), "Username text field is not present on login page");
@@ -126,7 +131,7 @@ public class LoginPage extends CommonLoggedOutPage {
         return isWebElementEnabled(loginButton, Time.TIME_SHORT);
     }
 
-
+@Step("Click login button")
     private void clickLoginButtonNoVerification() {
         Assert.assertTrue(isLoginButtonEnabled(), "Login button is not enabled/clickable");
         WebElement loginButton = getWebElement(loginButtonLocator, Time.TIME_SHORTER);
@@ -185,6 +190,7 @@ public class LoginPage extends CommonLoggedOutPage {
     }
 
 
+    @Step("Click on create account button")
     public RegisterPage clickCreateAccountLink() {
         log.debug("clickCreateAccountLink()");
         Assert.assertTrue(isCreateAccountLinkDisplayed(), "Create account link is NOT displayed on Login Page!");

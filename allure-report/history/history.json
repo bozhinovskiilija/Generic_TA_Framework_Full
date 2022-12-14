@@ -1,0 +1,100 @@
+{
+  "252057ac553e481e5b0ed15ea3a642" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 1,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "add423770f5b89ae",
+      "status" : "skipped",
+      "statusDetails" : "Wrong Response Status Code in postUser(SuccessfulLoginLogout) Api Call! Response Body: {\"timestamp\":1670978631612,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of Username!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
+      "time" : {
+        "start" : 1670978634860,
+        "stop" : 1670978634861,
+        "duration" : 1
+      }
+    } ]
+  },
+  "24be7bf78bb29fc747e582525da1ab29" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f6236476c0724db8",
+      "status" : "passed",
+      "time" : {
+        "start" : 1670978622845,
+        "stop" : 1670978683282,
+        "duration" : 60437
+      }
+    } ]
+  },
+  "e2d8bd0d7934f5839786f4887746e7e7" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "7df6179749cb1342",
+      "status" : "passed",
+      "time" : {
+        "start" : 1670978622844,
+        "stop" : 1670978649755,
+        "duration" : 26911
+      }
+    } ]
+  },
+  "ae7e213f74ae15244f2f41c1f30e17b" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "cc96456f757cfb62",
+      "status" : "failed",
+      "statusDetails" : "Wrong Response Status Code in postUser(SuccessfulLoginLogout) Api Call! Response Body: {\"timestamp\":1670978631612,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of Username!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
+      "time" : {
+        "start" : 1670978634806,
+        "stop" : 1670978634810,
+        "duration" : 4
+      }
+    } ]
+  },
+  "49b1c778a763640d08660c1faea2445b" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f3ed2c3a8aeb0abc",
+      "status" : "failed",
+      "statusDetails" : "'SignUp' button is not enabled expected [true] but found [false]",
+      "time" : {
+        "start" : 1670978623918,
+        "stop" : 1670978649077,
+        "duration" : 25159
+      }
+    } ]
+  }
+}

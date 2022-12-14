@@ -1,0 +1,89 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "tests",
+    "children" : [ {
+      "name" : "login",
+      "children" : [ {
+        "name" : "UnsuccessfulLoginWrongPassword",
+        "children" : [ {
+          "name" : "testUnsuccessfulLoginWrongPassword",
+          "uid" : "7df6179749cb1342",
+          "parentUid" : "2f34a51002219cdc7655bb5fab5af416",
+          "status" : "passed",
+          "time" : {
+            "start" : 1670978622844,
+            "stop" : 1670978649755,
+            "duration" : 26911
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "2f34a51002219cdc7655bb5fab5af416"
+      }, {
+        "name" : "SuccessfulLoginLogout",
+        "children" : [ {
+          "name" : "setupTest",
+          "uid" : "cc96456f757cfb62",
+          "parentUid" : "1a8eaf9fbabcbcffdcfdaf5f9ad1dbc5",
+          "status" : "failed",
+          "time" : {
+            "start" : 1670978634806,
+            "stop" : 1670978634810,
+            "duration" : 4
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "testSuccessfulLoginLogout",
+          "uid" : "add423770f5b89ae",
+          "parentUid" : "1a8eaf9fbabcbcffdcfdaf5f9ad1dbc5",
+          "status" : "skipped",
+          "time" : {
+            "start" : 1670978634860,
+            "stop" : 1670978634861,
+            "duration" : 1
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "1a8eaf9fbabcbcffdcfdaf5f9ad1dbc5"
+      } ],
+      "uid" : "4231518c10f469c8c32c31e5fc38571d"
+    }, {
+      "name" : "users.AddNewUserTest",
+      "children" : [ {
+        "name" : "testAddingNewUser",
+        "uid" : "f6236476c0724db8",
+        "parentUid" : "e224d4940b46c783c1b9bbcc261d26f7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1670978622845,
+          "stop" : 1670978683282,
+          "duration" : 60437
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "users.AddNewUserTest"
+    }, {
+      "name" : "register.SuccessfulRegister",
+      "children" : [ {
+        "name" : "testRegisterNewUser",
+        "uid" : "f3ed2c3a8aeb0abc",
+        "parentUid" : "c1f49eb6a5412703edb2ec6a3e5d1c68",
+        "status" : "failed",
+        "time" : {
+          "start" : 1670978623918,
+          "stop" : 1670978649077,
+          "duration" : 25159
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "register.SuccessfulRegister"
+    } ],
+    "uid" : "bf49149a3821e34f7608bb6885d52868"
+  } ]
+}

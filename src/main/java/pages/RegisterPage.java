@@ -2,6 +2,7 @@ package pages;
 
 import data.PageUrlPaths;
 import data.Time;
+import io.qameta.allure.Step;
 import objects.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -271,6 +272,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         return isWebElementEnabled(signUpButton);
     }
 
+    @Step("Click sign up button")
     public LoginPage clickSignUpButton(){
         log.debug("clickSignUpButton()");
         Assert.assertTrue(isSignUpButtonEnabled(),"'SignUp' button is not enabled");
@@ -284,6 +286,7 @@ public class RegisterPage extends CommonLoggedOutPage{
      * @param user {User}
      * @return {LoginPage} LoginPage
      */
+    @Step("Register new user")
     public LoginPage registerUser(User user) {
         typeUsername(user.getUsername());
         typeFirstName(user.getFirstName());

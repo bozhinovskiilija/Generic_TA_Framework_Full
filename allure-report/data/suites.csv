@@ -1,0 +1,6 @@
+"Status","Name","Duration in ms","Description"
+"passed","tests.login.UnsuccessfulLoginWrongPassword.testUnsuccessfulLoginWrongPassword","26911",""
+"passed","tests.users.AddNewUserTest.testAddingNewUser","60437",""
+"failed","tests.register.SuccessfulRegister.testRegisterNewUser","25159",""
+"failed","tests.login.SuccessfulLoginLogout.setupTest","4",""
+"skipped","tests.login.SuccessfulLoginLogout.testSuccessfulLoginLogout","1",""
