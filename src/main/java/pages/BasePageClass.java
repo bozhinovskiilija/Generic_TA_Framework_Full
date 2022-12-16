@@ -142,6 +142,16 @@ public abstract class BasePageClass extends LoggerUtils {
         }
     }
 
+    protected boolean isWebElementVisible(WebElement element, int timeout) {
+        log.trace("isWebElementVisible(" + element + ", " + timeout + ")");
+        try {
+            WebElement webElement = waitForWebElementToBeVisible(element, timeout);
+            return webElement != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
     /**
      * @param locator
@@ -155,6 +165,15 @@ public abstract class BasePageClass extends LoggerUtils {
 
         } catch (Exception e) {
             return true;
+        }
+    }
+
+    protected boolean isWebElementInvisible(WebElement element, int timeout) {
+        log.trace("isWebElementInvisible(" + element + ", " + timeout + ")");
+        try {
+            return waitForWebElementToBeInvisible(element, timeout);
+        } catch (Exception e) {
+            return false;
         }
     }
 
