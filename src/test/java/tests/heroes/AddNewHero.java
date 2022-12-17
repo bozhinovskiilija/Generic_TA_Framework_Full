@@ -1,6 +1,7 @@
 package tests.heroes;
 
 import data.CommonString;
+import data.HeroClass;
 import data.Time;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -16,6 +17,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.AddHeroDialogBox;
 import pages.HeroesPage;
 import pages.LoginPage;
@@ -24,6 +26,9 @@ import tests.BaseTestClass;
 import utils.DateTimeUtils;
 import utils.RestApiUtils;
 
+import java.util.Date;
+
+import static data.Groups.HERO;
 import static data.Groups.LOGIN;
 import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
@@ -44,15 +49,15 @@ public class AddNewHero extends BaseTestClass {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
 
-
         user = User.createNewUniqueUser("AddNewHero");
         RestApiUtils.postUser(user);
         isCreated = true;
+
         user.setCreatedAt(RestApiUtils.getUser(user.getUsername()).getCreatedAt());
         log.info("User: "+ user);
 
         hero = Hero.createNewUniqueHero(user,"NewHero");
-
+        RestApiUtils.postHero(hero);
     }
 
 
@@ -83,6 +88,23 @@ public class AddNewHero extends BaseTestClass {
         addHeroDialogBox.typeHeroLevel(hero.getHeroLevel().toString());
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
+        addHeroDialogBox.selectHeroClass(hero.getHeroClass());
+        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
+
+        heroesPage = addHeroDialogBox.clickSaveButton();
+        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
+        Date currentDateTime = DateTimeUtils.getCurrentDateTime();
+        hero.setCreatedAt(currentDateTime);
+
+        Assert.assertTrue(RestApiUtils.checkIfHeroExists(hero.getHeroName()),"Hero '" + hero.getHeroName() + "' is NOT created");
+        Hero savedHero = RestApiUtils.getHero(hero.getHeroName());
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(savedHero.getUsername(),hero.getUsername(),"Username is NOT correct");
+        softAssert.assertEquals(savedHero.getHeroClass(),hero.getHeroClass(),"Hero Class is NOT correct");
+        softAssert.assertEquals(savedHero.getHeroLevel(),hero.getHeroLevel(),"Hero Level is NOT correct");
+        softAssert.assertTrue(DateTimeUtils.compareDateTimes(savedHero.getCreatedAt(), hero.getCreatedAt(), 5));
+
     }
 
 
@@ -98,7 +120,7 @@ public class AddNewHero extends BaseTestClass {
     private void cleanUp() {
         log.debug("cleanUp()");
         try {
-            RestApiUtils.deleteUser(user.getUsername());
+            RestApiUtils.deleteUser(hero.getHeroName());
         } catch (AssertionError | Exception e) {
             log.error("Exception occurred in cleanUp(" + sTestName + ")! Message: " + e.getMessage());
         }

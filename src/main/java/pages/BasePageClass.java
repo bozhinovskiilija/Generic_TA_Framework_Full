@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.LoggerUtils;
@@ -69,27 +70,32 @@ public abstract class BasePageClass extends LoggerUtils {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    protected WebElement getNestedWebElement(WebElement parentElement,By childLocator){
+
+    protected WebElement getNestedWebElement(WebElement parentElement, By childLocator) {
         log.trace("getNestedWebElement(" + parentElement + "," + childLocator + ")");
         return parentElement.findElement(childLocator);
     }
 
-    protected WebElement getNestedWebElement(WebElement parentElement,By childLocator,int timeout){
-        log.trace("getNestedWebElement(" + parentElement + "," + childLocator +","+timeout+ ")");
+
+    protected WebElement getNestedWebElement(WebElement parentElement, By childLocator, int timeout) {
+        log.trace("getNestedWebElement(" + parentElement + "," + childLocator + "," + timeout + ")");
         WebDriverWait wait = getWebDriverWait(timeout);
 
-        return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(parentElement,childLocator));
+        return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(parentElement, childLocator));
     }
 
-    protected List<WebElement> getWebElements (By locator){
+
+    protected List<WebElement> getWebElements(By locator) {
         log.trace("getWebElements()");
         return driver.findElements(locator);
     }
 
-    protected List<WebElement> getNestedWebElements(WebElement parentElement,By locator){
+
+    protected List<WebElement> getNestedWebElements(WebElement parentElement, By locator) {
         log.trace("getNestedWebElements()");
         return parentElement.findElements(locator);
     }
+
 
     protected WebElement waitForWebElementToBeClickable(WebElement element, int timeout) {
         log.trace("waitForWebElementToBeClickable(" + element + "," + timeout + ")");
@@ -125,7 +131,8 @@ public abstract class BasePageClass extends LoggerUtils {
         return wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
-    protected Boolean waitForWebElementToBeSelected(WebElement element,int timeout){
+
+    protected Boolean waitForWebElementToBeSelected(WebElement element, int timeout) {
         log.trace("waitForWebElementToBeSelected(" + element + "," + timeout + ")");
         WebDriverWait wait = getWebDriverWait(timeout);
         return wait.until(ExpectedConditions.elementToBeSelected(element));
@@ -141,6 +148,7 @@ public abstract class BasePageClass extends LoggerUtils {
             return false;
         }
     }
+
 
     protected boolean isWebElementVisible(WebElement element, int timeout) {
         log.trace("isWebElementVisible(" + element + ", " + timeout + ")");
@@ -167,6 +175,7 @@ public abstract class BasePageClass extends LoggerUtils {
             return true;
         }
     }
+
 
     protected boolean isWebElementInvisible(WebElement element, int timeout) {
         log.trace("isWebElementInvisible(" + element + ", " + timeout + ")");
@@ -269,19 +278,20 @@ public abstract class BasePageClass extends LoggerUtils {
             return element.isDisplayed();
         } catch (Exception e) {
             return false;
-        }finally {
+        } finally {
             log.info("");
             WebDriverUtils.setImplicitWait(driver, Time.IMPLICIT_TIMEOUT);
         }
     }
 
-    public boolean isNestedWebElementDisplayed(WebElement parentElement,By locator){
+
+    public boolean isNestedWebElementDisplayed(WebElement parentElement, By locator) {
         log.trace("isNestedWebElementDisplayed(" + parentElement + ", " + locator + ")");
-        try{
+        try {
             WebElement element = getWebElement(locator);
             return element.isDisplayed();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -304,20 +314,53 @@ public abstract class BasePageClass extends LoggerUtils {
         }
     }
 
-    protected boolean isWebElementSelected(WebElement element){
+
+    protected boolean isWebElementSelected(WebElement element) {
         log.trace("isWebElementSelected(" + element + ")");
         return element.isSelected();
     }
 
-    protected boolean isWebElementSelected(WebElement element, int timeout){
-        log.trace("isWebElementSelected(" + element + ", "+timeout+")");
-        try{
-           return waitForWebElementToBeSelected(element,timeout);
 
-        }catch (Exception e){
+    protected boolean isWebElementSelected(WebElement element, int timeout) {
+        log.trace("isWebElementSelected(" + element + ", " + timeout + ")");
+        try {
+            return waitForWebElementToBeSelected(element, timeout);
+
+        } catch (Exception e) {
             return false;
         }
     }
+
+
+    protected String getFirstSelectedOptionOnWebElement(WebElement element) {
+        log.trace("getFirstSelectedOptionOnWebElement(" + element + ")");
+        Select select = new Select(element);
+        WebElement selectedOption = select.getFirstSelectedOption();
+        return getTextFromWebElement(selectedOption);
+    }
+
+
+    protected boolean isOptionPresentOnWebElement(WebElement element, String option) {
+        log.trace("getFirstSelectedOptionOnWebElement(" + element + "," + option + ")");
+        Select select = new Select(element);
+        List<WebElement> options = select.getOptions();
+        boolean isPresent = false;
+        for(WebElement e : options){
+            if(getValueFromWebElement(element).equals(option)){
+                isPresent=true;
+                break;
+            }
+        }
+        return isPresent;
+    }
+
+    protected void selectOptionOnWebElement(WebElement element, String option){
+        log.trace("selectOptionOnWebElement(" + element + "," + option + ")");
+        Select select = new Select(element);
+        select.selectByValue(option);
+
+    }
+
 
     private WebDriverWait getWebDriverWait(int timeout) {
         return new WebDriverWait(driver, Duration.ofSeconds(timeout));

@@ -258,16 +258,16 @@ public class RestApiUtils extends LoggerUtils {
     }
 
 
-    public static User getHero(String heroName, String authUser, String authPass) {
+    public static Hero getHero(String heroName, String authUser, String authPass) {
         log.debug("getHero(" + heroName + ")");
         String json = getHeroJsonFormat(heroName, authUser, authPass);
         Gson gson = new Gson();
         //Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        return gson.fromJson(json, User.class);
+        return gson.fromJson(json, Hero.class);
     }
 
-    public static User getHero(String heroName) {
-        return getUser(heroName, ADMIN_USERNAME, ADMIN_PASSWORD);
+    public static Hero getHero(String heroName) {
+        return getHero(heroName, ADMIN_USERNAME, ADMIN_PASSWORD);
     }
 
 
@@ -325,7 +325,7 @@ public class RestApiUtils extends LoggerUtils {
         Response response = postHeroApiCall(heroName, authUser, authPassword);
         int status = response.getStatusCode();
         String sResponseBody = response.getBody().asString();
-        Assert.assertEquals(status, 200, "Wrong Response Status Code in postUser(" + heroName.getHeroName() + ") Api Call! Response Body: " + sResponseBody);
+        Assert.assertEquals(status, 200, "Wrong Response Status Code in postHero(" + heroName.getHeroName() + ") Api Call! Response Body: " + sResponseBody);
         log.debug("Hero Created: " + checkIfHeroExists(heroName.getHeroName(), authUser, authPassword));
     }
 

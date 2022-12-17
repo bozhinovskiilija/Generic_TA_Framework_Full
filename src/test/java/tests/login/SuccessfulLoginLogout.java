@@ -51,12 +51,12 @@ public class SuccessfulLoginLogout extends BaseTestClass {
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
-        log.info("User: "+ user);
-        user = User.createNewUniqueUser("SuccessfulLoginLogout");
+        //log.info("User: "+ user);
+        user = User.createNewUniqueUser("successloginlogout");
         RestApiUtils.postUser(user);
         isCreated = true;
         user.setCreatedAt(RestApiUtils.getUser(user.getUsername()).getCreatedAt());
-        log.info("User: "+ user);
+       // log.info("User: "+ user);
     }
 
 

@@ -17,7 +17,7 @@ public class User {
 
     private String username;
     private String password;
-    private String mail;
+    private String email;
     private String firstName;
     private String lastName;
     private String about;
@@ -30,13 +30,13 @@ public class User {
 
     //general constructor for with all needed information(constructor that accept all parameters)
     //constructors can be private if you don't want tester to directly access them and create one public method for creating new users
-    public User(final String username, final String password, final String mail, final String firstName,
+    private User(final String username, final String password, final String email, final String firstName,
                 final String lastName, final String about,
                 final String secretQuestion, final String secretAnswer, final Date createdAt, final Integer heroCount,
                 final List<Hero> heroes) {
         this.username = username;
         this.password = password;
-        this.mail = mail;
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.about = about;
@@ -49,12 +49,12 @@ public class User {
 
 
     //for user that is not created in the DB (newly created user) - hardcoded
-    public User(final String username, final String password, final String mail, final String firstName,
+    private User(final String username, final String password, final String email, final String firstName,
                 final String lastName, final String about,
                 final String secretQuestion, final String secretAnswer) {
         this.username = username;
         this.password = password;
-        this.mail = mail;
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.about = about;
@@ -67,10 +67,10 @@ public class User {
 
 
     //for creating new unique user (include test data)
-    public User(final String username) {
+    private User(final String username) {
         this.username = username;
         this.password = PropertiesUtils.getDefaultPassword();
-        this.mail = username + "@mail.com";
+        this.email = username + "@mail.com";
         this.firstName = createRandomFirstName();
         this.lastName = createRandomLastName();
         this.about = createRandomAbout();
@@ -102,13 +102,13 @@ public class User {
     }
 
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
 
-    public void setMail(final String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 
@@ -267,10 +267,10 @@ public class User {
     }
 
 
-    public static User createNewUniqueUser(String username) {
-        String user = username.toLowerCase() + DateTimeUtils.getDateTimeStamp(); //datetimeStamp
-        if (user.length() > 35) {
-            Assert.fail("Username '" + username + "' can not be longer than 35 characters");
+    public static User createNewUniqueUser(String sUsername) {
+        String username = sUsername.toLowerCase() + DateTimeUtils.getDateTimeStamp();
+        if (username.length() > 35) {
+            Assert.fail("Username '" + username + "' cannot be longer than 35 characters!");
         }
         return new User(username);
     }
@@ -281,7 +281,7 @@ public class User {
         return "User {"
             + "Username: " + getUsername() + ", "
             + "Password: " + getPassword() + ", "
-            + "Email: " + getMail() + ", "
+            + "Email: " + getEmail() + ", "
             + "Name: " + getFullName() + ", "
             + "About: " + getAbout() + ", "
             + "Secret Question: " + getSecretQuestion() + ", "

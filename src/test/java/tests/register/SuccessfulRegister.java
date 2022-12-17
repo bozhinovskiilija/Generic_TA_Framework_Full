@@ -14,7 +14,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import org.testng.internal.annotations.IBeforeClass;
 import pages.LoginPage;
 import pages.RegisterPage;
 import tests.BaseTestClass;
@@ -87,7 +86,7 @@ public class SuccessfulRegister extends BaseTestClass {
         log.info(savedUser);
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(savedUser.getMail(), user.getMail(), "Email is NOT correct!");
+        softAssert.assertEquals(savedUser.getEmail(), user.getEmail(), "Email is NOT correct!");
         softAssert.assertEquals(savedUser.getFirstName(), user.getFirstName(), "First Name is NOT correct!");
         softAssert.assertEquals(savedUser.getLastName(), user.getLastName(), "Last Name is NOT correct!");
         softAssert.assertEquals(savedUser.getAbout(), user.getAbout(), "About Text is NOT correct!");
