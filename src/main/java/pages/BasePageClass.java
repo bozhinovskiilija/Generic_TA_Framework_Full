@@ -346,7 +346,7 @@ public abstract class BasePageClass extends LoggerUtils {
         List<WebElement> options = select.getOptions();
         boolean isPresent = false;
         for(WebElement e : options){
-            if(getValueFromWebElement(element).equals(option)){
+            if(getValueFromWebElement(e).equals(option)){
                 isPresent=true;
                 break;
             }

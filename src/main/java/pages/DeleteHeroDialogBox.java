@@ -10,10 +10,12 @@ public class DeleteHeroDialogBox extends BasePageClass{
 
     // Locators
     private final String deleteHeroDialogBoxString = "//div[@id='deleteHeroModal']";
+    private final String deleteHeroDialogBoxBodyString = deleteHeroDialogBoxString + "//div[@class='modal-body']";
     private final By deleteHeroDialogBoxLocator = By.id("deleteHeroModal");
     private final By deleteHeroDialogBoxTitleLocator = By.xpath(deleteHeroDialogBoxString + "//h4[contains(@class,'modal-title')]");
     private final By cancelButtonLocator = By.xpath(deleteHeroDialogBoxString + "//button[contains(@class,'btn-default')]");
-
+    private final By deleteButtonLocator = By.xpath(deleteHeroDialogBoxString + "//button[contains(@class,'btn-danger')]");
+    private final By deleteHeroMessageLocator = By.xpath(deleteHeroDialogBoxBodyString + "/p");
     // Constructor
     public DeleteHeroDialogBox(WebDriver driver) {
         super(driver);
@@ -47,6 +49,18 @@ public class DeleteHeroDialogBox extends BasePageClass{
         return getTextFromWebElement(deleteHeroDialogBoxTitle);
     }
 
+    public boolean isDeleteHeroMessageDisplayed() {
+        log.debug("isDeleteHeroMessageDisplayed()");
+        return isWebElementDisplayed(deleteHeroMessageLocator);
+    }
+
+    public String getDeleteHeroMessage() {
+        log.debug("getDeleteHeroMessage()");
+        Assert.assertTrue(isDeleteHeroMessageDisplayed(), "Delete Hero message is NOT displayed on 'Delete Hero' DialogBox");
+        WebElement deleteHeroMessage = getWebElement(deleteHeroMessageLocator);
+        return getTextFromWebElement(deleteHeroMessage);
+    }
+
     public boolean isCancelButtonDisplayed() {
         log.debug("isCancelButtonDisplayed()");
         return isWebElementDisplayed(cancelButtonLocator);
@@ -54,8 +68,24 @@ public class DeleteHeroDialogBox extends BasePageClass{
 
     public HeroesPage clickCancelButton() {
         log.debug("clickCancelButton()");
+        Assert.assertTrue(isCancelButtonDisplayed(), "Cancel button is NOT displayed on 'Delete Hero' DialogBox");
         WebElement cancelButton = getWebElement(cancelButtonLocator);
         clickOnWebElement(cancelButton);
+        Assert.assertTrue(isDeleteHeroDialogBoxClosed(Time.TIME_SHORTER), "'Delete Hero' DialogBox is NOT closed!");
+        HeroesPage heroesPage = new HeroesPage(driver);
+        return heroesPage.verifyHeroesPage();
+    }
+
+    public boolean isDeleteButtonDisplayed() {
+        log.debug("isDeleteButtonDisplayed()");
+        return isWebElementDisplayed(deleteButtonLocator);
+    }
+
+    public HeroesPage clickDeleteButton() {
+        log.debug("clickDeleteButton()");
+        Assert.assertTrue(isDeleteButtonDisplayed(), "Delete button is NOT displayed on 'Delete Hero' DialogBox");
+        WebElement deleteButton = getWebElement(deleteButtonLocator);
+        clickOnWebElement(deleteButton);
         Assert.assertTrue(isDeleteHeroDialogBoxClosed(Time.TIME_SHORTER), "'Delete Hero' DialogBox is NOT closed!");
         HeroesPage heroesPage = new HeroesPage(driver);
         return heroesPage.verifyHeroesPage();

@@ -231,6 +231,15 @@ public class User {
 
     }
 
+    public Hero getHero(String heroName){
+        for(Hero h : heroes){
+            if (h.getHeroName().equals(heroName)) {
+
+                return h;
+            }
+        }
+        return null;
+    }
 
     @Override
     public boolean equals(final Object o) {

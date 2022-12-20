@@ -1,7 +1,5 @@
 package tests.heroes;
 
-import data.CommonString;
-import data.HeroClass;
 import data.Time;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -34,7 +32,7 @@ import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
 @Listeners(TestListener.class)
-@Test(groups = {REGRESSION, SANITY, LOGIN})
+@Test(groups = {REGRESSION, SANITY, HERO})
 public class AddNewHero extends BaseTestClass {
 
     private final String sTestName = this.getClass().getName();
@@ -49,15 +47,14 @@ public class AddNewHero extends BaseTestClass {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
 
-        user = User.createNewUniqueUser("AddNewHero");
+        user = User.createNewUniqueUser("DeletedHero");
         RestApiUtils.postUser(user);
         isCreated = true;
 
         user.setCreatedAt(RestApiUtils.getUser(user.getUsername()).getCreatedAt());
-        log.info("User: "+ user);
 
-        hero = Hero.createNewUniqueHero(user,"NewHero");
-        RestApiUtils.postHero(hero);
+        hero = Hero.createNewUniqueHero(user, "NewHero");
+
     }
 
 
@@ -96,14 +93,28 @@ public class AddNewHero extends BaseTestClass {
         Date currentDateTime = DateTimeUtils.getCurrentDateTime();
         hero.setCreatedAt(currentDateTime);
 
-        Assert.assertTrue(RestApiUtils.checkIfHeroExists(hero.getHeroName()),"Hero '" + hero.getHeroName() + "' is NOT created");
+        Assert.assertTrue(RestApiUtils.checkIfHeroExists(hero.getHeroName()),
+            "Hero '" + hero.getHeroName() + "' is NOT created");
         Hero savedHero = RestApiUtils.getHero(hero.getHeroName());
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(savedHero.getUsername(),hero.getUsername(),"Username is NOT correct");
-        softAssert.assertEquals(savedHero.getHeroClass(),hero.getHeroClass(),"Hero Class is NOT correct");
-        softAssert.assertEquals(savedHero.getHeroLevel(),hero.getHeroLevel(),"Hero Level is NOT correct");
+        softAssert.assertEquals(savedHero.getUsername(), hero.getUsername(), "Username is NOT correct");
+        softAssert.assertEquals(savedHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct");
+        softAssert.assertEquals(savedHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct");
         softAssert.assertTrue(DateTimeUtils.compareDateTimes(savedHero.getCreatedAt(), hero.getCreatedAt(), 5));
+        softAssert.assertAll("Hero details for Hero" + hero.getHeroName() + "are not correct");
+
+        User savedUser = RestApiUtils.getUser(user.getUsername());
+        log.info("Saved User " + savedUser);
+        Hero userHero = savedUser.getHero(hero.getHeroName());
+
+        SoftAssert softAssert1 = new SoftAssert();
+        softAssert1.assertEquals(userHero.getUsername(), hero.getUsername(), "Username is NOT correct");
+        softAssert1.assertEquals(userHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct");
+        softAssert1.assertEquals(userHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct");
+        softAssert1.assertTrue(DateTimeUtils.compareDateTimes(userHero.getCreatedAt(), hero.getCreatedAt(), 5));
+        softAssert1.assertAll("Hero details for Hero" + hero.getHeroName() + "are not correct");
+
 
     }
 
@@ -112,15 +123,16 @@ public class AddNewHero extends BaseTestClass {
     public void tearDownTest(ITestResult testResult) {
         log.debug("[END TEST] " + sTestName);
         tearDown(driver, testResult);
-        if (isCreated){
+        if (isCreated) {
             cleanUp();
         }
     }
 
+
     private void cleanUp() {
         log.debug("cleanUp()");
         try {
-            RestApiUtils.deleteUser(hero.getHeroName());
+            RestApiUtils.deleteUser(user.getUsername());
         } catch (AssertionError | Exception e) {
             log.error("Exception occurred in cleanUp(" + sTestName + ")! Message: " + e.getMessage());
         }
