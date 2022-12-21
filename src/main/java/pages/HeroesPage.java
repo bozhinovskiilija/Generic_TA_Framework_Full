@@ -216,14 +216,14 @@ public class HeroesPage extends CommonLoggedInPage{
 
     public boolean isDeleteHeroIconPresentInHeroesTable(String sHeroName) {
         log.debug("isDeleteHeroIconPresentInHeroesTable(" + sHeroName + ")");
-        Assert.assertTrue(isHeroPresentInHeroesTable(sHeroName), "Hero '" + sHeroName + "' is NOT present in Heroes Table!");
+        ///Assert.assertTrue(isHeroPresentInHeroesTable(sHeroName), "Hero '" + sHeroName + "' is NOT present in Heroes Table!");
         String xPath = createXpathForDeleteHeroIconInHeroesTable(sHeroName);
         return isNestedWebElementDisplayed(heroesTable, By.xpath(xPath));
     }
 
     public DeleteHeroDialogBox clickDeleteHeroIconInHeroesTable(String sHeroName) {
         log.debug("clickDeleteHeroIconInHeroesTable(" + sHeroName + ")");
-        Assert.assertTrue(isDeleteHeroIconPresentInHeroesTable(sHeroName), "'Delete Hero' Icon is NOT present in Heroes Table for Hero '" + sHeroName + "'!");
+       // Assert.assertTrue(isDeleteHeroIconPresentInHeroesTable(sHeroName), "'Delete Hero' Icon is NOT present in Heroes Table for Hero '" + sHeroName + "'!");
         String xPath = createXpathForDeleteHeroIconInHeroesTable(sHeroName);
         WebElement deleteHeroIcon = getNestedWebElement(heroesTable, By.xpath(xPath));
         clickOnWebElement(deleteHeroIcon);

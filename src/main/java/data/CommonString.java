@@ -40,6 +40,8 @@ public class CommonString {
     // public static final String SUCCESSFUL_LOGOUT_MESSAGE = "You have been logged out.";
     // public static final String LOGIN_ERROR_MESSAGE = "Invalid username and password.";
 
-
+    public static String getDeleteHeroMessage(String heroName, String heroClass, Integer heroLevel){
+        return getLocaleString("DELETE_HERO_MESSAGE").replace("%HERO_NAME%",heroName).replace("%HERO_CLASS%",heroClass).replace("%HERO_LEVEL%",String.valueOf(heroLevel));
+    }
 
 }

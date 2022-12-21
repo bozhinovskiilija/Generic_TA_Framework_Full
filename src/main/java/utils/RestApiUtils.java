@@ -212,7 +212,7 @@ public class RestApiUtils extends LoggerUtils {
     }
 
     public static boolean checkIfHeroExists(String heroName) {
-        return checkIfUserExists(heroName, ADMIN_USERNAME, ADMIN_PASSWORD);
+        return checkIfHeroExists(heroName, ADMIN_USERNAME, ADMIN_PASSWORD);
     }
 
     ///////////////////////////
@@ -228,7 +228,7 @@ public class RestApiUtils extends LoggerUtils {
                 .headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON)
                 .when().get(apiCall);
         } catch (Exception e) {
-            Assert.fail("Exception in getUserApiCall(" + heroName + ") Api Call: " + e.getMessage());
+            Assert.fail("Exception in getHeroApiCall(" + heroName + ") Api Call: " + e.getMessage());
         }
         return response;
     }
@@ -241,7 +241,7 @@ public class RestApiUtils extends LoggerUtils {
         Assert.assertTrue(checkIfHeroExists(heroName, authUser, authPassword),
             "Hero '" + heroName + "' doesn't exist!");
 
-        Response response = getUserApiCall(heroName, authUser, authPassword);
+        Response response = getHeroApiCall(heroName, authUser, authPassword);
 
         int status = response.getStatusCode();
 
@@ -288,13 +288,13 @@ public class RestApiUtils extends LoggerUtils {
 
     public static void deleteHero(String heroName, String authUser, String authPassword) {
         log.debug("deleteHero(" + heroName + ")");
-        Assert.assertTrue(checkIfHeroExists(heroName, authUser, authPassword), "Hero '" + heroName + " doesn't exist!");
+       // Assert.assertTrue(checkIfHeroExists(heroName, authUser, authPassword), "Hero '" + heroName + " doesn't exist!");
         Response response = deleteHeroApiCall(heroName, authUser, authPassword);
         int status = response.getStatusCode();
         String sResponseBody = response.getBody().asString();
         Assert.assertEquals(status, 200,
             "Wrong Response Status Code in deleteHero(" + heroName + ") Api Call! Response Body: " + sResponseBody);
-        log.debug("Hero Deleted: " + !checkIfHeroExists(heroName, authUser, authPassword));
+       /// log.debug("Hero Deleted: " + !checkIfHeroExists(heroName, authUser, authPassword));
     }
 
     public static void deleteHero(String heroName) {
@@ -321,12 +321,12 @@ public class RestApiUtils extends LoggerUtils {
 
     public static void postHero(Hero heroName, String authUser, String authPassword) {
         log.debug("postHero(" + heroName.getHeroName() + ")");
-        Assert.assertFalse(checkIfHeroExists(heroName.getHeroName(), authUser, authPassword), "Hero '" + heroName.getHeroName() + " already exists!");
+        //Assert.assertFalse(checkIfHeroExists(heroName.getHeroName(), authUser, authPassword), "Hero '" + heroName.getHeroName() + " already exists!");
         Response response = postHeroApiCall(heroName, authUser, authPassword);
         int status = response.getStatusCode();
         String sResponseBody = response.getBody().asString();
         Assert.assertEquals(status, 200, "Wrong Response Status Code in postHero(" + heroName.getHeroName() + ") Api Call! Response Body: " + sResponseBody);
-        log.debug("Hero Created: " + checkIfHeroExists(heroName.getHeroName(), authUser, authPassword));
+        //log.debug("Hero Created: " + checkIfHeroExists(heroName.getHeroName(), authUser, authPassword));
     }
 
     public static void postHero(Hero heroName) {
