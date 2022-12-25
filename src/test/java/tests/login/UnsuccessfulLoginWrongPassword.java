@@ -38,7 +38,8 @@ public  class UnsuccessfulLoginWrongPassword extends BaseTestClass {
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
-        testContext.setAttribute("WebDriver", driver);
+        //testContext.setAttribute("WebDriver", driver);
+        testContext.setAttribute(sTestName + ".drivers", new WebDriver[]{driver});
     }
 
 

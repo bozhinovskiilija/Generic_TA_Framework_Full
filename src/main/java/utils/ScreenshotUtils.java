@@ -37,7 +37,7 @@ public class ScreenshotUtils extends LoggerUtils {
         File dstFile=new File(pathToFile);
         try {
             FileUtils.copyFile(srcFile,dstFile);
-            Allure.addAttachment("Screenshot", FileUtils.openInputStream(srcFile));
+          //  Allure.addAttachment("Screenshot", FileUtils.openInputStream(srcFile));
             log.info("Screenshot for test '"+testName+"' is saved in file: "+ pathToFile);
         } catch (IOException e) {
             log.warn("Screenshot for test '"+testName+"' could not be saved in file '"+pathToFile+"'. Message: "+e.getMessage());

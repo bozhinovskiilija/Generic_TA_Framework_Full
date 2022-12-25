@@ -25,7 +25,7 @@ import java.util.Date;
 import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
-@Listeners(TestListener.class)
+//@Listeners(TestListener.class)
 @Test(groups = {REGRESSION, SANITY, Groups.USERS})
 public class SuccessfulRegister extends BaseTestClass {
 
@@ -44,7 +44,9 @@ public class SuccessfulRegister extends BaseTestClass {
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
-        testContext.setAttribute("WebDriver", driver);
+        //testContext.setAttribute("WebDriver", driver);
+
+        testContext.setAttribute(sTestName + ".drivers", new WebDriver[]{driver});
 
         //username = "user1";
         //password = "password123";

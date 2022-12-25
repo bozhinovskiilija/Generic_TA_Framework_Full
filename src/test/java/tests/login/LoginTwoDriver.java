@@ -48,6 +48,8 @@
 //         driver1 = setUpDriver();
 //         driver2 = setUpDriver();
 //
+//         testContext.setAttribute(sTestName + ".drivers", new WebDriver[]{driver1,driver2});
+//
 //         adminUsername = PropertiesUtils.getAdminUsername();
 //         adminPassword = PropertiesUtils.getAdminPassword();
 //         endUserUsername = PropertiesUtils.getEndUserUsername();

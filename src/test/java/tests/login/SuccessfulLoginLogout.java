@@ -7,7 +7,6 @@ import data.Time;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import listeners.TestListener;
 import objects.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -15,13 +14,11 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.WelcomePage;
 import tests.BaseTestClass;
 import utils.DateTimeUtils;
-import utils.PropertiesUtils;
 import utils.RestApiUtils;
 
 import static data.Groups.LOGIN;
@@ -29,8 +26,8 @@ import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
 
-@Listeners(TestListener.class)
-@Test(groups = {REGRESSION, SANITY, LOGIN})
+//@Listeners(TestListener.class)
+@Test(groups = {REGRESSION, SANITY, LOGIN}, testName = "JIRA00001E", description = "JIRA00001D")
 public class SuccessfulLoginLogout extends BaseTestClass {
 
     /*If we want to you all the benefits from ITestContext and
@@ -40,8 +37,10 @@ public class SuccessfulLoginLogout extends BaseTestClass {
      * and there will be race condition for it. */
 
 
-    private final String sTestName = this.getClass().getName();
+    private final String testName = this.getClass().getName();
     private WebDriver driver;
+
+    public final String sJiraID = "JIRA00001A";
     private User user;
 
     private boolean isCreated = false;
@@ -49,10 +48,14 @@ public class SuccessfulLoginLogout extends BaseTestClass {
 
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
-        log.debug("[SETUP TEST] " + sTestName);
+        log.debug("[SETUP TEST] " + testName);
         driver = setUpDriver();
-        testContext.setAttribute("WebDriver", driver);
-        //log.info("User: "+ user);
+       // testContext.setAttribute("WebDriver", driver);
+
+        testContext.setAttribute(testName + ".drivers", new WebDriver[]{driver});
+        testContext.setAttribute(testName + ".jiraID", "JIRA00001B");
+
+
         user = User.createNewUniqueUser("successloginlogout");
         RestApiUtils.postUser(user);
         isCreated = true;
@@ -70,7 +73,7 @@ public class SuccessfulLoginLogout extends BaseTestClass {
        // String password = PropertiesUtils.getAdminPassword();
         String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
 
-        log.debug("[START TEST] " + sTestName);
+        log.debug("[START TEST] " + testName);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
@@ -93,7 +96,7 @@ public class SuccessfulLoginLogout extends BaseTestClass {
 
     @AfterMethod(alwaysRun = true)
     public void tearDownTest(ITestResult testResult) {
-        log.debug("[END TEST] " + sTestName);
+        log.debug("[END TEST] " + testName);
         tearDown(driver, testResult);
         if (isCreated){
             cleanUp();
@@ -105,7 +108,7 @@ public class SuccessfulLoginLogout extends BaseTestClass {
         try {
             RestApiUtils.deleteUser(user.getUsername());
         } catch (AssertionError | Exception e) {
-            log.error("Exception occurred in cleanUp(" + sTestName + ")! Message: " + e.getMessage());
+            log.error("Exception occurred in cleanUp(" + testName + ")! Message: " + e.getMessage());
         }
     }
 

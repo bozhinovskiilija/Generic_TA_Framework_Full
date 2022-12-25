@@ -31,7 +31,7 @@ import static data.Groups.LOGIN;
 import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
-@Listeners(TestListener.class)
+//@Listeners(TestListener.class)
 @Test(groups = {REGRESSION, SANITY, HERO})
 public class AddNewHero extends BaseTestClass {
 
@@ -46,7 +46,8 @@ public class AddNewHero extends BaseTestClass {
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
-        testContext.setAttribute("WebDriver", driver);
+        //testContext.setAttribute("WebDriver", driver);
+        testContext.setAttribute(sTestName + ".drivers", new WebDriver[]{driver});
 
         user = User.createNewUniqueUser("DeletedHero");
         RestApiUtils.postUser(user);

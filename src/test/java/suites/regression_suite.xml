@@ -4,9 +4,9 @@
 
 <suite name="Regression Suite" parallel="methods" thread-count="8">
 
-<!--    <listeners>-->
-<!--        <listener class-name="listeners.TestListener"></listener>-->
-<!--    </listeners>-->
+    <listeners>
+        <listener class-name="listeners.TestListener"></listener>
+    </listeners>
 
     <test name="Login Tests">
         <groups>

@@ -71,11 +71,20 @@ public class BaseTestClass extends LoggerUtils {
         }
 
         if (result.getStatus() == ITestResult.FAILURE) {
-            if (PropertiesUtils.getTakeScreenshot()) { //check if we need screenshot
+            if (PropertiesUtils.getTakeScreenshot() && !getListenerTakeScreenShot(result)) { //check if we need screenshot
+                log.info("Taking ScreenShot from BaseTestClass");
                 ScreenshotUtils.takeScreenShot(driver, testName);
             }
         }
 
+    }
+
+    private boolean getListenerTakeScreenShot(ITestResult result) {
+        try {
+            return (boolean) result.getTestContext().getAttribute("listenerTakeScreenShot");
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
