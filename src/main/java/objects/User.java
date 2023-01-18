@@ -284,6 +284,10 @@ public class User {
         return new User(username);
     }
 
+    public void clearEmail(){
+
+        setEmail(null);
+    }
 
     @Override
     public String toString() {
@@ -299,5 +303,7 @@ public class User {
             + "Hero count: " + getHeroCount() + ", "
             + "Heroes: " + getHeroes() + "}";
     }
+
+
 
 }

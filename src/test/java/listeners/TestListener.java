@@ -1,9 +1,11 @@
 package listeners;
 
+import annotations.Jira;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -20,7 +22,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
     WebDriver driver = null;
 
     private static final boolean listenerTakeScreenShot = PropertiesUtils.getTakeScreenshot();
-
+    private static boolean updateJira = false;
 
     @Override
     public void onTestStart(final ITestResult result) {
@@ -35,8 +37,21 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
         String sTestName = result.getTestClass().getName();
         log.info("[TEST SUCCESS] " + sTestName);
-        //String sJiraID = getJiraID(result);
-        // Create PASSED result on Jira
+        if(updateJira){
+            Jira jira = getJiraDetails(result);
+            if(jira==null){
+                log.warn("Listener can not get jira details for test '" + sTestName + "' !");
+            }else {
+                String jiraID = jira.jiraID();
+                String owner = jira.owner();
+                log.info("JiraID: " + jiraID);
+                log.info("Owner: " + owner);
+                //PropertiesUtils.get
+                //String sJiraID = getJiraID(result);
+                // Create PASSED result on Jira
+            }
+        }
+
     }
 
 
@@ -68,6 +83,9 @@ public class TestListener extends LoggerUtils implements ITestListener {
                 }
             }
         }
+        Jira jira = getJiraDetails(result);
+        String errorMessage = result.getThrowable().getMessage();
+        String stackTrace = Arrays.toString(result.getThrowable().getStackTrace());
     }
 
 
@@ -86,6 +104,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
         String sSuiteName = context.getSuite().getName();
         log.info("[SUITE STARTED] " + sSuiteName);
+        updateJira = getUpdateJira(context);
         context.setAttribute("listenerTakeScreenShot", listenerTakeScreenShot);
     }
 
@@ -143,6 +162,30 @@ public class TestListener extends LoggerUtils implements ITestListener {
             log.warn("Cannot get JiraID for test '" + sTestName + "'! Message: " + e.getMessage());
         }
         return jiraID;
+    }
+
+    private static Jira getJiraDetails(ITestResult result){
+
+        String sTestName = result.getTestClass().getName();
+        return result.getTestClass().getRealClass().getAnnotation(Jira.class);
+    }
+
+    private static boolean getUpdateJira(ITestContext context){
+        String suiteName = context.getSuite().getName();
+        String updateJira = context.getSuite().getParameter("updateJira");
+        if(updateJira==null){
+            log.warn("Parameter updateJira is not set in '" + suiteName + "' suite");
+            return false;
+        }else{
+            updateJira = updateJira.toLowerCase();
+            if(!(updateJira.equals("true")||updateJira.equals("false"))){
+                log.warn("Parameter 'updateJira' in '"+suiteName+"' is not recognized as boolean value!");
+                return false;
+            }
+        }
+        boolean bUpdateJira = Boolean.parseBoolean(updateJira);
+        log.info("Update Jira" + bUpdateJira);
+        return bUpdateJira;
     }
 
 }

@@ -19,11 +19,10 @@ public class UsersPage extends CommonLoggedInPage{
     private final By addNewUsersButton = By.xpath("//a[contains(@class,'btn-info') and contains(@onclick,'openAddUserModal')]");
     private final By usersTableLocator = By.id("users-table");
 
-    @FindBy(id="users-table")
-    WebElement usersTable;
+    private final By searchTextBoxLocator = By.id("search");
+    private final By searchButtonLocator = By.xpath("//form[@id='searchForm']//i[contains(@class,'glyphicon-search')]");
 
-    @FindBy(xpath = "//table[@id='users-table']/tbody/tr")
-    List<WebElement> usersTableRows;
+
 
     // //table[@id='users-table']//tbody//td[1]/self::td[text()='dedoje']/following-sibling::td[1]
 
@@ -164,7 +163,46 @@ public class UsersPage extends CommonLoggedInPage{
 
     }
 
+    public boolean isSearchTextBoxDisplayed(){
+        log.debug("isSearchTextBoxDisplayed()");
+        return isWebElementDisplayed(searchTextBoxLocator);
+    }
 
+    public UsersPage typeSearchText(String text){
+        log.debug("typeSearchText()");
+        Assert.assertTrue(isSearchTextBoxDisplayed(), "'Search text box' is NOT displayed on Users Page");
+        WebElement searchTextBox = getWebElement(searchTextBoxLocator);
+        clearAndTypeTextToWebElement(searchTextBox,text);
+        return this;
+    }
+
+    public String getSearchText(){
+        log.debug("getSearchText()");
+        Assert.assertTrue(isSearchTextBoxDisplayed(), "'Search text box' is NOT displayed on Users Page");
+        WebElement searchTextBox = getWebElement(searchTextBoxLocator);
+        return getValueFromWebElement(searchTextBox);
+    }
+
+    public boolean isSearchButtonDisplayed(){
+        log.debug("isSearchButtonDisplayed()");
+        return isWebElementDisplayed(searchButtonLocator);
+    }
+
+    public UsersPage clickSearchButton(){
+        log.debug("clickSearchButton()");
+        Assert.assertTrue(isSearchButtonDisplayed(), "'Search button' is NOT displayed on Heroes Page");
+        WebElement searchButton = getWebElement(searchButtonLocator);
+        clickOnWebElement(searchButton);
+        UsersPage usersPage = new UsersPage(driver);
+        return usersPage.verifyUsersPage();
+    }
+
+    public UsersPage search(String searchText){
+        log.info("search(" + searchText + ")");
+        typeSearchText(searchText);
+        return clickSearchButton();
+
+    }
 
 
 }

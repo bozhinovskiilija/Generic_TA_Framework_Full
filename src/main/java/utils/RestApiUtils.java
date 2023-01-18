@@ -5,6 +5,7 @@ import data.ApiCalls;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import objects.ApiError;
 import objects.Hero;
 import objects.User;
 import org.testng.Assert;
@@ -35,6 +36,7 @@ public class RestApiUtils extends LoggerUtils {
         return response;
     }
 
+
     public static boolean checkIfUserExists(String username, String authUser, String authPassword) {
         log.debug("checkIfUserExists(" + username + ")");
         Response response = checkIfUserExistsApiCall(username, authUser, authPassword);
@@ -51,6 +53,7 @@ public class RestApiUtils extends LoggerUtils {
 
         return Boolean.parseBoolean(sResponseBody);
     }
+
 
     public static boolean checkIfUserExists(String sUsername) {
         return checkIfUserExists(sUsername, ADMIN_USERNAME, ADMIN_PASSWORD);
@@ -108,6 +111,28 @@ public class RestApiUtils extends LoggerUtils {
     }
 
 
+    public static String getUserApiErrorJsonFormat(String username, String authUser, String authPassword) {
+        log.debug("getUserApiErrorJsonFormat(" + username + ")");
+
+        Response response = getUserApiCall(username, authUser, authPassword);
+        return response.getBody().asString();
+    }
+
+
+    public static ApiError getUserApiError(String username, String authUser, String authPass) {
+        log.debug("getUserApiError(" + username + ")");
+
+        String json = getUserApiErrorJsonFormat(username, authUser, authPass);
+        Gson gson = new Gson();
+        return gson.fromJson(json, ApiError.class);
+    }
+
+
+    public static ApiError getUserApiError(String username) {
+        return getUserApiError(username, ADMIN_USERNAME, ADMIN_PASSWORD);
+    }
+
+
     private static Response deleteUserApiCall(String sUsername, String sAuthUser, String sAuthPass) {
         String sApiCall = BASE_URL + ApiCalls.createDeleteUserApiCall(sUsername);
         Response response = null;
@@ -125,7 +150,8 @@ public class RestApiUtils extends LoggerUtils {
 
     public static void deleteUser(String sUsername, String authUser, String authPassword) {
         log.debug("deleteUser(" + sUsername + ")");
-        Assert.assertTrue(checkIfUserExists(sUsername, authUser, authPassword), "User '" + sUsername + " doesn't exist!");
+        Assert.assertTrue(checkIfUserExists(sUsername, authUser, authPassword),
+            "User '" + sUsername + " doesn't exist!");
         Response response = deleteUserApiCall(sUsername, authUser, authPassword);
         int status = response.getStatusCode();
         String sResponseBody = response.getBody().asString();
@@ -133,6 +159,7 @@ public class RestApiUtils extends LoggerUtils {
             "Wrong Response Status Code in deleteUser(" + sUsername + ") Api Call! Response Body: " + sResponseBody);
         log.debug("User Deleted: " + !checkIfUserExists(sUsername, authUser, authPassword));
     }
+
 
     public static void deleteUser(String sUsername) {
         deleteUser(sUsername, ADMIN_USERNAME, ADMIN_PASSWORD);
@@ -156,21 +183,49 @@ public class RestApiUtils extends LoggerUtils {
         return response;
     }
 
+
     public static void postUser(User user, String authUser, String authPassword) {
         log.debug("postUser(" + user.getUsername() + ")");
-        Assert.assertFalse(checkIfUserExists(user.getUsername(), authUser, authPassword), "User '" + user.getUsername() + " already exists!");
+        Assert.assertFalse(checkIfUserExists(user.getUsername(), authUser, authPassword),
+            "User '" + user.getUsername() + " already exists!");
         Response response = postUserApiCall(user, authUser, authPassword);
         int status = response.getStatusCode();
         String sResponseBody = response.getBody().asString();
-        Assert.assertEquals(status, 200, "Wrong Response Status Code in postUser(" + user.getUsername() + ") Api Call! Response Body: " + sResponseBody);
+        Assert.assertEquals(status, 200,
+            "Wrong Response Status Code in postUser(" + user.getUsername() + ") Api Call! Response Body: " + sResponseBody);
         log.debug("User Created: " + checkIfUserExists(user.getUsername(), authUser, authPassword));
     }
+
 
     public static void postUser(User user) {
         postUser(user, ADMIN_USERNAME, ADMIN_PASSWORD);
     }
 
-   /////// REST API FOR HEROES ///////////////////
+
+    public static String postUserApiErrorJsonFormat(User user, String authUser, String authPassword) {
+        log.debug("postUserApiErrorJsonFormat(" + user.getUsername() + ")");
+
+        Response response = postUserApiCall(user, authUser, authPassword);
+        return response.getBody().asString();
+    }
+
+
+    public static ApiError postUserApiError(User user, String authUser, String authPass) {
+        log.debug("postUserApiError(" + user.getUsername() + ")");
+
+        String json = postUserApiErrorJsonFormat(user, authUser, authPass);
+        Gson gson = new Gson();
+        return gson.fromJson(json, ApiError.class);
+    }
+
+
+    public static ApiError postUserApiError(User user) {
+        return postUserApiError(user, ADMIN_USERNAME, ADMIN_PASSWORD);
+    }
+
+
+    /////// REST API FOR HEROES ///////////////////
+
 
     private static Response checkIfHeroExistsApiCall(String heroName, String authUser, String authPassword) {
 
@@ -211,11 +266,13 @@ public class RestApiUtils extends LoggerUtils {
         return Boolean.parseBoolean(sResponseBody);
     }
 
+
     public static boolean checkIfHeroExists(String heroName) {
         return checkIfHeroExists(heroName, ADMIN_USERNAME, ADMIN_PASSWORD);
     }
 
     ///////////////////////////
+
 
     private static Response getHeroApiCall(String heroName, String authUser, String authPassword) {
 
@@ -266,6 +323,7 @@ public class RestApiUtils extends LoggerUtils {
         return gson.fromJson(json, Hero.class);
     }
 
+
     public static Hero getHero(String heroName) {
         return getHero(heroName, ADMIN_USERNAME, ADMIN_PASSWORD);
     }
@@ -288,14 +346,15 @@ public class RestApiUtils extends LoggerUtils {
 
     public static void deleteHero(String heroName, String authUser, String authPassword) {
         log.debug("deleteHero(" + heroName + ")");
-       // Assert.assertTrue(checkIfHeroExists(heroName, authUser, authPassword), "Hero '" + heroName + " doesn't exist!");
+        // Assert.assertTrue(checkIfHeroExists(heroName, authUser, authPassword), "Hero '" + heroName + " doesn't exist!");
         Response response = deleteHeroApiCall(heroName, authUser, authPassword);
         int status = response.getStatusCode();
         String sResponseBody = response.getBody().asString();
         Assert.assertEquals(status, 200,
             "Wrong Response Status Code in deleteHero(" + heroName + ") Api Call! Response Body: " + sResponseBody);
-       /// log.debug("Hero Deleted: " + !checkIfHeroExists(heroName, authUser, authPassword));
+        /// log.debug("Hero Deleted: " + !checkIfHeroExists(heroName, authUser, authPassword));
     }
+
 
     public static void deleteHero(String heroName) {
         deleteHero(heroName, ADMIN_USERNAME, ADMIN_PASSWORD);
@@ -319,15 +378,18 @@ public class RestApiUtils extends LoggerUtils {
         return response;
     }
 
+
     public static void postHero(Hero heroName, String authUser, String authPassword) {
         log.debug("postHero(" + heroName.getHeroName() + ")");
         //Assert.assertFalse(checkIfHeroExists(heroName.getHeroName(), authUser, authPassword), "Hero '" + heroName.getHeroName() + " already exists!");
         Response response = postHeroApiCall(heroName, authUser, authPassword);
         int status = response.getStatusCode();
         String sResponseBody = response.getBody().asString();
-        Assert.assertEquals(status, 200, "Wrong Response Status Code in postHero(" + heroName.getHeroName() + ") Api Call! Response Body: " + sResponseBody);
+        Assert.assertEquals(status, 200,
+            "Wrong Response Status Code in postHero(" + heroName.getHeroName() + ") Api Call! Response Body: " + sResponseBody);
         //log.debug("Hero Created: " + checkIfHeroExists(heroName.getHeroName(), authUser, authPassword));
     }
+
 
     public static void postHero(Hero heroName) {
         postHero(heroName, ADMIN_USERNAME, ADMIN_PASSWORD);

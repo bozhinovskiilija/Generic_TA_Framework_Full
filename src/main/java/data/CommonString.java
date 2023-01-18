@@ -44,4 +44,15 @@ public class CommonString {
         return getLocaleString("DELETE_HERO_MESSAGE").replace("%HERO_NAME%",heroName).replace("%HERO_CLASS%",heroClass).replace("%HERO_LEVEL%",String.valueOf(heroLevel));
     }
 
+    public static final Integer INTERNAL_SERVER_ERROR_CODE = 500;
+    public static final String INTERNAL_SERVER_ERROR = "Internal server error";
+    public static final String SERVER_ERROR_FORBIDDEN = "Forbidden";
+    public static final String EXPECTED_EXCEPTION = "java.lang.IllegalArgumentException";
+    public static final String EXPECTED_MESSAGE_NON_EXISTING_USER = "User " + "%s" + " does not exists!";
+    public static final String EXPECTED_MESSAGE_ALREADY_EXISTING_USER = "User " + "%s" + " already exists!";
+    public static final String EXPECTED_MESSAGE_EMAIL_NOT_SPECIFIED = "Email is not specified!";
+    public static final String EXPECTED_MESSAGE_ACCESS_DENIED = "Access is denied";
+
+    public static final String EXPECTED_PATH = "User " + "%s" + " does not exists!";
+
 }

@@ -3,7 +3,7 @@
 
 
 <suite name="Regression Suite" parallel="methods" thread-count="8">
-
+    <parameter name="updateJira" value="true"></parameter>
     <listeners>
         <listener class-name="listeners.TestListener"></listener>
     </listeners>

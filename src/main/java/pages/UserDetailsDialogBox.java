@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import utils.DateTimeUtils;
+
+import java.util.Date;
 
 public class UserDetailsDialogBox extends BasePageClass{
 
@@ -13,6 +16,7 @@ public class UserDetailsDialogBox extends BasePageClass{
     private final By userDetailsDialogBox = By.id("userModal");
     private final By getUserDetailsDialogBoxTitleLocator = By.xpath(userDetailsDialogBoxLocatorString+"//h4[contains(@class,'modal-title')]");
     private final By closeButtonLocator = By.xpath(userDetailsDialogBoxLocatorString + "//button[contains(@class,'btn-default')]");
+    private final By createdAtText = By.xpath("locatorname");
 
     //Constructor
     public UserDetailsDialogBox(final WebDriver driver) {
@@ -61,6 +65,26 @@ public class UserDetailsDialogBox extends BasePageClass{
         Assert.assertTrue(isUserDetailsDialogBoxClosed(Time.TIME_SHORTER),"User Details dialog box is NOT closed!");
         UsersPage usersPage = new UsersPage(driver);
         return usersPage.verifyUsersPage();
+    }
+
+    public boolean isCreatedAtTextDisplayed(){
+        log.debug("isCreatedAtTextDisplayed()");
+        return isWebElementDisplayed(createdAtText);
+    }
+
+    public String getCreatedAtText(){
+        log.debug("getCreatedAtText()");
+        Assert.assertTrue(isCreatedAtTextDisplayed(),"Created at text is not displayed");
+        WebElement createdAtTextWebElement = getWebElement(createdAtText);
+        return getTextFromWebElement(createdAtTextWebElement);
+    }
+
+    public Date getCreatedAtDate(){
+        log.debug("getCreatedAtDate()");
+        String dateTime = getCreatedAtText();
+        return DateTimeUtils.getParsedDateTime(dateTime,"dd.MM.yyyy. HH:mm");
+
+
     }
 
 }

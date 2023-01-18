@@ -1,6 +1,9 @@
 package utils;
 
+import org.testng.Assert;
+
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,7 +43,17 @@ public class DateTimeUtils  extends LoggerUtils{
     public static String getFormattedCurrentDateTime(String pattern){
         Date date= getCurrentDateTime();
         return getFormattedDateTime(date, pattern);
+    }
 
+    public static Date getParsedDateTime(String dateTime, String pattern){
+        DateFormat dateFormat = new SimpleDateFormat(pattern);
+        Date date = null;
+        try {
+             date = dateFormat.parse(dateTime);
+        } catch (ParseException e) {
+            Assert.fail("Can not parse date " + dateTime + "using pattern " + pattern + "! Message: " + e.getMessage());
+        }
+        return date;
     }
 
     public static String getDateTimeStamp(){

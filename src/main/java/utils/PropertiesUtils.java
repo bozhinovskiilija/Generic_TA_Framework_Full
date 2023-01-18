@@ -144,4 +144,51 @@ public class PropertiesUtils extends LoggerUtils {
     public static String getDefaultPassword(){
         return getProperty("defaultPassword");
     }
+
+    public static String getLocalDatasourceUrl(){
+        return getProperty("localDatasourceUrl");
+    }
+
+    public static String getTestDatasourceUrl(){
+        return getProperty("testDatasourceUrl");
+    }
+
+    public static String getProdDatasourceUrl(){
+        return getProperty("prodDatasourceUrl");
+    }
+
+    public static String getDataSourceUrl(){
+
+        String environment = getEnvironemnt().toLowerCase();
+
+        String dataSourceUrl=null;
+
+        switch(environment) {
+            case "local": {
+                dataSourceUrl = getLocalDatasourceUrl();
+                break;
+            }
+            case "test": {
+                dataSourceUrl = getTestDatasourceUrl();
+                break;
+            }
+            case "prod": {
+                dataSourceUrl = getProdDatasourceUrl();
+                break;
+            }
+            default:{
+                Assert.fail("Can not get DataSourceBaseUrl! Environment '"+getEnvironemnt()+"' is not valid");
+            }
+        }
+        return dataSourceUrl;
+    }
+
+    //database username & password
+    public static String getRootUsername(){
+        return getProperty("rootUsername");
+    }
+
+    public static String getRootPassword(){
+        return getProperty("rootPassword");
+    }
 }

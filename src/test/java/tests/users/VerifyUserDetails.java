@@ -1,6 +1,4 @@
-package tests.login;
-
-//import data.CommonString;
+package tests.users;
 
 import annotations.Jira;
 import data.CommonString;
@@ -16,7 +14,10 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.LoginPage;
+import pages.UserDetailsDialogBox;
+import pages.UsersPage;
 import pages.WelcomePage;
 import tests.BaseTestClass;
 import utils.DateTimeUtils;
@@ -25,44 +26,29 @@ import utils.RestApiUtils;
 import static data.Groups.LOGIN;
 import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
+import static data.Groups.USERS;
 
-
-//@Listeners(TestListener.class)
-@Jira(jiraID = "JIRA00001")
-@Test(groups = {REGRESSION, SANITY, LOGIN}, testName = "JIRA00001E", description = "JIRA00001D")
-public class SuccessfulLoginLogout extends BaseTestClass {
-
-    /*If we want to you all the benefits from ITestContext and
-     *ITestResults and capturing screenshots while running tests
-     *in parallel we need to have 1 test per class
-     *because we have 1 web driver for all tests in the class
-     * and there will be race condition for it. */
-
+@Jira(jiraID = "JIRA00003")
+@Test(groups = {REGRESSION, SANITY, USERS})
+public class VerifyUserDetails extends BaseTestClass {
 
     private final String testName = this.getClass().getName();
     private WebDriver driver;
-
-    public final String sJiraID = "JIRA00001A";
     private User user;
-
     private boolean isCreated = false;
 
 
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + testName);
+
         driver = setUpDriver();
-       // testContext.setAttribute("WebDriver", driver);
-
         testContext.setAttribute(testName + ".drivers", new WebDriver[]{driver});
-        testContext.setAttribute(testName + ".jiraID", "JIRA00001B");
 
-
-        user = User.createNewUniqueUser("successloginlogout");
+        user = User.createNewUniqueUser("VerifyUserDetails");
         RestApiUtils.postUser(user);
         isCreated = true;
         user.setCreatedAt(RestApiUtils.getUser(user.getUsername()).getCreatedAt());
-       // log.info("User: "+ user);
     }
 
 
@@ -71,28 +57,32 @@ public class SuccessfulLoginLogout extends BaseTestClass {
     @Story("Successful Login")
     public void testSuccessfulLoginLogout() {
 
-       // String username = PropertiesUtils.getAdminUsername();
-       // String password = PropertiesUtils.getAdminPassword();
-        String expectedLogoutSuccessMessage = CommonString.getLogoutSuccessMessage();
-
         log.debug("[START TEST] " + testName);
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
+
+        LoginPage loginPage = new LoginPage(driver).open();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        WelcomePage welcomePage = loginPage
-            .typeUsername(user.getUsername())
-            .typePassword(user.getPassword())
-            .clickLoginButton();
-
+        WelcomePage welcomePage = loginPage.login(user);
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         loginPage = welcomePage.clickLogoutLink();
         DateTimeUtils.wait(Time.TIME_SHORT);
 
-        String actualSuccessMessage = loginPage.getSuccessMessage();
-        Assert.assertEquals(actualSuccessMessage, expectedLogoutSuccessMessage, "Wrong logout success message");
+        UsersPage usersPage = welcomePage.clickUsersTab();
+        DateTimeUtils.wait(Time.TIME_SHORT);
 
+        usersPage = usersPage.search(user.getUsername());
+        DateTimeUtils.wait(Time.TIME_SHORT);
+
+        UserDetailsDialogBox userDetailsDialogBox = usersPage.clickUserDetailsIconInUsersTable(user.getUsername());
+        DateTimeUtils.wait(Time.TIME_SHORT);
+
+        SoftAssert softAssert = new SoftAssert();
+       // softAssert.assertEquals(userDetailsDialogBox.getUserName(),user.getUsername());
+       //  softAssert.assertEquals(userDetailsDialogBox.getFirstName(),user.getFirstName());
+       //  softAssert.assertEquals(userDetailsDialogBox.getLastName(),user.getLastName());
+       //  softAssert.assertEquals(userDetailsDialogBox.getAbout(),user.getAbout());
+       log.info("Created at date: " + userDetailsDialogBox.getCreatedAtDate());
     }
 
 
