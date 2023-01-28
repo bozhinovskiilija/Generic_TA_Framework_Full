@@ -30,9 +30,9 @@ public class User {
 
     //general constructor for with all needed information(constructor that accept all parameters)
     //constructors can be private if you don't want tester to directly access them and create one public method for creating new users
-    private User(final String username, final String password, final String email, final String firstName,
+    public User(final String username, final String password, final String email, final String firstName,
                 final String lastName, final String about,
-                final String secretQuestion, final String secretAnswer, final Date createdAt, final Integer heroCount,
+                final String secretQuestion, final String secretAnswer, final Date createdAt,
                 final List<Hero> heroes) {
         this.username = username;
         this.password = password;
@@ -43,13 +43,13 @@ public class User {
         this.secretQuestion = secretQuestion;
         this.secretAnswer = secretAnswer;
         setCreatedAt(createdAt);
-        this.heroCount = heroCount;
+        this.heroCount = heroes.size();
         this.heroes = heroes;
     }
 
 
     //for user that is not created in the DB (newly created user) - hardcoded
-    private User(final String username, final String password, final String email, final String firstName,
+    public User(final String username, final String password, final String email, final String firstName,
                 final String lastName, final String about,
                 final String secretQuestion, final String secretAnswer) {
         this.username = username;

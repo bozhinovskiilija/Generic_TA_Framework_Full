@@ -55,4 +55,7 @@ public class CommonString {
 
     public static final String EXPECTED_PATH = "User " + "%s" + " does not exists!";
 
+    public static final String TOOLTIP_TEXT = "This is one useless tooltip! Nevertheless, try to get its content!";
+    public static final String DRAG_AND_DROP_TEXT = "You have successfully performed drag&drop action!";
+
 }

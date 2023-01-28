@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -380,5 +381,20 @@ public abstract class BasePageClass extends LoggerUtils {
             driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
     }
 
+
+    protected void moveMouseToWebElement(WebElement element){
+        log.trace("moveMouseToWebElement(" + element  + ")");
+
+        Actions action = new Actions(driver);
+        action.moveToElement(element).perform();
+    }
+
+    protected void doDragAndDrop(WebElement source, WebElement destination){
+        log.trace("doDragAndDrop(" + source  +", "+ destination +  ")");
+        Actions action = new Actions(driver);
+        action.dragAndDrop(source,destination).perform();
+        //if you don't have the destination element
+        //action.dragAndDropBy(source,10,20).perform();
+    }
 
 }
