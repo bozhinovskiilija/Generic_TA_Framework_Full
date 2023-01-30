@@ -2,12 +2,22 @@ package pages;
 
 import data.PageUrlPaths;
 import data.Time;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import utils.ScreenshotUtils;
+
+import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 public class ProfilePage extends CommonLoggedInPage{
 
     // Page Url Path
     private final String PROFILE_PAGE_URL = getPageUrl(PageUrlPaths.PROFILE_PAGE);
+
+    //Locators
+    private final By profileImageLocator = By.id("profile-img");
+
 
     // Constructor
     public ProfilePage(WebDriver driver) {
@@ -34,4 +44,26 @@ public class ProfilePage extends CommonLoggedInPage{
         waitUntilPageIsReady(Time.TIME_SHORT);
         return this;
     }
+
+    public BufferedImage getProfileImageSnapshot(){
+        log.debug("getProfileImageSnapshot()");
+        WebElement profileImage = getWebElement(profileImageLocator);
+        return ScreenshotUtils.takeSnapshotOfWebElement(driver,profileImage);
+    }
+
+    public ProfilePage saveProfileImageSnapshot(){
+        log.debug("saveProfileImageSnapshot()");
+        WebElement profileImage = getWebElement(profileImageLocator);
+        ScreenshotUtils.saveSnapshotOfWebElement(driver,profileImage,"profileImage");
+        return this;
+    }
+
+    public ProfilePage saveProfileImageSnapshotWithAshot(){
+        log.debug("saveProfileImageSnapshot()");
+        WebElement profileImage = getWebElement(profileImageLocator);
+        ScreenshotUtils.saveSnapshotOfWebElementWithAshot(driver,profileImage,"profileImage");
+        return this;
+    }
+
+
 }

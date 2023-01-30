@@ -132,6 +132,11 @@ public class PropertiesUtils extends LoggerUtils {
         return getProperty("screenshotsFolder");
     }
 
+    public static String getImagesFolder(){
+
+        return getProperty("imagesFolder");
+    }
+
     public static String getEndUserUsername(){
         return getProperty("endUserUsername");
     }

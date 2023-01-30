@@ -1,4 +1,4 @@
-package tests.practice;
+package tests.profile;
 
 import data.CommonString;
 import data.Time;
@@ -13,12 +13,16 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.LoginPage;
 import pages.PracticePage;
+import pages.ProfilePage;
 import pages.WelcomePage;
 import tests.BaseTestClass;
 import utils.DateTimeUtils;
 import utils.RestApiUtils;
+import utils.ScreenshotUtils;
 
-public class VerifyDragAndDrop extends BaseTestClass {
+import java.awt.image.BufferedImage;
+
+public class VerifyProfileImage extends BaseTestClass {
 
     private final String sTestName = this.getClass().getName();
     private WebDriver driver;
@@ -34,16 +38,15 @@ public class VerifyDragAndDrop extends BaseTestClass {
         driver = setUpDriver();
         testContext.setAttribute(sTestName + ".drivers", new WebDriver[]{driver});
 
-        user = User.createNewUniqueUser("UselessTooltip");
+        user = User.createNewUniqueUser("ProfileImage");
         RestApiUtils.postUser(user);
         bCreated = true;
         user.setCreatedAt(RestApiUtils.getUser(user.getUsername()).getCreatedAt());
     }
 
     @Test
-    public void testDragAndDrop() {
+    public void testVerifyProfileImage() {
 
-        String expectedDragAndDropMessage = CommonString.TOOLTIP_TEXT;
 
         log.debug("[START TEST] " + sTestName);
 
@@ -53,23 +56,24 @@ public class VerifyDragAndDrop extends BaseTestClass {
         WelcomePage welcomePage = loginPage.login(user);
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        PracticePage practicePage = welcomePage.clickPracticeTab();
+        ProfilePage profilePage = welcomePage.clickProfileLink();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        SoftAssert softAssert1 = new SoftAssert();
-        softAssert1.assertTrue(practicePage.isImagePresentInDragArea(),"Image is not present in drag area before drag and drop");
-        softAssert1.assertFalse(practicePage.isImagePresentInDropArea(),"Image is  present in drop area before drag and drop");
-        softAssert1.assertFalse(practicePage.isDragAndDropMessageDisplayed(),"Drag and drop message is present before drag and drop action");
-        softAssert1.assertAll("Wrong content on practice page before drag and drop action");
+        //get expected image, cut the image from screenshot folder
+        //into test/resources/image, use this image for comparison
+        //when testing on laptop change setting for display to 100%
+        //text size(by default it is 125% and screenshot is not correct)
+        //after that comment this line
 
-        practicePage = practicePage.dragAndDropImageJS();
-        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
+       // profilePage.saveProfileImageSnapshot();
 
-        SoftAssert softAssert2 = new SoftAssert();
-        softAssert2.assertFalse(practicePage.isImagePresentInDragArea(),"Image is present in drag area after drag and drop");
-        softAssert2.assertTrue(practicePage.isImagePresentInDropArea(),"Image is NOT present in drop area after drag and drop");
-        softAssert2.assertTrue(practicePage.isDragAndDropMessageDisplayed(),"Drag and drop message is NOT present after drag and drop action");
-        softAssert2.assertAll("Wrong content on practice page before drag and drop action");
+        //profilePage.saveProfileImageSnapshotWithAshot();
+
+        BufferedImage actualImage = profilePage.getProfileImageSnapshot();
+        String expectedProfileImageFile = "ProfileImage.png";
+
+        Assert.assertTrue(ScreenshotUtils.compareSnapshotWithImage(actualImage,expectedProfileImageFile));
+
 
     }
 
@@ -90,4 +94,5 @@ public class VerifyDragAndDrop extends BaseTestClass {
             log.error("Exception occurred in cleanUp(" + sTestName + ")! Message: " + e.getMessage());
         }
     }
+
 }

@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.JavaScriptUtils;
 import utils.LoggerUtils;
 import utils.PropertiesUtils;
 import utils.WebDriverUtils;
@@ -389,6 +390,7 @@ public abstract class BasePageClass extends LoggerUtils {
         action.moveToElement(element).perform();
     }
 
+    //do not work on html 5
     protected void doDragAndDrop(WebElement source, WebElement destination){
         log.trace("doDragAndDrop(" + source  +", "+ destination +  ")");
         Actions action = new Actions(driver);
@@ -396,5 +398,12 @@ public abstract class BasePageClass extends LoggerUtils {
         //if you don't have the destination element
         //action.dragAndDropBy(source,10,20).perform();
     }
+
+    protected void doDragAndDropJS(String sourceLocator, String destinationLocator){
+        log.trace("doDragAndDropJS("+ sourceLocator + "," + destinationLocator + ")");
+        JavaScriptUtils.simulateDragAndDrop2(driver,sourceLocator,destinationLocator);
+    }
+
+
 
 }

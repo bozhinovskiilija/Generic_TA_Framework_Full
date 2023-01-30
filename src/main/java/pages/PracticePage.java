@@ -14,6 +14,10 @@ public class PracticePage extends CommonLoggedInPage{
     private final String PRACTICE_PAGE_URL = getPageUrl(PageUrlPaths.PRACTICE_PAGE);
 
     // Locators
+    private final String draggableImageLocatorString = "imgDrag-image";
+    private final String dragAreaLocatorString = "div#drag-area";
+    private final String dropAreaLocatorString = "div#drop-area";
+
     @FindBy(xpath = "//div[@id='useless-tooltip']/p[contains(@class,'h4 heading')]")
     private WebElement uselessTooltipTitle;
 
@@ -91,9 +95,18 @@ public class PracticePage extends CommonLoggedInPage{
         return getTextFromWebElement(draAndDropMessage);
     }
 
+    //do not work on html 5
     public PracticePage dragAndDropImage(){
         log.debug("dragAndDropImage()");
         doDragAndDrop(draggableImage,dropArea);
+        PracticePage practicePage = new PracticePage(driver);
+        return practicePage.verifyPracticePage();
+    }
+
+    //work on html 5 pages // js simulator for drag and drop
+    public PracticePage dragAndDropImageJS(){
+        log.debug("dragAndDropImageJS()");
+        doDragAndDropJS(draggableImageLocatorString,dropAreaLocatorString);
         PracticePage practicePage = new PracticePage(driver);
         return practicePage.verifyPracticePage();
     }
