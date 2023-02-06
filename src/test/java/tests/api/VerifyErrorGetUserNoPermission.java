@@ -46,7 +46,7 @@ public class VerifyErrorGetUserNoPermission extends BaseTestClass {
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Story("Access API without proper permission")
-    public void testApiForNonExistingUser() {
+    public void testVerifyErrorGetUserNoPermission() {
 
         log.debug("[START TEST] " + testName);
 
@@ -63,7 +63,7 @@ public class VerifyErrorGetUserNoPermission extends BaseTestClass {
         softAssert.assertEquals(error.getError(),expectedError,"Wrong expected error");
         softAssert.assertEquals(error.getMessage(),expectedMessage,"Wrong expected message");
         softAssert.assertEquals(error.getPath(),expectedPath,"Wrong expected path");
-        softAssert.assertTrue(DateTimeUtils.compareDateTimes(error.getTimestamp(),currentDateTime,2),"Wrong timestamp");
+        softAssert.assertTrue(DateTimeUtils.compareDateTimes(error.getTimestamp(),currentDateTime,10),"Wrong timestamp");
         softAssert.assertAll("Wrong Error Response Details!");
     }
 

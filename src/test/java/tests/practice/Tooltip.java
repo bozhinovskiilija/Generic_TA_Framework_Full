@@ -18,7 +18,7 @@ import tests.BaseTestClass;
 import utils.DateTimeUtils;
 import utils.RestApiUtils;
 
-@Test(groups = {Groups.REGRESSION})
+@Test(groups = {Groups.REGRESSION,Groups.MOUSE})
 public class Tooltip extends BaseTestClass {
 
     private final String sTestName = this.getClass().getName();
@@ -61,7 +61,7 @@ public class Tooltip extends BaseTestClass {
 
         Assert.assertFalse(practicePage.isUselessTooltipDisplayed(),"Tooltip should not be displayed before hover over the element");
 
-        String tooltopText = practicePage.getUselessTooltipText();
+        String tooltopText = practicePage.getUselessTooltip();
         Assert.assertEquals(tooltopText,expectedUselessTooltipText,"tooltip text is not correct");
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 

@@ -3,6 +3,7 @@ package data;
 public final class Groups {
 
     public static final String REGRESSION = "regression";
+    public static final String MOUSE = "mouse";
     public static final String SANITY = "sanity";
 
     public static final String API = "api";

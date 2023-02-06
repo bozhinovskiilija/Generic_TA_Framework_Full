@@ -8,23 +8,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class PracticePage extends CommonLoggedInPage{
+public class PracticePage extends CommonLoggedInPage {
 
     // Page Url Path
     private final String PRACTICE_PAGE_URL = getPageUrl(PageUrlPaths.PRACTICE_PAGE);
 
     // Locators
-    private final String draggableImageLocatorString = "imgDrag-image";
+
+    //private final String draggableImageLocatorString = "img#drag-image";
+    private final String draggableImageLocatorString = "img.draggable-image";
     private final String dragAreaLocatorString = "div#drag-area";
     private final String dropAreaLocatorString = "div#drop-area";
+
+    private final By draggableImageLocator = By.id("drag-image");
 
     @FindBy(xpath = "//div[@id='useless-tooltip']/p[contains(@class,'h4 heading')]")
     private WebElement uselessTooltipTitle;
 
-    private final By draggableImageLocator = By.id("drag-image");
-
     @FindBy(id = "useless-tooltip-text")
-    private WebElement uselessTooltip;
+    WebElement uselessTooltip;
 
     @FindBy(id = "drag-area")
     private WebElement dragArea;
@@ -35,8 +37,14 @@ public class PracticePage extends CommonLoggedInPage{
     @FindBy(id = "drag-image")
     private WebElement draggableImage;
 
+    @FindBy(xpath = "//div[@id='drag-area']/img[@id='drag-image']")
+    private WebElement draggableImageInDragArea;
+
+    @FindBy(xpath = "//div[@id='drop-area']/img[@id='drag-image']")
+    private WebElement draggableImageInDropArea;
+
     @FindBy(id = "drag-and-drop-message")
-    private  WebElement draAndDropMessage;
+    private WebElement dragAndDropMessage;
 
 
     // Constructor
@@ -45,9 +53,11 @@ public class PracticePage extends CommonLoggedInPage{
         log.trace("new PracticePage()");
     }
 
+
     public PracticePage open() {
         return open(true);
     }
+
 
     public PracticePage open(boolean bVerify) {
         log.debug("Open PracticePage (" + PRACTICE_PAGE_URL + ")");
@@ -58,6 +68,7 @@ public class PracticePage extends CommonLoggedInPage{
         return this;
     }
 
+
     public PracticePage verifyPracticePage() {
         log.debug("verifyPracticePage()");
         waitForUrlChange(PRACTICE_PAGE_URL, Time.TIME_SHORTER);
@@ -65,59 +76,62 @@ public class PracticePage extends CommonLoggedInPage{
         return this;
     }
 
-    public boolean isUselessTooltipDisplayed(){
+
+    public boolean isUselessTooltipDisplayed() {
         log.debug("isUselessTooltipDisplayed()");
         return isWebElementDisplayed(uselessTooltip);
     }
 
-    public String getUselessTooltipText(){
-        log.debug("isUselessTooltipDisplayed()");
 
-        //mouse move
-        moveMouseToWebElement(uselessTooltip);
-
-        //verify if tooltip is displayed
-        Assert.assertTrue(isUselessTooltipDisplayed(),"Tooltip is not displayed");
-
-        //get text from tooltip
+    public String getUselessTooltip() {
+        log.debug("getUselessTooltip()");
+        moveMouseToWebElement(uselessTooltipTitle);
+        Assert.assertTrue(isUselessTooltipDisplayed(), "Useless tooltip is NOT displayed on Practice Page!");
         return getTextFromWebElement(uselessTooltip);
-
     }
 
-    public boolean isDragAndDropMessageDisplayed(){
+
+    public boolean isDragAndDropMessageDisplayed() {
         log.debug("isDragAndDropMessageDisplayed()");
-        return isWebElementDisplayed(draAndDropMessage);
+        return isWebElementDisplayed(dragAndDropMessage);
     }
 
-    public String getDragAndDropMessageText(){
-        log.debug("getDragAndDropMessageText()");
-        Assert.assertTrue(isDragAndDropMessageDisplayed(),"Message is not displayed on practice page");
-        return getTextFromWebElement(draAndDropMessage);
+
+    public String getDragAndDropMessage() {
+        log.debug("getDragAndDropMessage()");
+        Assert.assertTrue(isDragAndDropMessageDisplayed(), "Drag and Drop Message is NOT displayed on Practice Page!");
+        return getTextFromWebElement(dragAndDropMessage);
     }
 
-    //do not work on html 5
-    public PracticePage dragAndDropImage(){
-        log.debug("dragAndDropImage()");
-        doDragAndDrop(draggableImage,dropArea);
-        PracticePage practicePage = new PracticePage(driver);
-        return practicePage.verifyPracticePage();
-    }
 
-    //work on html 5 pages // js simulator for drag and drop
-    public PracticePage dragAndDropImageJS(){
-        log.debug("dragAndDropImageJS()");
-        doDragAndDropJS(draggableImageLocatorString,dropAreaLocatorString);
-        PracticePage practicePage = new PracticePage(driver);
-        return practicePage.verifyPracticePage();
-    }
-
-    public boolean isImagePresentInDragArea(){
+    public boolean isImagePresentInDragArea() {
         log.debug("isImagePresentInDragArea()");
-        return isNestedWebElementDisplayed(dragArea, draggableImageLocator);
+        //return isNestedWebElementDisplayed(dragArea, draggableImageLocator);
+        return isWebElementDisplayed(draggableImageInDragArea);
     }
 
-    public boolean isImagePresentInDropArea(){
+
+    public boolean isImagePresentInDropArea() {
         log.debug("isImagePresentInDropArea()");
-        return isNestedWebElementDisplayed(dropArea, draggableImageLocator);
+        //return isNestedWebElementDisplayed(dropArea, draggableImageLocator);
+        return isWebElementDisplayed(draggableImageInDropArea);
     }
+
+
+    public PracticePage dragAndDropImage() {
+        log.debug("dragAndDropImage()");
+        doDragAndDrop(draggableImage, dropArea);
+        doDragAndDropJS(draggableImageLocatorString, dropAreaLocatorString);
+        PracticePage practicePage = new PracticePage(driver);
+        return practicePage.verifyPracticePage();
+    }
+
+    // public WelcomePage clickSamsaraImage() {
+    //     log.debug("clickSamsaraImage()");
+    //     String sSamsaraImage = "SamsaraLogo.png";
+    //     Point location = ScreenshotUtils.getImageCenterLocation(driver, sSamsaraImage, 5);
+    //     clickOnLocationJS(location);
+    //     WelcomePage welcomePage = new WelcomePage(driver);
+    //     return welcomePage.verifyWelcomePage();
+    // }
 }

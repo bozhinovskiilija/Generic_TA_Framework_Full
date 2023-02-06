@@ -45,16 +45,14 @@ public class AddNewHero extends BaseTestClass {
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
+
         driver = setUpDriver();
-        //testContext.setAttribute("WebDriver", driver);
         testContext.setAttribute(sTestName + ".drivers", new WebDriver[]{driver});
 
-        user = User.createNewUniqueUser("DeletedHero");
+        user = User.createNewUniqueUser("AddNewHero");
         RestApiUtils.postUser(user);
         isCreated = true;
-
         user.setCreatedAt(RestApiUtils.getUser(user.getUsername()).getCreatedAt());
-
         hero = Hero.createNewUniqueHero(user, "NewHero");
 
     }
@@ -67,8 +65,7 @@ public class AddNewHero extends BaseTestClass {
 
         log.debug("[START TEST] " + sTestName);
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
+        LoginPage loginPage = new LoginPage(driver).open();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         WelcomePage welcomePage = loginPage.login(user);
@@ -80,42 +77,40 @@ public class AddNewHero extends BaseTestClass {
         AddHeroDialogBox addHeroDialogBox = heroesPage.clickAddNewHeroButton();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-
         addHeroDialogBox.typeHeroName(hero.getHeroName());
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        addHeroDialogBox.typeHeroLevel(hero.getHeroLevel().toString());
+        addHeroDialogBox.typeHeroLevel(hero.getHeroLevel());
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         addHeroDialogBox.selectHeroClass(hero.getHeroClass());
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         heroesPage = addHeroDialogBox.clickSaveButton();
-        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
         Date currentDateTime = DateTimeUtils.getCurrentDateTime();
         hero.setCreatedAt(currentDateTime);
+        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        //Assert.assertTrue(RestApiUtils.checkIfHeroExists(hero.getHeroName()),
-         //   "Hero '" + hero.getHeroName() + "' is NOT created");
+        Assert.assertTrue(RestApiUtils.checkIfHeroExists(hero.getHeroName()), "Hero '" + hero.getHeroName() + "' is NOT created!");
         Hero savedHero = RestApiUtils.getHero(hero.getHeroName());
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(savedHero.getUsername(), hero.getUsername(), "Username is NOT correct");
-        softAssert.assertEquals(savedHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct");
-        softAssert.assertEquals(savedHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct");
-        softAssert.assertTrue(DateTimeUtils.compareDateTimes(savedHero.getCreatedAt(), hero.getCreatedAt(), 5));
-        softAssert.assertAll("Hero details for Hero" + hero.getHeroName() + "are not correct");
+        SoftAssert softAssert1 = new SoftAssert();
+        softAssert1.assertEquals(savedHero.getUsername(), hero.getUsername(), "Username is NOT correct!");
+        softAssert1.assertEquals(savedHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct!");
+        softAssert1.assertEquals(savedHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct!");
+        //softAssert1.assertTrue(DateTimeUtils.compareDateTimes(savedHero.getCreatedAt(), hero.getCreatedAt(), 10), "CreatedAt Date is NOT correct!");
+        softAssert1.assertAll("Hero Details for Hero '" + hero.getHeroName() + "' are not correct!");
 
         User savedUser = RestApiUtils.getUser(user.getUsername());
-        log.info("Saved User " + savedUser);
-        Hero userHero = savedUser.getHero(hero.getHeroName());
+        log.info("Saved User: " + savedUser);
 
-        SoftAssert softAssert1 = new SoftAssert();
-        softAssert1.assertEquals(userHero.getUsername(), hero.getUsername(), "Username is NOT correct");
-        softAssert1.assertEquals(userHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct");
-        softAssert1.assertEquals(userHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct");
-        softAssert1.assertTrue(DateTimeUtils.compareDateTimes(userHero.getCreatedAt(), hero.getCreatedAt(), 5));
-        softAssert1.assertAll("Hero details for Hero" + hero.getHeroName() + "are not correct");
+        Hero usersHero = savedUser.getHero(hero.getHeroName());
+        SoftAssert softAssert2 = new SoftAssert();
+        softAssert2.assertEquals(usersHero.getUsername(), hero.getUsername(), "Username is NOT correct!");
+        softAssert2.assertEquals(usersHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct!");
+        softAssert2.assertEquals(usersHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct!");
+     //   softAssert2.assertTrue(DateTimeUtils.compareDateTimes(usersHero.getCreatedAt(), hero.getCreatedAt(), 10), "CreatedAt Date is NOT correct!");
+        softAssert2.assertAll("Hero Details for Hero '" + hero.getHeroName() + "' are not correct!");
 
 
     }

@@ -52,7 +52,7 @@ public class AddNewUserTest extends BaseTestClass {
 
 
     @Test
-    public void testAddingNewUser() {
+    public void testAddingNewUser(){
 
         log.debug("[START TEST] " + sTestName);
 
@@ -85,7 +85,7 @@ public class AddNewUserTest extends BaseTestClass {
         log.info("DialogBox title: "+userDetailsDialogBox.getDialogBoxTitle());
         DateTimeUtils.wait(Time.TIME_SHORTER);
 
-        usersPage = userDetailsDialogBox.clickCloseButton();
+        usersPage = userDetailsDialogBox.clickCloseButtonToUsersPage();
 
         AdminPage adminPage = new AdminPage(driver);
 
@@ -96,9 +96,9 @@ public class AddNewUserTest extends BaseTestClass {
         adminPage = adminPage.uncheckAllowUserToShareRegistrationCode();
         DateTimeUtils.wait(Time.TIME_SHORTER);
 
-        // Assert.assertTrue(usersPage.isUserPresentInUsersTable("dedoje"),"Username does not exists");
+        //Assert.assertTrue(usersPage.isUserPresentInUsersTable("dedoje"),"Username does not exists");
 
-        // AddUserDialogBox addNewUserDialogBox = usersPage.clickAddNewUsersButton();
+        // AddUserDialogBox addNewUserDialogBox = usersPage.clickAddNewUserButton();
         // DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
         //
         // addNewUserDialogBox.typeUsername("user12345");

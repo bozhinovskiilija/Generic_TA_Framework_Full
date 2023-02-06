@@ -1,6 +1,8 @@
 package tests.practice;
 
+import annotations.Jira;
 import data.CommonString;
+import data.Groups;
 import data.Time;
 import objects.User;
 import org.openqa.selenium.WebDriver;
@@ -18,14 +20,14 @@ import tests.BaseTestClass;
 import utils.DateTimeUtils;
 import utils.RestApiUtils;
 
+@Jira(jiraID = "JIRA00003")
+@Test(groups = {Groups.REGRESSION, Groups.MOUSE})
 public class VerifyDragAndDrop extends BaseTestClass {
 
     private final String sTestName = this.getClass().getName();
     private WebDriver driver;
-
     private User user;
     private boolean bCreated = false;
-
 
     @BeforeMethod
     public void setUpTest(ITestContext testContext) {
@@ -43,7 +45,7 @@ public class VerifyDragAndDrop extends BaseTestClass {
     @Test
     public void testDragAndDrop() {
 
-        String expectedDragAndDropMessage = CommonString.TOOLTIP_TEXT;
+        String expectedDragAndDropMessage = "You have successfully performed drag&drop action!";
 
         log.debug("[START TEST] " + sTestName);
 
@@ -57,20 +59,22 @@ public class VerifyDragAndDrop extends BaseTestClass {
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         SoftAssert softAssert1 = new SoftAssert();
-        softAssert1.assertTrue(practicePage.isImagePresentInDragArea(),"Image is not present in drag area before drag and drop");
-        softAssert1.assertFalse(practicePage.isImagePresentInDropArea(),"Image is  present in drop area before drag and drop");
-        softAssert1.assertFalse(practicePage.isDragAndDropMessageDisplayed(),"Drag and drop message is present before drag and drop action");
-        softAssert1.assertAll("Wrong content on practice page before drag and drop action");
+        softAssert1.assertTrue(practicePage.isImagePresentInDragArea(), "Draggable Image is NOT present in Drag Area before Drag & Drop action!");
+        softAssert1.assertFalse(practicePage.isImagePresentInDropArea(), "Draggable Image should NOT be present in Drop Area before Drag & Drop action!");
+        softAssert1.assertFalse(practicePage.isDragAndDropMessageDisplayed(), "Drag and Drop Message should NOT be present before Drag & Drop action!");
+        softAssert1.assertAll("Wrong content on Practice Page before Drag & Drop action");
 
-        practicePage = practicePage.dragAndDropImageJS();
+        practicePage = practicePage.dragAndDropImage();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         SoftAssert softAssert2 = new SoftAssert();
-        softAssert2.assertFalse(practicePage.isImagePresentInDragArea(),"Image is present in drag area after drag and drop");
-        softAssert2.assertTrue(practicePage.isImagePresentInDropArea(),"Image is NOT present in drop area after drag and drop");
-        softAssert2.assertTrue(practicePage.isDragAndDropMessageDisplayed(),"Drag and drop message is NOT present after drag and drop action");
-        softAssert2.assertAll("Wrong content on practice page before drag and drop action");
+        softAssert2.assertFalse(practicePage.isImagePresentInDragArea(), "Draggable Image should NOT be present in Drag Area after Drag & Drop action!");
+        softAssert2.assertTrue(practicePage.isImagePresentInDropArea(), "Draggable Image is NOT present in Drop Area after Drag & Drop action!");
+        softAssert2.assertTrue(practicePage.isDragAndDropMessageDisplayed(), "Drag and Drop Message is NOT present after Drag & Drop action!");
+        softAssert2.assertAll("Wrong content on Practice Page after Drag & Drop action");
 
+        String sDragAndDropMessage = practicePage.getDragAndDropMessage();
+        Assert.assertEquals(sDragAndDropMessage, expectedDragAndDropMessage, "Wrong Drag and Drop Message");
     }
 
     @AfterMethod(alwaysRun = true)

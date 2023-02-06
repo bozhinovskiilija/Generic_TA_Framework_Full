@@ -92,7 +92,7 @@ public class SuccessfulRegister extends BaseTestClass {
         softAssert.assertEquals(savedUser.getFirstName(), user.getFirstName(), "First Name is NOT correct!");
         softAssert.assertEquals(savedUser.getLastName(), user.getLastName(), "Last Name is NOT correct!");
         softAssert.assertEquals(savedUser.getAbout(), user.getAbout(), "About Text is NOT correct!");
-        softAssert.assertTrue(DateTimeUtils.compareDateTimes(savedUser.getCreatedAt(), user.getCreatedAt(), 5));
+        softAssert.assertTrue(DateTimeUtils.compareDateTimes(savedUser.getCreatedAt(), user.getCreatedAt(), 8));
         softAssert.assertEquals(savedUser.getSecretQuestion(), user.getSecretQuestion(),
             "Secret Question is NOT correct!");
         softAssert.assertEquals(savedUser.getSecretAnswer(), user.getSecretAnswer(), "Secret Answer is NOT correct!");

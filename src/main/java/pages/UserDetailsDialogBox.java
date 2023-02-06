@@ -4,6 +4,7 @@ import data.Time;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import utils.DateTimeUtils;
 
@@ -11,80 +12,150 @@ import java.util.Date;
 
 public class UserDetailsDialogBox extends BasePageClass{
 
-    //Locators
+    // Locators
     private final String userDetailsDialogBoxLocatorString = "//div[@id='userModal']";
-    private final By userDetailsDialogBox = By.id("userModal");
-    private final By getUserDetailsDialogBoxTitleLocator = By.xpath(userDetailsDialogBoxLocatorString+"//h4[contains(@class,'modal-title')]");
-    private final By closeButtonLocator = By.xpath(userDetailsDialogBoxLocatorString + "//button[contains(@class,'btn-default')]");
-    private final By createdAtText = By.xpath("locatorname");
 
-    //Constructor
-    public UserDetailsDialogBox(final WebDriver driver) {
+    @FindBy(id = "userModal")
+    private WebElement userDetailsDialogBox;
 
+    @FindBy(xpath = userDetailsDialogBoxLocatorString + "//h4[contains(@class,'modal-title')]")
+    private WebElement userDetailsDialogBoxTitle;
+
+    @FindBy(xpath = userDetailsDialogBoxLocatorString + "//span[@class='username']")
+    private WebElement usernameText;
+
+    @FindBy(xpath = userDetailsDialogBoxLocatorString + "//span[@class='firstName']")
+    private WebElement firstNameText;
+
+    @FindBy(xpath = userDetailsDialogBoxLocatorString + "//span[@class='lastName']")
+    private WebElement lastNameText;
+
+    @FindBy(xpath = userDetailsDialogBoxLocatorString + "//span[@class='about']")
+    private WebElement aboutText;
+
+    @FindBy(xpath = userDetailsDialogBoxLocatorString + "//span[@class='created']")
+    private WebElement createdAtText;
+
+    @FindBy(xpath = userDetailsDialogBoxLocatorString + "//button[contains(@class,'btn-default')]")
+    private WebElement closeButton;
+
+    // Constructor
+    public UserDetailsDialogBox(WebDriver driver) {
         super(driver);
     }
 
-
     public UserDetailsDialogBox verifyUserDetailsDialogBox() {
         log.debug("verifyUserDetailsDialogBox()");
-        Assert.assertTrue(isUserDetailsDialogBoxOpened(Time.TIME_SHORT), "User heroes dialog box is not opened!");
-        waitUntilPageIsReady(Time.TIME_SHORT);
+        Assert.assertTrue(isUserDetailsDialogBoxOpened(Time.TIME_SHORTER), "'User Details' DialogBox is NOT opened!");
+        waitUntilPageIsReady(Time.TIME_SHORTER);
         return this;
     }
 
-    public boolean isUserDetailsDialogBoxOpened(int timeout) {
+    private boolean isUserDetailsDialogBoxOpened(int timeout) {
         return isWebElementVisible(userDetailsDialogBox, timeout);
     }
 
-    private boolean isUserDetailsDialogBoxClosed(int timeout){
-        return isWebElementInvisible(userDetailsDialogBox,timeout);
+    private boolean isUserDetailsDialogBoxClosed(int timeout) {
+        return isWebElementInvisible(userDetailsDialogBox, timeout);
     }
 
-    public boolean isDialogBoxTitleDisplayed(){
+    public boolean isDialogBoxTitleDisplayed() {
         log.debug("isDialogBoxTitleDisplayed()");
-        return isWebElementDisplayed(getUserDetailsDialogBoxTitleLocator);
+        return isWebElementDisplayed(userDetailsDialogBoxTitle);
     }
 
-    public String getDialogBoxTitle(){
+    public String getDialogBoxTitle() {
         log.debug("getDialogBoxTitle()");
-        Assert.assertTrue(isDialogBoxTitleDisplayed(),"Dialog box title is not displayed");
-        WebElement dialogBoxTitle = getWebElement(getUserDetailsDialogBoxTitleLocator);
-        return getTextFromWebElement(dialogBoxTitle);
+        Assert.assertTrue(isDialogBoxTitleDisplayed(), "'User Details' DialogBox Title is NOT displayed!");
+        return getTextFromWebElement(userDetailsDialogBoxTitle);
     }
 
-    public boolean isCloseButtonDisplayed() {
-        log.debug("isCloseButtonDisplayed()");
-        return isWebElementDisplayed(closeButtonLocator);
+    public boolean isUsernameTextDisplayed() {
+        log.debug("isUsernameTextDisplayed()");
+        return isWebElementDisplayed(usernameText);
     }
 
-    public UsersPage clickCloseButton() {
-        log.debug("clickCloseButton()");
-        Assert.assertTrue(isCloseButtonDisplayed(), "Close button is NOT displayed on User Details Dialog box");
-        WebElement closeButton = getWebElement(closeButtonLocator, Time.TIME_SHORTER);
-        clickOnWebElement(closeButton);
-        Assert.assertTrue(isUserDetailsDialogBoxClosed(Time.TIME_SHORTER),"User Details dialog box is NOT closed!");
-        UsersPage usersPage = new UsersPage(driver);
-        return usersPage.verifyUsersPage();
+    public String getUsername() {
+        log.debug("getUsername()");
+        Assert.assertTrue(isUsernameTextDisplayed(), "'Username' Text is NOT displayed on 'User Details' DialogBox");
+        return getTextFromWebElement(usernameText);
     }
 
-    public boolean isCreatedAtTextDisplayed(){
+    public boolean isFirstNameTextDisplayed() {
+        log.debug("isFirstNameTextDisplayed()");
+        return isWebElementDisplayed(firstNameText);
+    }
+
+    public String getFirstName() {
+        log.debug("getFirstName()");
+        Assert.assertTrue(isFirstNameTextDisplayed(), "'First Name' Text is NOT displayed on 'User Details' DialogBox");
+        return getTextFromWebElement(firstNameText);
+    }
+
+    public boolean isLastNameTextDisplayed() {
+        log.debug("isLastNameTextDisplayed()");
+        return isWebElementDisplayed(lastNameText);
+    }
+
+    public String getLastName() {
+        log.debug("getLastName()");
+        Assert.assertTrue(isLastNameTextDisplayed(), "'Last Name' Text is NOT displayed on 'User Details' DialogBox");
+        return getTextFromWebElement(lastNameText);
+    }
+
+    public boolean isAboutTextDisplayed() {
+        log.debug("isAboutTextDisplayed()");
+        return isWebElementDisplayed(aboutText);
+    }
+
+    public String getAbout() {
+        log.debug("getAbout()");
+        Assert.assertTrue(isAboutTextDisplayed(), "'About' Text is NOT displayed on 'User Details' DialogBox");
+        return getTextFromWebElement(aboutText);
+    }
+
+    public boolean isCreatedAtTextDisplayed() {
         log.debug("isCreatedAtTextDisplayed()");
         return isWebElementDisplayed(createdAtText);
     }
 
-    public String getCreatedAtText(){
+    private String getCreatedAtText() {
         log.debug("getCreatedAtText()");
-        Assert.assertTrue(isCreatedAtTextDisplayed(),"Created at text is not displayed");
-        WebElement createdAtTextWebElement = getWebElement(createdAtText);
-        return getTextFromWebElement(createdAtTextWebElement);
+        Assert.assertTrue(isCreatedAtTextDisplayed(), "'Created At' Date is NOT displayed on 'User Details' DialogBox");
+        return getTextFromWebElement(createdAtText);
     }
 
-    public Date getCreatedAtDate(){
+    public Date getCreatedAtDate() {
         log.debug("getCreatedAtDate()");
-        String dateTime = getCreatedAtText();
-        return DateTimeUtils.getParsedDateTime(dateTime,"dd.MM.yyyy. HH:mm");
-
-
+        String sDateTime = getCreatedAtText();
+        String sBrowserTimeZone = DateTimeUtils.getBrowserTimeZone(driver);
+        sDateTime = sDateTime + " " + sBrowserTimeZone;
+        return DateTimeUtils.getParsedDateTime(sDateTime, "dd.MM.yyyy. HH:mm z");
     }
 
+    public boolean isCloseButtonDisplayed() {
+        log.debug("isCloseButtonDisplayed()");
+        return isWebElementDisplayed(closeButton);
+    }
+
+    private void clickCloseButton() {
+        log.debug("clickCloseButton()");
+        Assert.assertTrue(isCloseButtonDisplayed(), "Close Button is NOT displayed on 'User Details' DialogBox!");
+        clickOnWebElement(closeButton);
+        Assert.assertTrue(isUserDetailsDialogBoxClosed(Time.TIME_SHORTER), "'User Details' DialogBox is NOT closed!");
+    }
+
+    public UsersPage clickCloseButtonToUsersPage() {
+        log.debug("clickCloseButtonToUsersPage()");
+        clickCloseButton();
+        UsersPage usersPage = new UsersPage(driver);
+        return usersPage.verifyUsersPage();
+    }
+
+    public HeroesPage clickCloseButtonToHeroesPage() {
+        log.debug("clickCloseButtonToUsersPage()");
+        clickCloseButton();
+        HeroesPage heroesPage = new HeroesPage(driver);
+        return heroesPage.verifyHeroesPage();
+    }
 }

@@ -17,21 +17,20 @@ public class AddHeroDialogBox extends BasePageClass {
     @FindBy(xpath = addHeroDialogBoxString + "//h4[contains(@class,'modal-title')]")
     private WebElement addHeroDialogBoxTitle;
 
-    @FindBy(xpath = addHeroDialogBoxString + "//button[contains(@class,'btn-default')]")
-    private WebElement cancelButton;
-
-    @FindBy(xpath = addHeroDialogBoxString + "//button[@id='submitButton']")
-    private WebElement saveButton;
+    @FindBy(id = "name")
+    private WebElement heroNameTextField;
 
     @FindBy(id = "level")
     private WebElement heroLevelTextField;
 
-    @FindBy(id = "name")
-    private WebElement heroNameTextField;
-
     @FindBy(id = "type")
-    private WebElement heroClassDropDown;
+    private WebElement heroClassDropDownList;
 
+    @FindBy(xpath = addHeroDialogBoxString + "//button[contains(@class,'btn-default')]")
+    private WebElement cancelButton;
+
+    @FindBy(id = "submitButton")
+    private WebElement saveButton;
 
     // Constructor
     public AddHeroDialogBox(WebDriver driver) {
@@ -39,16 +38,13 @@ public class AddHeroDialogBox extends BasePageClass {
         log.trace("new AddHeroDialogBox()");
     }
 
-
     private boolean isAddHeroDialogBoxOpened(int timeout) {
         return isWebElementVisible(addHeroDialogBox, timeout);
     }
 
-
     private boolean isAddHeroDialogBoxClosed(int timeout) {
         return isWebElementInvisible(addHeroDialogBox, timeout);
     }
-
 
     public AddHeroDialogBox verifyAddHeroDialogBox() {
         log.debug("verifyAddHeroDialogBox()");
@@ -57,12 +53,10 @@ public class AddHeroDialogBox extends BasePageClass {
         return this;
     }
 
-
     public boolean isDialogBoxTitleDisplayed() {
         log.debug("isDialogBoxTitleDisplayed()");
         return isWebElementDisplayed(addHeroDialogBoxTitle);
     }
-
 
     public String getDialogBoxTitle() {
         log.debug("getDialogBoxTitle()");
@@ -70,12 +64,63 @@ public class AddHeroDialogBox extends BasePageClass {
         return getTextFromWebElement(addHeroDialogBoxTitle);
     }
 
+    public boolean isHeroNameTextFieldDisplayed() {
+        log.debug("isHeroNameTextFieldDisplayed()");
+        return isWebElementDisplayed(heroNameTextField);
+    }
+
+    public AddHeroDialogBox typeHeroName(String sHeroName) {
+        log.debug("typeHeroName(" + sHeroName + ")");
+        Assert.assertTrue(isHeroNameTextFieldDisplayed(), "'Hero Name' TextField is NOT displayed on 'Add Hero' DialogBox");
+        clearAndTypeTextToWebElement(heroNameTextField, sHeroName);
+        return this;
+    }
+
+    public boolean isHeroLevelTextFieldDisplayed() {
+        log.debug("isHeroLevelTextFieldDisplayed()");
+        return isWebElementDisplayed(heroLevelTextField);
+    }
+
+    public AddHeroDialogBox typeHeroLevel(String sHeroLevel) {
+        log.debug("typeHeroLevel(" + sHeroLevel + ")");
+        Assert.assertTrue(isHeroLevelTextFieldDisplayed(), "'Hero Level' TextField is NOT displayed on 'Add Hero' DialogBox");
+        clearAndTypeTextToWebElement(heroLevelTextField, sHeroLevel);
+        return this;
+    }
+
+    public AddHeroDialogBox typeHeroLevel(int iHeroLevel) {
+        String sHeroLevel = String.valueOf(iHeroLevel);
+        return typeHeroLevel(sHeroLevel);
+    }
+
+    public boolean isHeroClassDropDownListDisplayed() {
+        log.debug("isHeroClassDropDownListDisplayed()");
+        return isWebElementDisplayed(heroClassDropDownList);
+    }
+
+    public String getSelectedHeroClass() {
+        log.debug("getSelectedHeroClass()");
+        Assert.assertTrue(isHeroClassDropDownListDisplayed(), "'Hero Class' DropDown List is NOT displayed on 'Add Hero' DialogBox");
+        return getFirstSelectedOptionOnWebElement(heroClassDropDownList);
+    }
+
+    public boolean isHeroClassPresent(String sHeroClass) {
+        log.debug("isHeroClassPresent(" + sHeroClass + ")");
+        Assert.assertTrue(isHeroClassDropDownListDisplayed(), "'Hero Class' DropDown List is NOT displayed on 'Add Hero' DialogBox");
+        return isOptionPresentOnWebElement(heroClassDropDownList, sHeroClass);
+    }
+
+    public AddHeroDialogBox selectHeroClass(String sHeroClass) {
+        log.debug("selectHeroClass(" + sHeroClass + ")");
+        Assert.assertTrue(isHeroClassPresent(sHeroClass), "Option '" + sHeroClass + "' is NOT present in 'Hero Class' DropDown List!");
+        selectOptionOnWebElement(heroClassDropDownList, sHeroClass);
+        return this;
+    }
 
     public boolean isCancelButtonDisplayed() {
         log.debug("isCancelButtonDisplayed()");
         return isWebElementDisplayed(cancelButton);
     }
-
 
     private void clickCancelButton() {
         Assert.assertTrue(isCancelButtonDisplayed(), "Cancel Button is NOT displayed on 'Add Hero' DialogBox!");
@@ -83,15 +128,12 @@ public class AddHeroDialogBox extends BasePageClass {
         Assert.assertTrue(isAddHeroDialogBoxClosed(Time.TIME_SHORTER), "'Add Hero' DialogBox is NOT closed!");
     }
 
-
     public HeroesPage clickCancelButtonToHeroesPage() {
         log.debug("clickCancelButtonToHeroesPage()");
         clickCancelButton();
         HeroesPage heroesPage = new HeroesPage(driver);
         return heroesPage.verifyHeroesPage();
     }
-
-
     public UsersPage clickCancelButtonToUsersPage() {
         log.debug("clickCancelButtonToUsersPage()");
         clickCancelButton();
@@ -106,77 +148,17 @@ public class AddHeroDialogBox extends BasePageClass {
 
     public boolean isSaveButtonEnabled() {
         log.debug("isSaveButtonEnabled()");
+        Assert.assertTrue(isSaveButtonDisplayed(), "Save Button is NOT displayed on 'Add Hero' DialogBox!");
         return isWebElementEnabled(saveButton);
     }
 
-
     public HeroesPage clickSaveButton() {
-        Assert.assertTrue(isSaveButtonDisplayed(), "Save Button is NOT displayed on 'Add Hero' DialogBox!");
-        Assert.assertTrue(isSaveButtonEnabled());
-        clickOnWebElement(saveButton);
+        log.debug("clickSaveButton()");
+        Assert.assertTrue(isSaveButtonEnabled(), "Save Button is NOT enabled!");
+        clickOnWebElement(saveButton, Time.TIME_SHORTEST);
         Assert.assertTrue(isAddHeroDialogBoxClosed(Time.TIME_SHORTER), "'Add Hero' DialogBox is NOT closed!");
         HeroesPage heroesPage = new HeroesPage(driver);
         return heroesPage.verifyHeroesPage();
     }
-
-
-
-
-
-    public boolean isHeroLevelTextFieldDisplayed() {
-        log.debug("isHeroLevelTextFieldDisplayed()");
-        return isWebElementDisplayed(heroLevelTextField);
-    }
-
-
-    public AddHeroDialogBox typeHeroLevel(String heroLevel) {
-        log.debug("typeHeroLevel(" + heroLevel + ")");
-        Assert.assertTrue(isHeroLevelTextFieldDisplayed(), "'HeroLevel' text box is NOT dispalyed");
-        clearAndTypeTextToWebElement(heroLevelTextField, heroLevel);
-        return this;
-    }
-
-
-    public boolean isHeroNameLevelTextFieldDisplayed() {
-        log.debug("isHeroNameLevelTextFieldDisplayed()");
-        return isWebElementDisplayed(heroNameTextField);
-    }
-
-
-    public AddHeroDialogBox typeHeroName(String heroName) {
-        log.debug("typeHeroName(" + heroName + ")");
-        Assert.assertTrue(isHeroNameLevelTextFieldDisplayed(), "'HeroLevel' text box is NOT dispalyed");
-        clearAndTypeTextToWebElement(heroNameTextField, heroName);
-        return this;
-    }
-
-
-    public boolean isHeroClassDropDownDisplayed() {
-        log.debug("isHeroClassDropDownDisplayed()");
-        return isWebElementDisplayed(heroClassDropDown);
-    }
-
-
-    public String getSelectedHeroClass() {
-        log.debug("isHeroClassDropDownDisplayed()");
-        Assert.assertTrue(isHeroClassDropDownDisplayed(), "'Hero Class' drop down list is NOT displayed");
-        return getFirstSelectedOptionOnWebElement(heroClassDropDown);
-    }
-
-
-    public boolean isHeroClassPresent(String heroClass) {
-        log.debug("isHeroClassPresent(" + heroClass + ")");
-        Assert.assertTrue(isHeroClassDropDownDisplayed(), "'Hero Class' drop down list is NOT displayed");
-        return isOptionPresentOnWebElement(heroClassDropDown, heroClass);
-    }
-
-
-    public AddHeroDialogBox selectHeroClass(String heroClass) {
-        log.debug("selectHeroClass(" + heroClass + ")");
-        Assert.assertTrue(isHeroClassPresent(heroClass),"'Option '"+ heroClass +"' is NOT present in the drop down list");
-        selectOptionOnWebElement(heroClassDropDown,heroClass);
-        return this;
-    }
-
 }
 

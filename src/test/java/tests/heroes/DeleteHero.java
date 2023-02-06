@@ -65,14 +65,12 @@ public class DeleteHero extends BaseTestClass {
     @Story("Delete Hero")
     public void testDeleteHero() {
 
-        String expectedDeleteHeroMessage = CommonString.getDeleteHeroMessage(hero.getHeroName(), hero.getHeroClass(),
-            hero.getHeroLevel());
-        log.info("Expected delete hero message" + expectedDeleteHeroMessage);
+        String sExpectedDeleteHeroMessage = CommonString.getDeleteHeroMessage(hero.getHeroName(), hero.getHeroClass(), hero.getHeroLevel());
+        log.info("Expected Delete Hero Message: " + sExpectedDeleteHeroMessage);
 
         log.debug("[START TEST] " + sTestName);
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
+        LoginPage loginPage = new LoginPage(driver).open();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         WelcomePage welcomePage = loginPage.login(user);
@@ -81,26 +79,21 @@ public class DeleteHero extends BaseTestClass {
         HeroesPage heroesPage = welcomePage.clickHeroesTab();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        heroesPage.search(hero.getHeroName());
+        heroesPage = heroesPage.search(hero.getHeroName());
+        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         DeleteHeroDialogBox deleteHeroDialogBox = heroesPage.clickDeleteHeroIconInHeroesTable(hero.getHeroName());
-        String actualDeleteHeroMessage = deleteHeroDialogBox.getDeleteHeroMessage();
-        Assert.assertEquals(actualDeleteHeroMessage, expectedDeleteHeroMessage, "Wrong delete hero message");
+        String sActualDeleteHeroMessage = deleteHeroDialogBox.getDeleteHeroMessage();
+        Assert.assertEquals(sActualDeleteHeroMessage, sExpectedDeleteHeroMessage, "Wrong Delete Hero Message!");
 
         heroesPage = deleteHeroDialogBox.clickDeleteButton();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        Assert.assertFalse(RestApiUtils.checkIfHeroExists(hero.getHeroName()),
-            "Hero " + hero.getHeroName() + "is NOT deleted");
+        Assert.assertFalse(RestApiUtils.checkIfHeroExists(hero.getHeroName()), "Hero '" + hero.getHeroName() + "' is NOT deleted!");
 
         User savedUser = RestApiUtils.getUser(user.getUsername());
         int numberOfHeroes = savedUser.getHeroCount();
-
-        Assert.assertEquals(numberOfHeroes, 0, "Users hero is NOT deleted");
-
-        log.info("Hero" + hero);
-        log.info("User with hero" + RestApiUtils.getUser(user.getUsername()));
-
+        Assert.assertEquals(numberOfHeroes, 0, "User's Hero is NOT deleted!");
 
     }
 

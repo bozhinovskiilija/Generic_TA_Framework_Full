@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.comparison.ImageDiff;
+import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -32,6 +34,24 @@ public class ScreenshotUtils extends LoggerUtils {
 
     private static String createScreenShotPath(String testName) {
         return screenshotsFolder + testName + "_" + DateTimeUtils.getDateTimeStamp() + ".png";
+    }
+
+
+    private static String createExpectedSnapshotPath(String imageName, String DateTimeStamp) {
+
+        return screenshotsFolder + imageName + "_" + DateTimeStamp + "_Expected.png";
+    }
+
+
+    private static String createActualSnapshotPath(String imageName, String DateTimeStamp) {
+
+        return screenshotsFolder + imageName + "_" + DateTimeStamp + "_Actual.png";
+    }
+
+
+    private static String createDifferenceSnapshotPath(String imageName, String DateTimeStamp) {
+
+        return screenshotsFolder + imageName + "_" + DateTimeStamp + "_Difference.png";
     }
 
 
@@ -164,6 +184,42 @@ public class ScreenshotUtils extends LoggerUtils {
     }
 
 
+    public static boolean compareSnapshotWithImageWithAshot(Screenshot snapShot, String fileName, int threshold,
+                                                            int diffTrigger) {
+
+        log.trace("compareSnapshotWithImageWithAshot(" + fileName + ")");
+        BufferedImage expectedImage = loadBufferedImage(fileName);
+        BufferedImage actualImage = snapShot.getImage();
+        ImageDiffer imgDif = new ImageDiffer();
+        ImageDiff diff = imgDif.withColorDistortion(threshold).makeDiff(expectedImage, actualImage);
+        boolean differences = diff.withDiffSizeTrigger(diffTrigger).hasDiff();
+        if (differences) {
+            log.warn("Snapshot is not equal to image '" + fileName + "' Difference size " + diff.getDiffSize());
+            //third image that contains the differences between the 2 compared images
+            BufferedImage differenceImage = diff.getMarkedImage();
+            String imageName = fileName.substring(0, fileName.lastIndexOf('.'));
+            //Save all Images
+            saveDiffImages(imageName,actualImage,expectedImage,differenceImage);
+        }
+        return !differences;
+    }
+
+
+    private static void saveDiffImages(String imageName, BufferedImage actualImage, BufferedImage expectedImage,
+                                       BufferedImage differenceImage) {
+        String dateTimeStamp = DateTimeUtils.getDateTimeStamp();
+        String pathToActualImage = createActualSnapshotPath(imageName, dateTimeStamp);
+        String pathToExpectedImage = createExpectedSnapshotPath(imageName, dateTimeStamp);
+        String pathToDifferenceImage = createDifferenceSnapshotPath(imageName, dateTimeStamp);
+        saveBufferedImage(actualImage, pathToActualImage);
+        saveBufferedImage(expectedImage, pathToExpectedImage);
+        saveBufferedImage(differenceImage, pathToDifferenceImage);
+        log.info("Actual Image: " + pathToActualImage);
+        log.info("Expected Image: " + pathToExpectedImage);
+        log.info("Difference Image: " + pathToDifferenceImage);
+    }
+
+
     //compare pixel by pixel - NOT recommended
     private static boolean compareImages(BufferedImage imageA, BufferedImage imageB) {
         if (imageA.getWidth() != imageB.getWidth() || imageA.getHeight() != imageB.getHeight()) {
@@ -182,5 +238,36 @@ public class ScreenshotUtils extends LoggerUtils {
         }
         return true;
     }
+
+    // private static Point findSubImage(BufferedImage fullImage, BufferedImage subImage, int threshold) {
+    //     int w1 = fullImage.getWidth();
+    //     int h1 = fullImage.getHeight();
+    //     int w2 = subImage.getWidth();
+    //     int h2 = subImage.getHeight();
+    //
+    //     if (w2 > w1 || h2 > h1) {
+    //         return null;
+    //     }
+    //
+    //     for (int x = 0; x < w1 - w2; x++) {
+    //         for (int y = 0; y < h1 - h2; y++) {
+    //             if (compareImages(fullImage.getSubimage(x, y, w2, h2), subImage, threshold)) {
+    //                 return new Point(x, y);
+    //             }
+    //         }
+    //     }
+    //     return null;
+    // }
+    //
+    // public static Point getImageCenterLocation(WebDriver driver, String sImageFile, int threshold) {
+    //     log.trace("getImageCenterLocation(" + sImageFile + ")");
+    //     BufferedImage fullImage = takeScreenShot(driver);
+    //     BufferedImage subImage = loadBufferedImage(sImageFile);
+    //     Point location = findSubImage(fullImage, subImage, threshold);
+    //     Assert.assertNotNull(location, "Image '" + sImageFile + "' is NOT found on the screen!");
+    //     int xOffset = subImage.getWidth() / 2;
+    //     int yOffset = subImage.getHeight() / 2;
+    //     return new Point (location.getX() + xOffset, location.getY() + yOffset);
+    // }
 
 }

@@ -72,7 +72,8 @@ public class VerifyProfileImage extends BaseTestClass {
         BufferedImage actualImage = profilePage.getProfileImageSnapshot();
         String expectedProfileImageFile = "ProfileImage.png";
 
-        Assert.assertTrue(ScreenshotUtils.compareSnapshotWithImage(actualImage,expectedProfileImageFile));
+       // Assert.assertTrue(ScreenshotUtils.compareSnapshotWithImage(actualImage,expectedProfileImageFile));
+        Assert.assertTrue(ScreenshotUtils.compareSnapshotWithImageWithAshot(profilePage.getProfileImageSnapshotWithAshot(),expectedProfileImageFile,0,0));
 
 
     }

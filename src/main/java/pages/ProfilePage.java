@@ -5,6 +5,7 @@ import data.Time;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import ru.yandex.qatools.ashot.Screenshot;
 import utils.ScreenshotUtils;
 
 import java.awt.image.BufferedImage;
@@ -51,6 +52,12 @@ public class ProfilePage extends CommonLoggedInPage{
         return ScreenshotUtils.takeSnapshotOfWebElement(driver,profileImage);
     }
 
+    public Screenshot getProfileImageSnapshotWithAshot(){
+        log.debug("getProfileImageSnapshotWithAshot()");
+        WebElement profileImage = getWebElement(profileImageLocator);
+        return ScreenshotUtils.takeSnapshotOfWebElementAshot(driver,profileImage);
+    }
+
     public ProfilePage saveProfileImageSnapshot(){
         log.debug("saveProfileImageSnapshot()");
         WebElement profileImage = getWebElement(profileImageLocator);
@@ -59,7 +66,7 @@ public class ProfilePage extends CommonLoggedInPage{
     }
 
     public ProfilePage saveProfileImageSnapshotWithAshot(){
-        log.debug("saveProfileImageSnapshot()");
+        log.debug("saveProfileImageSnapshotWithAshot()");
         WebElement profileImage = getWebElement(profileImageLocator);
         ScreenshotUtils.saveSnapshotOfWebElementWithAshot(driver,profileImage,"profileImage");
         return this;

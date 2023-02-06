@@ -55,8 +55,7 @@ public class VerifyUserDetails extends BaseTestClass {
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Story("Successful Login")
-    public void testSuccessfulLoginLogout() {
-
+    public void testVerifyUserDetails() {
         log.debug("[START TEST] " + testName);
 
         LoginPage loginPage = new LoginPage(driver).open();
@@ -65,24 +64,22 @@ public class VerifyUserDetails extends BaseTestClass {
         WelcomePage welcomePage = loginPage.login(user);
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
-        loginPage = welcomePage.clickLogoutLink();
-        DateTimeUtils.wait(Time.TIME_SHORT);
-
         UsersPage usersPage = welcomePage.clickUsersTab();
-        DateTimeUtils.wait(Time.TIME_SHORT);
+        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         usersPage = usersPage.search(user.getUsername());
-        DateTimeUtils.wait(Time.TIME_SHORT);
+        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         UserDetailsDialogBox userDetailsDialogBox = usersPage.clickUserDetailsIconInUsersTable(user.getUsername());
-        DateTimeUtils.wait(Time.TIME_SHORT);
+        DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
         SoftAssert softAssert = new SoftAssert();
-       // softAssert.assertEquals(userDetailsDialogBox.getUserName(),user.getUsername());
-       //  softAssert.assertEquals(userDetailsDialogBox.getFirstName(),user.getFirstName());
-       //  softAssert.assertEquals(userDetailsDialogBox.getLastName(),user.getLastName());
-       //  softAssert.assertEquals(userDetailsDialogBox.getAbout(),user.getAbout());
-       log.info("Created at date: " + userDetailsDialogBox.getCreatedAtDate());
+        softAssert.assertEquals(userDetailsDialogBox.getUsername(), user.getUsername(), "Username is NOT correct!");
+        softAssert.assertEquals(userDetailsDialogBox.getFirstName(), user.getFirstName(), "First Name is NOT correct!");
+        softAssert.assertEquals(userDetailsDialogBox.getLastName(), user.getLastName(), "Last Name is NOT correct!");
+        softAssert.assertEquals(userDetailsDialogBox.getAbout(), user.getAbout(), "About Text is NOT correct!");
+        softAssert.assertTrue(DateTimeUtils.compareDateTimes(userDetailsDialogBox.getCreatedAtDate(), user.getCreatedAt(), 120), "Created At Date is NOT correct!");
+        softAssert.assertAll("User Details are NOT correct!");
     }
 
 

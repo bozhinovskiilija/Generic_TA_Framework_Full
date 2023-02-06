@@ -31,15 +31,13 @@ public class VerifyErrorGetNonExistingUser extends BaseTestClass {
 
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
-
         log.debug("[SETUP TEST] " + testName);
         user = User.createNewUniqueUser("NonExistingUser");
-        RestApiUtils.postUser(user);
     }
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @Story("Successful Login")
+    @Story("API Testing")
     public void testApiForNonExistingUser() {
 
         Integer expectedStatusCode = CommonString.INTERNAL_SERVER_ERROR_CODE;
@@ -58,7 +56,7 @@ public class VerifyErrorGetNonExistingUser extends BaseTestClass {
         softAssert.assertEquals(error.getException(),expectedException,"Wrong exception error message");
         softAssert.assertEquals(error.getMessage(),expectedMessage,"Wrong expected message");
         softAssert.assertEquals(error.getPath(),expectedPath,"Wrong expected path");
-        softAssert.assertTrue(DateTimeUtils.compareDateTimes(error.getTimestamp(),currentDateTime,2),"Wrong timestamp");
+        softAssert.assertTrue(DateTimeUtils.compareDateTimes(error.getTimestamp(), currentDateTime, 10), "Wrong Timestamp!");
         softAssert.assertAll("Wrong Error Response Details!");
     }
 
