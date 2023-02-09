@@ -42,35 +42,26 @@ public class WebDriverUtils extends LoggerUtils {
                     ChromeOptions options = new ChromeOptions();
                     options.setHeadless(headless);
                     options.addArguments("--window-size=1600x900");
+                   // WebDriverManager.chromedriver().setup();
 
                     if (remote) {
 
+                       // driver=WebDriverManager.chromedriver().capabilities(options).remoteAddress(hubUrl).create();
                         RemoteWebDriver remoteDriver = new RemoteWebDriver(new URL(hubUrl), options);
                         remoteDriver.setFileDetector(new LocalFileDetector());
                         driver = remoteDriver;
 
                     } else {
-
-                        // WebDriverManager.chromedriver().setup();
-                        // ChromeOptions opt = new ChromeOptions();
-                        //
-                        // opt.addArguments("--no-sandbox");
-                        //
-                        // opt.addArguments("--disable-dev-shm-usage");
-                        //
-                        // opt.addArguments("--headless");
-
-                        //driver = new ChromeDriver(opt);
-                        System.setProperty("webdriver.chrome.driver", pathDriverChrome);
+                        //System.setProperty("webdriver.chrome.driver", pathDriverChrome);
                         driver = new ChromeDriver(options);
                     }
                     break;
                 }
                 case "firefox": {
                     FirefoxOptions options = new FirefoxOptions();
-                    options.setHeadless(headless);
+                    //options.addArguments("--headless");
                     options.addArguments("--window-size=1600x900");
-
+                    //WebDriverManager.firefoxdriver().setup();
                     if (remote) {
 
                         RemoteWebDriver remoteDriver = new RemoteWebDriver(new URL(hubUrl), options);
@@ -78,10 +69,8 @@ public class WebDriverUtils extends LoggerUtils {
                         driver = remoteDriver;
 
                     } else {
-                        WebDriverManager.firefoxdriver().setup();
-                        driver=new FirefoxDriver();
-                        //System.setProperty("webdriver.gecko.driver", pathDriverFirefox);
-                       // driver = new FirefoxDriver(options);
+                      // System.setProperty("webdriver.gecko.driver", pathDriverFirefox);
+                       driver = new FirefoxDriver(options);
                     }
 
 
@@ -90,8 +79,9 @@ public class WebDriverUtils extends LoggerUtils {
                 case "edge": {
 
                     EdgeOptions options = new EdgeOptions();
-                    options.setHeadless(headless);
+                   // options.addArguments("--headless");
                     options.addArguments("--window-size=1600x900");
+                    //WebDriverManager.edgedriver().setup();
 
                     if (remote) {
 
@@ -100,7 +90,7 @@ public class WebDriverUtils extends LoggerUtils {
                         driver = remoteDriver;
 
                     } else {
-                        System.setProperty("webdriver.edge.driver", pathDriverEdge);
+                       // System.setProperty("webdriver.edge.driver", pathDriverEdge);
                         driver = new EdgeDriver(options);
                     }
 

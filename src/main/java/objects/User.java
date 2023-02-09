@@ -3,6 +3,7 @@ package objects;
 
 import com.github.javafaker.Faker;
 import org.testng.Assert;
+import utils.CSVUtils;
 import utils.DateTimeUtils;
 import utils.PropertiesUtils;
 
@@ -14,6 +15,8 @@ import java.util.Objects;
 //Pojo - Plain Old Java Object
 //for registering new users
 public class User {
+
+    private static final String usersFilePath =System.getProperty("user.dir") + PropertiesUtils.getDocumentsFolder() + "Users.csv";
 
     private String username;
     private String password;
@@ -288,6 +291,20 @@ public class User {
 
         setEmail(null);
     }
+
+    public static User readUserFromCSVFile(String username){
+        String password = CSVUtils.getCellValueBySpecifiedRowAndSpecificColumn(usersFilePath,username,"password");
+        String email = CSVUtils.getCellValueBySpecifiedRowAndSpecificColumn(usersFilePath,username,"email");
+        String firstName = CSVUtils.getCellValueBySpecifiedRowAndSpecificColumn(usersFilePath,username,"firstName");
+        String lastName = CSVUtils.getCellValueBySpecifiedRowAndSpecificColumn(usersFilePath,username,"lastName");
+        String about = CSVUtils.getCellValueBySpecifiedRowAndSpecificColumn(usersFilePath,username,"about");
+        String secretQuestion = CSVUtils.getCellValueBySpecifiedRowAndSpecificColumn(usersFilePath,username,"secretQuestion");
+        String secretAnswer = CSVUtils.getCellValueBySpecifiedRowAndSpecificColumn(usersFilePath,username,"secretAnswer");
+
+        return new User(username,password,email,firstName,lastName,about,secretQuestion,secretAnswer);
+    }
+
+
 
     @Override
     public String toString() {
