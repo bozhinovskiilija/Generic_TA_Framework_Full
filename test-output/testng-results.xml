@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="10" total="19" passed="5" failed="0" skipped="4">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-10T10:34:19 CET" name="Regression Suite" finished-at="2023-02-10T10:38:26 CET" duration-ms="246604">
+    <groups>
+      <group name="mouse">
+        <method signature="Tooltip.testUselessTooltip()[pri:0, instance:tests.practice.Tooltip@38b3f208]" name="testUselessTooltip" class="tests.practice.Tooltip"/>
+        <method signature="VerifyDragAndDrop.testDragAndDrop()[pri:0, instance:tests.practice.VerifyDragAndDrop@6680f714]" name="testDragAndDrop" class="tests.practice.VerifyDragAndDrop"/>
+      </group> <!-- mouse -->
+      <group name="regression">
+        <method signature="AddNewHero.testAddNewHero()[pri:0, instance:tests.heroes.AddNewHero@17e9bc9e]" name="testAddNewHero" class="tests.heroes.AddNewHero"/>
+        <method signature="AddNewUserTest.testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@5a936e64]" name="testAddingNewUser" class="tests.users.AddNewUserTest"/>
+        <method signature="DeleteHero.testDeleteHero()[pri:0, instance:tests.heroes.DeleteHero@2577a95d]" name="testDeleteHero" class="tests.heroes.DeleteHero"/>
+        <method signature="SuccessfulLoginLogout.testSuccessfulLoginLogout()[pri:0, instance:tests.login.SuccessfulLoginLogout@68d6d775]" name="testSuccessfulLoginLogout" class="tests.login.SuccessfulLoginLogout"/>
+        <method signature="SuccessfulRegister.testRegisterNewUser()[pri:0, instance:tests.register.SuccessfulRegister@7d97e06c]" name="testRegisterNewUser" class="tests.register.SuccessfulRegister"/>
+        <method signature="Tooltip.testUselessTooltip()[pri:0, instance:tests.practice.Tooltip@38b3f208]" name="testUselessTooltip" class="tests.practice.Tooltip"/>
+        <method signature="UnsuccessfulLoginWrongPassword.testUnsuccessfulLoginWrongPassword()[pri:0, instance:tests.login.UnsuccessfulLoginWrongPassword@b67cc70]" name="testUnsuccessfulLoginWrongPassword" class="tests.login.UnsuccessfulLoginWrongPassword"/>
+        <method signature="VerifyDragAndDrop.testDragAndDrop()[pri:0, instance:tests.practice.VerifyDragAndDrop@6680f714]" name="testDragAndDrop" class="tests.practice.VerifyDragAndDrop"/>
+        <method signature="VerifyUserDetails.testVerifyUserDetails()[pri:0, instance:tests.users.VerifyUserDetails@3b4a1a75]" name="testVerifyUserDetails" class="tests.users.VerifyUserDetails"/>
+      </group> <!-- regression -->
+      <group name="sanity">
+        <method signature="AddNewHero.testAddNewHero()[pri:0, instance:tests.heroes.AddNewHero@17e9bc9e]" name="testAddNewHero" class="tests.heroes.AddNewHero"/>
+        <method signature="AddNewUserTest.testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@5a936e64]" name="testAddingNewUser" class="tests.users.AddNewUserTest"/>
+        <method signature="DeleteHero.testDeleteHero()[pri:0, instance:tests.heroes.DeleteHero@2577a95d]" name="testDeleteHero" class="tests.heroes.DeleteHero"/>
+        <method signature="SuccessfulLoginLogout.testSuccessfulLoginLogout()[pri:0, instance:tests.login.SuccessfulLoginLogout@68d6d775]" name="testSuccessfulLoginLogout" class="tests.login.SuccessfulLoginLogout"/>
+        <method signature="SuccessfulRegister.testRegisterNewUser()[pri:0, instance:tests.register.SuccessfulRegister@7d97e06c]" name="testRegisterNewUser" class="tests.register.SuccessfulRegister"/>
+        <method signature="VerifyUserDetails.testVerifyUserDetails()[pri:0, instance:tests.users.VerifyUserDetails@3b4a1a75]" name="testVerifyUserDetails" class="tests.users.VerifyUserDetails"/>
+      </group> <!-- sanity -->
+      <group name="hero">
+        <method signature="AddNewHero.testAddNewHero()[pri:0, instance:tests.heroes.AddNewHero@17e9bc9e]" name="testAddNewHero" class="tests.heroes.AddNewHero"/>
+        <method signature="DeleteHero.testDeleteHero()[pri:0, instance:tests.heroes.DeleteHero@2577a95d]" name="testDeleteHero" class="tests.heroes.DeleteHero"/>
+      </group> <!-- hero -->
+      <group name="login">
+        <method signature="SuccessfulLoginLogout.testSuccessfulLoginLogout()[pri:0, instance:tests.login.SuccessfulLoginLogout@68d6d775]" name="testSuccessfulLoginLogout" class="tests.login.SuccessfulLoginLogout"/>
+        <method signature="UnsuccessfulLoginWrongPassword.testUnsuccessfulLoginWrongPassword()[pri:0, instance:tests.login.UnsuccessfulLoginWrongPassword@b67cc70]" name="testUnsuccessfulLoginWrongPassword" class="tests.login.UnsuccessfulLoginWrongPassword"/>
+      </group> <!-- login -->
+      <group name="users">
+        <method signature="AddNewUserTest.testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@5a936e64]" name="testAddingNewUser" class="tests.users.AddNewUserTest"/>
+        <method signature="SuccessfulRegister.testRegisterNewUser()[pri:0, instance:tests.register.SuccessfulRegister@7d97e06c]" name="testRegisterNewUser" class="tests.register.SuccessfulRegister"/>
+        <method signature="VerifyUserDetails.testVerifyUserDetails()[pri:0, instance:tests.users.VerifyUserDetails@3b4a1a75]" name="testVerifyUserDetails" class="tests.users.VerifyUserDetails"/>
+      </group> <!-- users -->
+    </groups>
+    <test started-at="2023-02-10T10:34:19 CET" name="Login Tests" finished-at="2023-02-10T10:38:26 CET" duration-ms="246604">
+      <class name="tests.heroes.AddNewHero">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.heroes.AddNewHero@17e9bc9e]" started-at="2023-02-10T10:34:20 CET" name="setupTest" finished-at="2023-02-10T10:34:49 CET" duration-ms="29700" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {"timestamp":1676021684962,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.IncorrectResultSizeDataAccessException","message":"result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements","path":"/api/users/add"} expected [200] but found [500]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {"timestamp":1676021684962,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.IncorrectResultSizeDataAccessException","message":"result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements","path":"/api/users/add"} expected [200] but found [500]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+at tests.heroes.AddNewHero.setupTest(AddNewHero.java:53)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testAddNewHero()[pri:0, instance:tests.heroes.AddNewHero@17e9bc9e]" started-at="2023-02-10T10:34:49 CET" name="testAddNewHero" finished-at="2023-02-10T10:34:49 CET" duration-ms="0" status="SKIP">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {"timestamp":1676021684962,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.IncorrectResultSizeDataAccessException","message":"result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements","path":"/api/users/add"} expected [200] but found [500]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {"timestamp":1676021684962,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.IncorrectResultSizeDataAccessException","message":"result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements","path":"/api/users/add"} expected [200] but found [500]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+at tests.heroes.AddNewHero.setupTest(AddNewHero.java:53)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewHero -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.heroes.AddNewHero@17e9bc9e]" started-at="2023-02-10T10:34:49 CET" name="tearDownTest" finished-at="2023-02-10T10:34:56 CET" duration-ms="6234" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=AddNewHero.testAddNewHero()[pri:0, instance:tests.heroes.AddNewHero@17e9bc9e] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.heroes.AddNewHero -->
+      <class name="tests.practice.VerifyDragAndDrop">
+        <test-method is-config="true" signature="setUpTest(org.testng.ITestContext)[pri:0, instance:tests.practice.VerifyDragAndDrop@6680f714]" started-at="2023-02-10T10:34:55 CET" name="setUpTest" finished-at="2023-02-10T10:35:07 CET" duration-ms="12227" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpTest -->
+        <test-method signature="testDragAndDrop()[pri:0, instance:tests.practice.VerifyDragAndDrop@6680f714]" started-at="2023-02-10T10:35:07 CET" name="testDragAndDrop" finished-at="2023-02-10T10:38:24 CET" duration-ms="197126" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDragAndDrop -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.practice.VerifyDragAndDrop@6680f714]" started-at="2023-02-10T10:38:24 CET" name="tearDownTest" finished-at="2023-02-10T10:38:26 CET" duration-ms="1602" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testDragAndDrop status=SUCCESS method=VerifyDragAndDrop.testDragAndDrop()[pri:0, instance:tests.practice.VerifyDragAndDrop@6680f714] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.practice.VerifyDragAndDrop -->
+      <class name="tests.users.AddNewUserTest">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.users.AddNewUserTest@5a936e64]" started-at="2023-02-10T10:34:56 CET" name="setupTest" finished-at="2023-02-10T10:35:05 CET" duration-ms="9509" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@5a936e64]" started-at="2023-02-10T10:35:05 CET" name="testAddingNewUser" finished-at="2023-02-10T10:36:25 CET" duration-ms="79589" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddingNewUser -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.users.AddNewUserTest@5a936e64]" started-at="2023-02-10T10:36:25 CET" name="tearDownTest" finished-at="2023-02-10T10:36:26 CET" duration-ms="1024" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testAddingNewUser status=SUCCESS method=AddNewUserTest.testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@5a936e64] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.users.AddNewUserTest -->
+      <class name="tests.register.SuccessfulRegister">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.register.SuccessfulRegister@7d97e06c]" started-at="2023-02-10T10:34:56 CET" name="setupTest" finished-at="2023-02-10T10:35:05 CET" duration-ms="9013" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testRegisterNewUser()[pri:0, instance:tests.register.SuccessfulRegister@7d97e06c]" started-at="2023-02-10T10:35:05 CET" name="testRegisterNewUser" finished-at="2023-02-10T10:36:04 CET" duration-ms="59271" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRegisterNewUser -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.register.SuccessfulRegister@7d97e06c]" started-at="2023-02-10T10:36:04 CET" name="tearDownTest" finished-at="2023-02-10T10:36:08 CET" duration-ms="4080" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testRegisterNewUser status=SUCCESS method=SuccessfulRegister.testRegisterNewUser()[pri:0, instance:tests.register.SuccessfulRegister@7d97e06c] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.register.SuccessfulRegister -->
+      <class name="tests.users.VerifyUserDetails">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.users.VerifyUserDetails@3b4a1a75]" started-at="2023-02-10T10:34:56 CET" name="setupTest" finished-at="2023-02-10T10:35:07 CET" duration-ms="11438" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testVerifyUserDetails()[pri:0, instance:tests.users.VerifyUserDetails@3b4a1a75]" started-at="2023-02-10T10:35:07 CET" name="testVerifyUserDetails" finished-at="2023-02-10T10:35:54 CET" duration-ms="46774" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testVerifyUserDetails -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.users.VerifyUserDetails@3b4a1a75]" started-at="2023-02-10T10:35:54 CET" name="tearDownTest" finished-at="2023-02-10T10:36:00 CET" duration-ms="6009" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testVerifyUserDetails status=SUCCESS method=VerifyUserDetails.testVerifyUserDetails()[pri:0, instance:tests.users.VerifyUserDetails@3b4a1a75] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.users.VerifyUserDetails -->
+      <class name="tests.heroes.DeleteHero">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.heroes.DeleteHero@2577a95d]" started-at="2023-02-10T10:34:20 CET" name="setupTest" finished-at="2023-02-10T10:34:49 CET" duration-ms="29696" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {"timestamp":1676021684962,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.IncorrectResultSizeDataAccessException","message":"result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements","path":"/api/users/add"} expected [200] but found [500]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {"timestamp":1676021684962,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.IncorrectResultSizeDataAccessException","message":"result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements","path":"/api/users/add"} expected [200] but found [500]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+at tests.heroes.DeleteHero.setupTest(DeleteHero.java:51)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testDeleteHero()[pri:0, instance:tests.heroes.DeleteHero@2577a95d]" started-at="2023-02-10T10:34:49 CET" name="testDeleteHero" finished-at="2023-02-10T10:34:49 CET" duration-ms="0" status="SKIP">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {"timestamp":1676021684962,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.IncorrectResultSizeDataAccessException","message":"result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements","path":"/api/users/add"} expected [200] but found [500]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {"timestamp":1676021684962,"status":500,"error":"Internal Server Error","exception":"org.springframework.dao.IncorrectResultSizeDataAccessException","message":"result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements","path":"/api/users/add"} expected [200] but found [500]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+at tests.heroes.DeleteHero.setupTest(DeleteHero.java:51)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteHero -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.heroes.DeleteHero@2577a95d]" started-at="2023-02-10T10:34:49 CET" name="tearDownTest" finished-at="2023-02-10T10:34:56 CET" duration-ms="6243" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=DeleteHero.testDeleteHero()[pri:0, instance:tests.heroes.DeleteHero@2577a95d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.heroes.DeleteHero -->
+      <class name="tests.login.UnsuccessfulLoginWrongPassword">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.login.UnsuccessfulLoginWrongPassword@b67cc70]" started-at="2023-02-10T10:34:20 CET" name="setupTest" finished-at="2023-02-10T10:34:36 CET" duration-ms="16094" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testUnsuccessfulLoginWrongPassword()[pri:0, instance:tests.login.UnsuccessfulLoginWrongPassword@b67cc70]" started-at="2023-02-10T10:34:36 CET" name="testUnsuccessfulLoginWrongPassword" finished-at="2023-02-10T10:34:57 CET" duration-ms="20723" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUnsuccessfulLoginWrongPassword -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.login.UnsuccessfulLoginWrongPassword@b67cc70]" started-at="2023-02-10T10:34:57 CET" name="tearDownTest" finished-at="2023-02-10T10:35:05 CET" duration-ms="8121" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testUnsuccessfulLoginWrongPassword status=SUCCESS method=UnsuccessfulLoginWrongPassword.testUnsuccessfulLoginWrongPassword()[pri:0, instance:tests.login.UnsuccessfulLoginWrongPassword@b67cc70] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.login.UnsuccessfulLoginWrongPassword -->
+      <class name="tests.login.SuccessfulLoginLogout">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.login.SuccessfulLoginLogout@68d6d775]" started-at="2023-02-10T10:34:20 CET" name="setupTest" test-instance-name="JIRA00001E" finished-at="2023-02-10T10:34:49 CET" duration-ms="29588" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Wrong Response Status Code in postUser(successloginlogout230210103436) Api Call! Response Body: {"timestamp":1676021684827,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"Incorrect format of About!","path":"/api/users/add"} expected [200] but found [500]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Wrong Response Status Code in postUser(successloginlogout230210103436) Api Call! Response Body: {"timestamp":1676021684827,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"Incorrect format of About!","path":"/api/users/add"} expected [200] but found [500]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+at tests.login.SuccessfulLoginLogout.setupTest(SuccessfulLoginLogout.java:62)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testSuccessfulLoginLogout()[pri:0, instance:tests.login.SuccessfulLoginLogout@68d6d775]" started-at="2023-02-10T10:34:49 CET" name="testSuccessfulLoginLogout" description="JIRA00001D" test-instance-name="JIRA00001E" finished-at="2023-02-10T10:34:49 CET" duration-ms="0" status="SKIP">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Wrong Response Status Code in postUser(successloginlogout230210103436) Api Call! Response Body: {"timestamp":1676021684827,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"Incorrect format of About!","path":"/api/users/add"} expected [200] but found [500]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Wrong Response Status Code in postUser(successloginlogout230210103436) Api Call! Response Body: {"timestamp":1676021684827,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"Incorrect format of About!","path":"/api/users/add"} expected [200] but found [500]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+at tests.login.SuccessfulLoginLogout.setupTest(SuccessfulLoginLogout.java:62)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSuccessfulLoginLogout -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.login.SuccessfulLoginLogout@68d6d775]" started-at="2023-02-10T10:34:49 CET" name="tearDownTest" test-instance-name="JIRA00001E" finished-at="2023-02-10T10:34:56 CET" duration-ms="6325" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=SuccessfulLoginLogout.testSuccessfulLoginLogout()[pri:0, instance:tests.login.SuccessfulLoginLogout@68d6d775] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.login.SuccessfulLoginLogout -->
+      <class name="tests.practice.Tooltip">
+        <test-method is-config="true" signature="setUpTest(org.testng.ITestContext)[pri:0, instance:tests.practice.Tooltip@38b3f208]" started-at="2023-02-10T10:34:20 CET" name="setUpTest" finished-at="2023-02-10T10:34:49 CET" duration-ms="29588" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4c0e426a]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Wrong Response Status Code in postUser(uselesstooltip230210103436) Api Call! Response Body: {"timestamp":1676021684827,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"Incorrect format of About!","path":"/api/users/add"} expected [200] but found [500]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Wrong Response Status Code in postUser(uselesstooltip230210103436) Api Call! Response Body: {"timestamp":1676021684827,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"Incorrect format of About!","path":"/api/users/add"} expected [200] but found [500]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+at tests.practice.Tooltip.setUpTest(Tooltip.java:39)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpTest -->
+        <test-method signature="testUselessTooltip()[pri:0, instance:tests.practice.Tooltip@38b3f208]" started-at="2023-02-10T10:34:49 CET" name="testUselessTooltip" finished-at="2023-02-10T10:34:49 CET" duration-ms="0" status="SKIP">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Wrong Response Status Code in postUser(uselesstooltip230210103436) Api Call! Response Body: {"timestamp":1676021684827,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"Incorrect format of About!","path":"/api/users/add"} expected [200] but found [500]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Wrong Response Status Code in postUser(uselesstooltip230210103436) Api Call! Response Body: {"timestamp":1676021684827,"status":500,"error":"Internal Server Error","exception":"java.lang.IllegalArgumentException","message":"Incorrect format of About!","path":"/api/users/add"} expected [200] but found [500]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:907)
+at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+at tests.practice.Tooltip.setUpTest(Tooltip.java:39)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:527)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUselessTooltip -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.practice.Tooltip@38b3f208]" started-at="2023-02-10T10:34:49 CET" name="tearDownTest" finished-at="2023-02-10T10:34:55 CET" duration-ms="5755" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=Tooltip.testUselessTooltip()[pri:0, instance:tests.practice.Tooltip@38b3f208] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.practice.Tooltip -->
+    </test> <!-- Login Tests -->
+  </suite> <!-- Regression Suite -->
+</testng-results>

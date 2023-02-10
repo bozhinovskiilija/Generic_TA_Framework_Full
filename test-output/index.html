@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-Regression_Suite" class="navigator-link">
+              <span class="suite-name border-skipped">Regression Suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-Regression_Suite" class="navigator-link ">
+                    <span>C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\src\test\java\suites\regression_suite.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-Regression_Suite" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-Regression_Suite" class="navigator-link ">
+                    <span>6 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-Regression_Suite" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-Regression_Suite" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-Regression_Suite" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-Regression_Suite" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">9 methods,  4 skipped,  5 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-Regression_Suite" class="hide-methods skipped suite-Regression_Suite"> (hide)</a> <!-- hide-methods skipped suite-Regression_Suite -->
+                      <a href="#" panel-name="suite-Regression_Suite" class="show-methods skipped suite-Regression_Suite"> (show)</a> <!-- show-methods skipped suite-Regression_Suite -->
+                    </span>
+                    <div class="method-list-content skipped suite-Regression_Suite">
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.heroes.AddNewHero" class="method navigator-link" hash-for-method="testAddNewHero">testAddNewHero</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.heroes.DeleteHero" class="method navigator-link" hash-for-method="testDeleteHero">testDeleteHero</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.login.SuccessfulLoginLogout" class="method navigator-link" hash-for-method="testSuccessfulLoginLogout">testSuccessfulLoginLogout</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.practice.Tooltip" class="method navigator-link" hash-for-method="testUselessTooltip">testUselessTooltip</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-Regression_Suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Regression_Suite" class="hide-methods passed suite-Regression_Suite"> (hide)</a> <!-- hide-methods passed suite-Regression_Suite -->
+                      <a href="#" panel-name="suite-Regression_Suite" class="show-methods passed suite-Regression_Suite"> (show)</a> <!-- show-methods passed suite-Regression_Suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Regression_Suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.users.AddNewUserTest" class="method navigator-link" hash-for-method="testAddingNewUser">testAddingNewUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.practice.VerifyDragAndDrop" class="method navigator-link" hash-for-method="testDragAndDrop">testDragAndDrop</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.register.SuccessfulRegister" class="method navigator-link" hash-for-method="testRegisterNewUser">testRegisterNewUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.login.UnsuccessfulLoginWrongPassword" class="method navigator-link" hash-for-method="testUnsuccessfulLoginWrongPassword">testUnsuccessfulLoginWrongPassword</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Suite" title="tests.users.VerifyUserDetails" class="method navigator-link" hash-for-method="testVerifyUserDetails">testVerifyUserDetails</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Regression_Suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Regression_Suite" class="panel Regression_Suite">
+          <div class="suite-Regression_Suite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">tests.heroes.DeleteHero</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testDeleteHero">
+                  </a> <!-- testDeleteHero -->
+                  <span class="method-name">testDeleteHero</span>
+                  <div class="stack-trace">java.lang.AssertionError: Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {&quot;timestamp&quot;:1676021684962,&quot;status&quot;:500,&quot;error&quot;:&quot;Internal Server Error&quot;,&quot;exception&quot;:&quot;org.springframework.dao.IncorrectResultSizeDataAccessException&quot;,&quot;message&quot;:&quot;result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements&quot;,&quot;path&quot;:&quot;/api/users/add&quot;} expected [200] but found [500]
+	at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+	at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+	at tests.heroes.DeleteHero.setupTest(DeleteHero.java:51)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+... Removed 21 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-skipped -->
+          <div class="suite-Regression_Suite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">tests.login.SuccessfulLoginLogout</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testSuccessfulLoginLogout">
+                  </a> <!-- testSuccessfulLoginLogout -->
+                  <span class="method-name">testSuccessfulLoginLogout</span>
+                  <div class="stack-trace">java.lang.AssertionError: Wrong Response Status Code in postUser(successloginlogout230210103436) Api Call! Response Body: {&quot;timestamp&quot;:1676021684827,&quot;status&quot;:500,&quot;error&quot;:&quot;Internal Server Error&quot;,&quot;exception&quot;:&quot;java.lang.IllegalArgumentException&quot;,&quot;message&quot;:&quot;Incorrect format of About!&quot;,&quot;path&quot;:&quot;/api/users/add&quot;} expected [200] but found [500]
+	at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+	at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+	at tests.login.SuccessfulLoginLogout.setupTest(SuccessfulLoginLogout.java:62)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+... Removed 21 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(JIRA00001D)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-skipped -->
+          <div class="suite-Regression_Suite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">tests.heroes.AddNewHero</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testAddNewHero">
+                  </a> <!-- testAddNewHero -->
+                  <span class="method-name">testAddNewHero</span>
+                  <div class="stack-trace">java.lang.AssertionError: Wrong Response Status Code in postUser(addnewhero230210103436) Api Call! Response Body: {&quot;timestamp&quot;:1676021684962,&quot;status&quot;:500,&quot;error&quot;:&quot;Internal Server Error&quot;,&quot;exception&quot;:&quot;org.springframework.dao.IncorrectResultSizeDataAccessException&quot;,&quot;message&quot;:&quot;result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements&quot;,&quot;path&quot;:&quot;/api/users/add&quot;} expected [200] but found [500]
+	at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+	at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+	at tests.heroes.AddNewHero.setupTest(AddNewHero.java:53)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+... Removed 21 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-skipped -->
+          <div class="suite-Regression_Suite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">tests.practice.Tooltip</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testUselessTooltip">
+                  </a> <!-- testUselessTooltip -->
+                  <span class="method-name">testUselessTooltip</span>
+                  <div class="stack-trace">java.lang.AssertionError: Wrong Response Status Code in postUser(uselesstooltip230210103436) Api Call! Response Body: {&quot;timestamp&quot;:1676021684827,&quot;status&quot;:500,&quot;error&quot;:&quot;Internal Server Error&quot;,&quot;exception&quot;:&quot;java.lang.IllegalArgumentException&quot;,&quot;message&quot;:&quot;Incorrect format of About!&quot;,&quot;path&quot;:&quot;/api/users/add&quot;} expected [200] but found [500]
+	at utils.RestApiUtils.postUser(RestApiUtils.java:130)
+	at utils.RestApiUtils.postUser(RestApiUtils.java:135)
+	at tests.practice.Tooltip.setUpTest(Tooltip.java:39)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+... Removed 21 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-skipped -->
+          <div class="suite-Regression_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">tests.users.VerifyUserDetails</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testVerifyUserDetails">
+                  </a> <!-- testVerifyUserDetails -->
+                  <span class="method-name">testVerifyUserDetails</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-passed -->
+          <div class="suite-Regression_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">tests.register.SuccessfulRegister</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testRegisterNewUser">
+                  </a> <!-- testRegisterNewUser -->
+                  <span class="method-name">testRegisterNewUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-passed -->
+          <div class="suite-Regression_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">tests.login.UnsuccessfulLoginWrongPassword</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testUnsuccessfulLoginWrongPassword">
+                  </a> <!-- testUnsuccessfulLoginWrongPassword -->
+                  <span class="method-name">testUnsuccessfulLoginWrongPassword</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-passed -->
+          <div class="suite-Regression_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">tests.users.AddNewUserTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testAddingNewUser">
+                  </a> <!-- testAddingNewUser -->
+                  <span class="method-name">testAddingNewUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-passed -->
+          <div class="suite-Regression_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">tests.practice.VerifyDragAndDrop</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testDragAndDrop">
+                  </a> <!-- testDragAndDrop -->
+                  <span class="method-name">testDragAndDrop</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-passed -->
+        </div> <!-- panel Regression_Suite -->
+        <div panel-name="test-xml-Regression_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\src\test\java\suites\regression_suite.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite parallel=&quot;methods&quot; name=&quot;Regression Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;parameter name=&quot;updateJira&quot; value=&quot;true&quot;/&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;listeners.TestListener&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;packages&gt;
+    &lt;package name=&quot;tests.*&quot;/&gt;
+  &lt;/packages&gt;
+  &lt;test thread-count=&quot;5&quot; parallel=&quot;methods&quot; name=&quot;Login Tests&quot;&gt;
+    &lt;groups&gt;
+      &lt;run&gt;
+        &lt;include name=&quot;regression&quot;/&gt;
+        &lt;exclude name=&quot;broke&quot;/&gt;
+        &lt;exclude name=&quot;deprecated&quot;/&gt;
+        &lt;exclude name=&quot;bugs&quot;/&gt;
+      &lt;/run&gt;
+    &lt;/groups&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;tests.api.VerifyErrorGetNonExistingUser&quot;/&gt;
+      &lt;class name=&quot;tests.api.VerifyErrorGetUserNoPermission&quot;/&gt;
+      &lt;class name=&quot;tests.api.VerifyErrorPostAlreadyExistingUser&quot;/&gt;
+      &lt;class name=&quot;tests.api.VerifyErrorPostUserNoEmail&quot;/&gt;
+      &lt;class name=&quot;tests.BaseTestClass&quot;/&gt;
+      &lt;class name=&quot;tests.database.DatabaseTest&quot;/&gt;
+      &lt;class name=&quot;tests.heroes.AddNewHero&quot;/&gt;
+      &lt;class name=&quot;tests.heroes.DeleteHero&quot;/&gt;
+      &lt;class name=&quot;tests.login.DemoTest&quot;/&gt;
+      &lt;class name=&quot;tests.login.LoginTest&quot;/&gt;
+      &lt;class name=&quot;tests.login.SuccessfulLoginLogout&quot;/&gt;
+      &lt;class name=&quot;tests.login.UnsuccessfulLoginWrongPassword&quot;/&gt;
+      &lt;class name=&quot;tests.page_evaluation.EvaluateLoginPage&quot;/&gt;
+      &lt;class name=&quot;tests.practice.Tooltip&quot;/&gt;
+      &lt;class name=&quot;tests.practice.VerifyDragAndDrop&quot;/&gt;
+      &lt;class name=&quot;tests.profile.VerifyProfileImage&quot;/&gt;
+      &lt;class name=&quot;tests.register.SuccessfulRegister&quot;/&gt;
+      &lt;class name=&quot;tests.users.AddNewUserTest&quot;/&gt;
+      &lt;class name=&quot;tests.users.VerifyUserDetails&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Login Tests --&gt;
+&lt;/suite&gt; &lt;!-- Regression Suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Regression_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Regression Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Login Tests (19 classes)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Regression_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Regression Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">hero</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">testAddNewHero</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testDeleteHero</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">login</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">testSuccessfulLoginLogout</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testUnsuccessfulLoginWrongPassword</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">mouse</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">testDragAndDrop</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testUselessTooltip</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">regression</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">testAddNewHero</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testAddingNewUser</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testDeleteHero</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testDragAndDrop</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testRegisterNewUser</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testSuccessfulLoginLogout</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testUnsuccessfulLoginWrongPassword</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testUselessTooltip</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testVerifyUserDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">sanity</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">testAddNewHero</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testAddingNewUser</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testDeleteHero</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testRegisterNewUser</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testSuccessfulLoginLogout</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testVerifyUserDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">users</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">testAddingNewUser</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testRegisterNewUser</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">testVerifyUserDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Regression_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Regression Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Regression_Suite');
+function tableData_Regression_Suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(9);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'testDragAndDrop')
+data.setCell(0, 2, 'tests.practice.VerifyDragAndDrop')
+data.setCell(0, 3, 197126);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'testAddingNewUser')
+data.setCell(1, 2, 'tests.users.AddNewUserTest')
+data.setCell(1, 3, 79589);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'testRegisterNewUser')
+data.setCell(2, 2, 'tests.register.SuccessfulRegister')
+data.setCell(2, 3, 59271);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'testVerifyUserDetails')
+data.setCell(3, 2, 'tests.users.VerifyUserDetails')
+data.setCell(3, 3, 46774);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'testUnsuccessfulLoginWrongPassword')
+data.setCell(4, 2, 'tests.login.UnsuccessfulLoginWrongPassword')
+data.setCell(4, 3, 20723);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'testSuccessfulLoginLogout')
+data.setCell(5, 2, 'tests.login.SuccessfulLoginLogout')
+data.setCell(5, 3, 0);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'testDeleteHero')
+data.setCell(6, 2, 'tests.heroes.DeleteHero')
+data.setCell(6, 3, 0);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'testAddNewHero')
+data.setCell(7, 2, 'tests.heroes.AddNewHero')
+data.setCell(7, 3, 0);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'testUselessTooltip')
+data.setCell(8, 2, 'tests.practice.Tooltip')
+data.setCell(8, 3, 0);
+window.suiteTableData['Regression_Suite']= { tableData: data, tableDiv: 'times-div-Regression_Suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 6 minutes</span>
+              <div id="times-div-Regression_Suite">
+              </div> <!-- times-div-Regression_Suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Regression_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Regression Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Regression_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">10 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.api.VerifyErrorPostUserNoEmail</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testVerifyErrorPostUserNoEmail</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.api.VerifyErrorGetNonExistingUser</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testApiForNonExistingUser</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.page_evaluation.EvaluateLoginPage</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testEvaluateLoginPageLocators</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.database.DatabaseTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testApiForNonExistingUser</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.login.LoginTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testUnsuccessfulLoginWrongPassword</span>
+                <br/>
+                <span class="ignored-method-name">testSuccessfulLoginLogout</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.api.VerifyErrorPostAlreadyExistingUser</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testVerifyErrorPostAlreadyExistingUser</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.login.DemoTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testDemoTest</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.profile.VerifyProfileImage</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testVerifyProfileImage</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.api.VerifyErrorGetUserNoPermission</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">testVerifyErrorGetUserNoPermission</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Regression_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.heroes.AddNewHero</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">setupTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.practice.Tooltip</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">setUpTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">2 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.heroes.DeleteHero</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">setupTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">2 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.login.SuccessfulLoginLogout</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">setupTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">2 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.login.UnsuccessfulLoginWrongPassword</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">2 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testUnsuccessfulLoginWrongPassword</span>
+                <span class="method-start">16896 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.login.SuccessfulLoginLogout</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testSuccessfulLoginLogout</span>
+                <span class="method-start">29672 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.practice.Tooltip</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testUselessTooltip</span>
+                <span class="method-start">29673 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.login.SuccessfulLoginLogout</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name={null} status=CREATED method=SuccessfulLoginLogout.testSuccessfulLoginLogout()[pri:...)</span>
+                <span class="method-start">29705 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.heroes.DeleteHero</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testDeleteHero</span>
+                <span class="method-start">29717 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.heroes.AddNewHero</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testAddNewHero</span>
+                <span class="method-start">29728 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.heroes.DeleteHero</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name={null} status=CREATED method=DeleteHero.testDeleteHero()[pri:0, instance:tests.hero...)</span>
+                <span class="method-start">29732 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.practice.Tooltip</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name={null} status=CREATED method=Tooltip.testUselessTooltip()[pri:0, instance:tests.pra...)</span>
+                <span class="method-start">29740 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.heroes.AddNewHero</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name={null} status=CREATED method=AddNewHero.testAddNewHero()[pri:0, instance:tests.hero...)</span>
+                <span class="method-start">29742 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.practice.VerifyDragAndDrop</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setUpTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">35503 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.register.SuccessfulRegister</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">35980 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.users.AddNewUserTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">36003 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.users.VerifyUserDetails</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setupTest(org.testng.TestRunner@4c0e426a)</span>
+                <span class="method-start">36034 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.login.UnsuccessfulLoginWrongPassword</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name=testUnsuccessfulLoginWrongPassword status=SUCCESS method=UnsuccessfulLoginWrongPass...)</span>
+                <span class="method-start">37637 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.register.SuccessfulRegister</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testRegisterNewUser</span>
+                <span class="method-start">44996 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.users.AddNewUserTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testAddingNewUser</span>
+                <span class="method-start">45517 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.users.VerifyUserDetails</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testVerifyUserDetails</span>
+                <span class="method-start">47479 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.practice.VerifyDragAndDrop</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testDragAndDrop</span>
+                <span class="method-start">47733 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.users.VerifyUserDetails</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name=testVerifyUserDetails status=SUCCESS method=VerifyUserDetails.testVerifyUserDetails...)</span>
+                <span class="method-start">94260 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.register.SuccessfulRegister</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name=testRegisterNewUser status=SUCCESS method=SuccessfulRegister.testRegisterNewUser()[...)</span>
+                <span class="method-start">104271 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.users.AddNewUserTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name=testAddingNewUser status=SUCCESS method=AddNewUserTest.testAddingNewUser()[pri:0, i...)</span>
+                <span class="method-start">125111 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.practice.VerifyDragAndDrop</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDownTest([TestResult name=testDragAndDrop status=SUCCESS method=VerifyDragAndDrop.testDragAndDrop()[pri:0, in...)</span>
+                <span class="method-start">244862 ms</span>
+              </div> <!-- configuration-method after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>

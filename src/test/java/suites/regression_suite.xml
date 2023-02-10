@@ -2,13 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 
-<suite name="Regression Suite" parallel="methods" thread-count="8">
+<suite name="Regression Suite" parallel="methods" thread-count="5">
     <parameter name="updateJira" value="true"></parameter>
     <listeners>
         <listener class-name="listeners.TestListener"></listener>
     </listeners>
 
-    <test name="Login Tests">
+    <test name="Regression Tests">
         <groups>
             <run>
                 <include name="regression"/>

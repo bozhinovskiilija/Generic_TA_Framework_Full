@@ -1,7 +1,15 @@
 package listeners;
 
 import annotations.Jira;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 import io.qameta.allure.Allure;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -9,11 +17,14 @@ import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import utils.ExtentReportUtils;
 import utils.LoggerUtils;
 import utils.PropertiesUtils;
 import utils.ScreenshotUtils;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -23,12 +34,79 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
     private static final boolean listenerTakeScreenShot = PropertiesUtils.getTakeScreenshot();
     private static boolean updateJira = false;
+    private static String extendReportFolder;
+    private static String extentReportName;
+    private static String extentReportFilesFolderName;
+    private static String extentReportFilesFolder;
+    private static String extentReportHtmlFilePath;
+
+    //different instance of test in different thread
+    private static final ThreadLocal<ExtentTest> extentTestThread = new ThreadLocal<>();
+
+    private static ExtentReports extentReport = null;
+
+    @Override
+    public void onStart(final ITestContext context) {
+
+        String sSuiteName = context.getSuite().getName();
+        log.info("[SUITE STARTED] " + sSuiteName);
+        updateJira = getUpdateJira(context);
+        context.setAttribute("listenerTakeScreenShot", listenerTakeScreenShot);
+
+        extendReportFolder = ExtentReportUtils.getExtentReportFolder(sSuiteName);
+        extentReportName = ExtentReportUtils.getExtentReportName(sSuiteName);
+        extentReportFilesFolderName = ExtentReportUtils.getExtentReportFilesFolderName(sSuiteName);
+        extentReportFilesFolder = ExtentReportUtils.getExtentReportFilesFolder(sSuiteName);
+        extentReportHtmlFilePath = ExtentReportUtils.getExtentReportPathHtmlFilePath(sSuiteName);
+
+        try {
+            FileUtils.cleanDirectory(new File(extendReportFolder));
+        } catch (Exception e) {
+            log.warn("Extent Report Folder " + extendReportFolder+ "can not be cleaned" + e.getMessage());
+        }
+
+        extentReport = ExtentReportUtils.createExtentReportInstance(sSuiteName);
+    }
+
+
+    @Override
+    public void onFinish(final ITestContext context) {
+
+        String sSuiteName = context.getSuite().getName();
+        log.info("[SUITE FINISHED] " + sSuiteName);
+        if(extentReport!=null){
+            extentReport.flush();
+
+        }
+    }
 
     @Override
     public void onTestStart(final ITestResult result) {
 
         String sTestName = result.getTestClass().getName();
         log.info("[TEST STARTED] " + sTestName);
+
+        //information related to one test
+        //problem when executing tests in parallel - make it thread safe(thread local)
+        ExtentTest test = extentReport.createTest(sTestName);
+
+        Jira jira = getJiraDetails(result);
+        if(jira != null){
+            test.info("JiraID" + jira.jiraID());
+            test.assignAuthor(jira.owner());
+        }
+
+        // String packageName = result.getTestClass().getRealClass().getPackage().getName();
+        // test.assignCategory(packageName);
+
+        //sanity, regression..
+        String[] groups = result.getMethod().getGroups();
+        for(String group : groups){
+            test.assignCategory(group);
+        }
+
+        extentTestThread.set(test); //each extent test instance in different thread
+
     }
 
 
@@ -50,8 +128,11 @@ public class TestListener extends LoggerUtils implements ITestListener {
                 //String sJiraID = getJiraID(result);
                 // Create PASSED result on Jira
             }
-        }
 
+            String successText = "<b>Test " + sTestName + " Passed!</b>";
+            Markup markup = MarkupHelper.createLabel(successText, ExtentColor.GREEN);
+            extentTestThread.get().log(Status.PASS,markup);
+        }
     }
 
 
@@ -79,13 +160,21 @@ public class TestListener extends LoggerUtils implements ITestListener {
                     }
                     String pathToScreenShot = ScreenshotUtils.takeScreenShot(drivers[i], screenShotName);
                     //Allure.addAttachment(UUID.randomUUID().toString(),pathToScreenShot);
-
                 }
             }
         }
         Jira jira = getJiraDetails(result);
         String errorMessage = result.getThrowable().getMessage();
         String stackTrace = Arrays.toString(result.getThrowable().getStackTrace());
+
+        //Add ScreenShots
+        //Add Error message
+        //Add stacktrace
+
+        String skippedTestText = "<b>Test " + testName + " Failed!</b>";
+        Markup markup = MarkupHelper.createLabel(skippedTestText, ExtentColor.RED);
+        extentTestThread.get().log(Status.FAIL,markup);
+
     }
 
 
@@ -96,26 +185,10 @@ public class TestListener extends LoggerUtils implements ITestListener {
         log.info("[TEST SKIPPED] " + sTestName);
         // delete screenshot from temp folder (if it was saved in temp folder)
 
+        String skippedTestText = "<b>Test " + sTestName + " Skipped!</b>";
+        Markup markup = MarkupHelper.createLabel(skippedTestText, ExtentColor.ORANGE);
+        extentTestThread.get().log(Status.SKIP,markup);
     }
-
-
-    @Override
-    public void onStart(final ITestContext context) {
-
-        String sSuiteName = context.getSuite().getName();
-        log.info("[SUITE STARTED] " + sSuiteName);
-        updateJira = getUpdateJira(context);
-        context.setAttribute("listenerTakeScreenShot", listenerTakeScreenShot);
-    }
-
-
-    @Override
-    public void onFinish(final ITestContext context) {
-
-        String sSuiteName = context.getSuite().getName();
-        log.info("[SUITE FINISHED] " + sSuiteName);
-    }
-
 
     private static WebDriver getWebDriverInstance(ITestResult result) {
         String sTestName = result.getTestClass().getName();
