@@ -31,7 +31,7 @@ public class ExtentReportUtils extends LoggerUtils{
 
     //path to the extentReport html file
     public static String getExtentReportPathHtmlFilePath(String suiteName){
-        return getExtentReportFilesFolder(suiteName) + getExtentReportName(suiteName) + ".html";
+        return getExtentReportFolder(suiteName) + getExtentReportName(suiteName) + ".html";
     }
 
     public static ExtentReports createExtentReportInstance(String suiteName){

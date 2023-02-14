@@ -28,7 +28,7 @@ import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 import static data.Groups.USERS;
 
-@Jira(jiraID = "JIRA00003")
+@Jira(jiraID = "JIRA00008", owner = "Users Team")
 @Test(groups = {REGRESSION, SANITY, USERS})
 public class VerifyUserDetails extends BaseTestClass {
 

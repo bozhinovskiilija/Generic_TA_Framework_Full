@@ -1,5 +1,6 @@
 package tests.heroes;
 
+import annotations.Jira;
 import data.CommonString;
 import data.Time;
 import io.qameta.allure.Severity;
@@ -29,6 +30,7 @@ import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
 //@Listeners(TestListener.class)
+@Jira(jiraID = "JIRA00080", owner = "Heroes Team")
 @Test(groups = {REGRESSION, SANITY, HERO})
 public class DeleteHero extends BaseTestClass {
 

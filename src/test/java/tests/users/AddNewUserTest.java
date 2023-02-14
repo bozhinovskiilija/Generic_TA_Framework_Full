@@ -1,17 +1,15 @@
 package tests.users;
 
-import data.CommonString;
+import annotations.Jira;
 import data.Groups;
 import data.Time;
 import objects.User;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.AddUserDialogBox;
 import pages.AdminPage;
 import pages.LoginPage;
 import pages.UserDetailsDialogBox;
@@ -22,17 +20,15 @@ import tests.BaseTestClass;
 import utils.DateTimeUtils;
 import utils.PropertiesUtils;
 
-import static data.Groups.LOGIN;
 import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
+@Jira(jiraID = "JIRA00057", owner = "Users Team")
 @Test(groups = {REGRESSION, SANITY, Groups.USERS})
 public class AddNewUserTest extends BaseTestClass {
 
-
-    private final String sTestName = this.getClass().getName();
+    private final String testName = this.getClass().getName();
     private WebDriver driver;
-
     String username;
     String password;
 
@@ -41,20 +37,20 @@ public class AddNewUserTest extends BaseTestClass {
 
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
-        log.debug("[SETUP TEST] " + sTestName);
+        log.debug("[SETUP TEST] " + testName);
         driver = setUpDriver();
+        testContext.setAttribute(testName + ".drivers", new WebDriver[]{driver});
+        testContext.setAttribute(testName + ".jiraID", "JIRA00001B");
 
         username = PropertiesUtils.getAdminUsername();
         password = PropertiesUtils.getAdminPassword();
-
-
     }
 
 
     @Test
-    public void testAddingNewUser(){
+    public void testAddingNewUser() {
 
-        log.debug("[START TEST] " + sTestName);
+        log.debug("[START TEST] " + testName);
 
         LoginPage loginPage = new LoginPage(driver).open();
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
@@ -70,7 +66,7 @@ public class AddNewUserTest extends BaseTestClass {
         log.info("Is username fddefef exists?" + usersPage.isUserPresentInUsersTable("fddefef"));
         log.info("Display name" + usersPage.getDisplayNameInUsersTable("dedoje"));
         log.info("Number of heroes: " + usersPage.getHeroCountInUsersTable("dedoje"));
-        log.info("Number of users is users table is: "+ usersPage.getNumberOfRowsInUsersTable());
+        log.info("Number of users is users table is: " + usersPage.getNumberOfRowsInUsersTable());
 
 
         UserHeroesDialogBox userHeroesDialogBox = usersPage.clickHeroCountLinkInUsersTable("dedoje");
@@ -79,10 +75,10 @@ public class AddNewUserTest extends BaseTestClass {
         usersPage = userHeroesDialogBox.clickCloseButtonToUsersPage();
         DateTimeUtils.wait(Time.TIME_SHORTER);
 
-        log.info("Number of users is users table is: "+ usersPage.getNumberOfRowsInUsersTable());
+        log.info("Number of users is users table is: " + usersPage.getNumberOfRowsInUsersTable());
 
         UserDetailsDialogBox userDetailsDialogBox = usersPage.clickUserDetailsIconInUsersTable("dedoje");
-        log.info("DialogBox title: "+userDetailsDialogBox.getDialogBoxTitle());
+        log.info("DialogBox title: " + userDetailsDialogBox.getDialogBoxTitle());
         DateTimeUtils.wait(Time.TIME_SHORTER);
 
         usersPage = userDetailsDialogBox.clickCloseButtonToUsersPage();
@@ -115,9 +111,8 @@ public class AddNewUserTest extends BaseTestClass {
 
     @AfterMethod(alwaysRun = true)
     public void tearDownTest(ITestResult testResult) {
-        log.debug("[END TEST] " + sTestName);
+        log.debug("[END TEST] " + testName);
         tearDown(driver, testResult);
     }
-
 
 }

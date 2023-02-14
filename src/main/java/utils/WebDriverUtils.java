@@ -42,11 +42,9 @@ public class WebDriverUtils extends LoggerUtils {
                     ChromeOptions options = new ChromeOptions();
                     options.setHeadless(headless);
                     options.addArguments("--window-size=1600x900");
-                   // WebDriverManager.chromedriver().setup();
-
+                    // WebDriverManager.chromedriver().setup(); //for web driver manager
                     if (remote) {
-
-                       // driver=WebDriverManager.chromedriver().capabilities(options).remoteAddress(hubUrl).create();
+                        // driver=WebDriverManager.chromedriver().capabilities(options).remoteAddress(hubUrl).create();
                         RemoteWebDriver remoteDriver = new RemoteWebDriver(new URL(hubUrl), options);
                         remoteDriver.setFileDetector(new LocalFileDetector());
                         driver = remoteDriver;
@@ -69,28 +67,25 @@ public class WebDriverUtils extends LoggerUtils {
                         driver = remoteDriver;
 
                     } else {
-                      // System.setProperty("webdriver.gecko.driver", pathDriverFirefox);
-                       driver = new FirefoxDriver(options);
+                        // System.setProperty("webdriver.gecko.driver", pathDriverFirefox);
+                        driver = new FirefoxDriver(options);
                     }
-
 
                     break;
                 }
                 case "edge": {
 
                     EdgeOptions options = new EdgeOptions();
-                   // options.addArguments("--headless");
+                    // options.addArguments("--headless");
                     options.addArguments("--window-size=1600x900");
                     //WebDriverManager.edgedriver().setup();
-
                     if (remote) {
-
                         RemoteWebDriver remoteDriver = new RemoteWebDriver(new URL(hubUrl), options);
                         remoteDriver.setFileDetector(new LocalFileDetector());
                         driver = remoteDriver;
 
                     } else {
-                       // System.setProperty("webdriver.edge.driver", pathDriverEdge);
+                        // System.setProperty("webdriver.edge.driver", pathDriverEdge);
                         driver = new EdgeDriver(options);
                     }
 
@@ -105,11 +100,11 @@ public class WebDriverUtils extends LoggerUtils {
         }
 
         //Setup implicit wait
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Time.TIME_LONG));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Time.IMPLICIT_TIMEOUT));
         //wait for the DOM strucure to be loaded(that doesn't mean page is fully loaded)
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Time.TIME_LONG));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Time.PAGE_LOAD_TIMEOUT));
         //only for asinc script
-        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(Time.TIME_LONGEST));
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(Time.ASYNC_SCRIPT_TIMEOUT));
 
 
         //maximize the browser (not work on headless browser) - you should set manualy window size
@@ -118,33 +113,32 @@ public class WebDriverUtils extends LoggerUtils {
         return driver;
     }
 
-    public static SessionId getSessionID(WebDriver driver){
+
+    public static SessionId getSessionID(WebDriver driver) {
         return ((RemoteWebDriver) driver).getSessionId();
     }
 
+
     //when sessionID is null but driver is not null(driver reference is still valid)
-    public static boolean hasDriverQuit(WebDriver driver){
-        if(driver!=null){
-            return getSessionID(driver)==null;
-        }else{
+    public static boolean hasDriverQuit(WebDriver driver) {
+        if (driver != null) {
+            return getSessionID(driver) == null;
+        } else {
             return true;
         }
     }
 
+
     //QuitDriver()
-    public static void QuitDriver(WebDriver driver){
+    public static void QuitDriver(WebDriver driver) {
         log.info("Quit driver");
-        if(!hasDriverQuit(driver)){
+        if (!hasDriverQuit(driver)) {
             driver.quit();
         }
-
-
-
     }
 
 
     public static void setImplicitWait(WebDriver driver, int timeout) {
-
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
     }
 

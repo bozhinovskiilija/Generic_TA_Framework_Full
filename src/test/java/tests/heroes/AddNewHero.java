@@ -1,5 +1,6 @@
 package tests.heroes;
 
+import annotations.Jira;
 import data.Time;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -32,6 +33,7 @@ import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
 //@Listeners(TestListener.class)
+@Jira(jiraID = "JIRA00009", owner = "Heroes Team")
 @Test(groups = {REGRESSION, SANITY, HERO})
 public class AddNewHero extends BaseTestClass {
 

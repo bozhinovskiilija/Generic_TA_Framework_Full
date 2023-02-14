@@ -1,5 +1,6 @@
 package tests.register;
 
+import annotations.Jira;
 import data.CommonString;
 import data.Groups;
 import data.Time;
@@ -26,16 +27,12 @@ import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
 //@Listeners(TestListener.class)
+@Jira(jiraID = "JIRA00026", owner = "Users Team")
 @Test(groups = {REGRESSION, SANITY, Groups.USERS})
 public class SuccessfulRegister extends BaseTestClass {
 
-
     private final String sTestName = this.getClass().getSimpleName();
     private WebDriver driver;
-
-    //String username;
-    //String password;
-
     private User user;
     private boolean isCreated = false;
 
@@ -45,12 +42,7 @@ public class SuccessfulRegister extends BaseTestClass {
         log.debug("[SETUP TEST] " + sTestName);
         driver = setUpDriver();
         //testContext.setAttribute("WebDriver", driver);
-
         testContext.setAttribute(sTestName + ".drivers", new WebDriver[]{driver});
-
-        //username = "user1";
-        //password = "password123";
-
         user = User.createNewUniqueUser("SuccessfulRegister");
     }
 
@@ -98,7 +90,6 @@ public class SuccessfulRegister extends BaseTestClass {
         softAssert.assertEquals(savedUser.getSecretAnswer(), user.getSecretAnswer(), "Secret Answer is NOT correct!");
         softAssert.assertEquals(savedUser.getHeroCount(), user.getHeroCount(), "Hero Count is NOT correct!");
         softAssert.assertAll("Wrong User Details are saved in Database for User '" + user.getUsername() + "'!");
-
     }
 
 

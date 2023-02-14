@@ -126,12 +126,4 @@ public class PracticePage extends CommonLoggedInPage {
         return practicePage.verifyPracticePage();
     }
 
-    // public WelcomePage clickSamsaraImage() {
-    //     log.debug("clickSamsaraImage()");
-    //     String sSamsaraImage = "SamsaraLogo.png";
-    //     Point location = ScreenshotUtils.getImageCenterLocation(driver, sSamsaraImage, 5);
-    //     clickOnLocationJS(location);
-    //     WelcomePage welcomePage = new WelcomePage(driver);
-    //     return welcomePage.verifyWelcomePage();
-    // }
 }

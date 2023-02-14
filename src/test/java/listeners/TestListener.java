@@ -3,6 +3,7 @@ package listeners;
 import annotations.Jira;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
@@ -42,8 +43,8 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
     //different instance of test in different thread
     private static final ThreadLocal<ExtentTest> extentTestThread = new ThreadLocal<>();
-
     private static ExtentReports extentReport = null;
+
 
     @Override
     public void onStart(final ITestContext context) {
@@ -62,7 +63,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
         try {
             FileUtils.cleanDirectory(new File(extendReportFolder));
         } catch (Exception e) {
-            log.warn("Extent Report Folder " + extendReportFolder+ "can not be cleaned" + e.getMessage());
+            log.warn("Extent Report Folder " + extendReportFolder + "can not be cleaned" + e.getMessage());
         }
 
         extentReport = ExtentReportUtils.createExtentReportInstance(sSuiteName);
@@ -74,11 +75,12 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
         String sSuiteName = context.getSuite().getName();
         log.info("[SUITE FINISHED] " + sSuiteName);
-        if(extentReport!=null){
+        if (extentReport != null) {
             extentReport.flush();
 
         }
     }
+
 
     @Override
     public void onTestStart(final ITestResult result) {
@@ -91,7 +93,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
         ExtentTest test = extentReport.createTest(sTestName);
 
         Jira jira = getJiraDetails(result);
-        if(jira != null){
+        if (jira != null) {
             test.info("JiraID" + jira.jiraID());
             test.assignAuthor(jira.owner());
         }
@@ -101,7 +103,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
         //sanity, regression..
         String[] groups = result.getMethod().getGroups();
-        for(String group : groups){
+        for (String group : groups) {
             test.assignCategory(group);
         }
 
@@ -115,11 +117,11 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
         String sTestName = result.getTestClass().getName();
         log.info("[TEST SUCCESS] " + sTestName);
-        if(updateJira){
+        if (updateJira) {
             Jira jira = getJiraDetails(result);
-            if(jira==null){
+            if (jira == null) {
                 log.warn("Listener can not get jira details for test '" + sTestName + "' !");
-            }else {
+            } else {
                 String jiraID = jira.jiraID();
                 String owner = jira.owner();
                 log.info("JiraID: " + jiraID);
@@ -131,7 +133,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
             String successText = "<b>Test " + sTestName + " Passed!</b>";
             Markup markup = MarkupHelper.createLabel(successText, ExtentColor.GREEN);
-            extentTestThread.get().log(Status.PASS,markup);
+            extentTestThread.get().log(Status.PASS, markup);
         }
     }
 
@@ -155,17 +157,36 @@ public class TestListener extends LoggerUtils implements ITestListener {
             if (drivers != null) {
                 for (int i = 0; i < drivers.length; i++) {
                     String screenShotName = testName;
+                    String sSession = "";
                     if (drivers.length > 1) {
                         screenShotName = screenShotName + "_" + (i + 1);
                     }
-                    String pathToScreenShot = ScreenshotUtils.takeScreenShot(drivers[i], screenShotName);
+                    //String pathToScreenShot = ScreenshotUtils.takeScreenShot(drivers[i], screenShotName);
                     //Allure.addAttachment(UUID.randomUUID().toString(),pathToScreenShot);
+
+                    String sRelativeScreenShotPath = takeAndCopyScreenshots(drivers[i], screenShotName);
+                    if(sRelativeScreenShotPath != null) {
+                        extentTestThread.get().fail("Screenshot of failure" + sSession + " (click on thumbnail to enlarge)", MediaEntityBuilder.createScreenCaptureFromPath(sRelativeScreenShotPath).build());
+                    } else {
+                        extentTestThread.get().fail("Screenshot of failure" + sSession + " could NOT be captured!");
+                    }
                 }
             }
         }
-        Jira jira = getJiraDetails(result);
-        String errorMessage = result.getThrowable().getMessage();
-        String stackTrace = Arrays.toString(result.getThrowable().getStackTrace());
+        // Create FAILED result on Jira and Open Ticket with Bug
+        if(updateJira) {
+            Jira jira = getJiraDetails(result);
+            if (jira == null) {
+                log.warn("Listener cannot get Jira Details for test '" + testName + "'!");
+            } else {
+                String sJiraID = jira.jiraID();
+                String owner = jira.owner();
+                log.info("JiraID: " + sJiraID);
+                log.info("Owner: " + owner);
+                String sErrorMessage = result.getThrowable().getMessage();
+                String sStackTrace = Arrays.toString(result.getThrowable().getStackTrace());
+            }
+        }
 
         //Add ScreenShots
         //Add Error message
@@ -173,7 +194,9 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
         String skippedTestText = "<b>Test " + testName + " Failed!</b>";
         Markup markup = MarkupHelper.createLabel(skippedTestText, ExtentColor.RED);
-        extentTestThread.get().log(Status.FAIL,markup);
+        extentTestThread.get().log(Status.FAIL, markup);
+        String errorLog = createFailedTestErrorLog(result);
+        extentTestThread.get().fail(errorLog);
 
     }
 
@@ -187,8 +210,9 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
         String skippedTestText = "<b>Test " + sTestName + " Skipped!</b>";
         Markup markup = MarkupHelper.createLabel(skippedTestText, ExtentColor.ORANGE);
-        extentTestThread.get().log(Status.SKIP,markup);
+        extentTestThread.get().log(Status.SKIP, markup);
     }
+
 
     private static WebDriver getWebDriverInstance(ITestResult result) {
         String sTestName = result.getTestClass().getName();
@@ -237,28 +261,64 @@ public class TestListener extends LoggerUtils implements ITestListener {
         return jiraID;
     }
 
-    private static Jira getJiraDetails(ITestResult result){
+
+    private static Jira getJiraDetails(ITestResult result) {
 
         String sTestName = result.getTestClass().getName();
         return result.getTestClass().getRealClass().getAnnotation(Jira.class);
     }
 
-    private static boolean getUpdateJira(ITestContext context){
+
+    private static boolean getUpdateJira(ITestContext context) {
         String suiteName = context.getSuite().getName();
         String updateJira = context.getSuite().getParameter("updateJira");
-        if(updateJira==null){
+        if (updateJira == null) {
             log.warn("Parameter updateJira is not set in '" + suiteName + "' suite");
             return false;
-        }else{
+        } else {
             updateJira = updateJira.toLowerCase();
-            if(!(updateJira.equals("true")||updateJira.equals("false"))){
-                log.warn("Parameter 'updateJira' in '"+suiteName+"' is not recognized as boolean value!");
+            if (!(updateJira.equals("true") || updateJira.equals("false"))) {
+                log.warn("Parameter 'updateJira' in '" + suiteName + "' is not recognized as boolean value!");
                 return false;
             }
         }
         boolean bUpdateJira = Boolean.parseBoolean(updateJira);
         log.info("Update Jira" + bUpdateJira);
         return bUpdateJira;
+    }
+
+
+    private static String createFailedTestErrorLog(ITestResult result) {
+        String message = result.getThrowable().getMessage();
+        StackTraceElement[] stackTraceElements = result.getThrowable().getStackTrace();
+        StringBuilder stackTrace = new StringBuilder();
+        for (StackTraceElement st : stackTraceElements) {
+            stackTrace.append(st.toString()).append("<br>");
+        }
+        String errorLog = "<font color=red><b>" + message + "</b>" + "<details><summary>" + "\nClick to see details" + "</font></summary>" + stackTrace + "</details>\n";
+
+        return errorLog;
+    }
+
+    private static String takeAndCopyScreenshots(WebDriver driver, String testName){
+
+        String sourcePath = ScreenshotUtils.takeScreenShot(driver, testName);
+        if(sourcePath == null){
+            return null;
+        }
+
+        File srcScreenShot = new File(sourcePath);
+        String screenShotName = srcScreenShot.getName();
+        String destinationPath = extentReportFilesFolder + screenShotName;
+        File destinationScreenShot = new File(destinationPath);
+        try {
+            FileUtils.copyFile(srcScreenShot,destinationScreenShot);
+        } catch (IOException e) {
+            log.warn("Screenshot '" + screenShotName + "' could not be copied in folder '" + extendReportFolder + "'. Message: " + e.getMessage());
+            return null;
+        }
+
+        return extentReportFilesFolderName + "/" + screenShotName;
     }
 
 }
