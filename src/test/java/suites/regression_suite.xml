@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 
-<suite name="Regression Suite" parallel="methods" thread-count="5">
+<suite name="Regression Suite">
     <parameter name="updateJira" value="true"></parameter>
     <listeners>
         <listener class-name="listeners.TestListener"></listener>

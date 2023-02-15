@@ -21,7 +21,7 @@ import utils.DateTimeUtils;
 import utils.RestApiUtils;
 
 @Jira(jiraID = "JIRA00003")
-@Test(groups = {Groups.REGRESSION, Groups.MOUSE})
+@Test(groups = {Groups.MOUSE})
 public class VerifyDragAndDrop extends BaseTestClass {
 
     private final String sTestName = this.getClass().getName();

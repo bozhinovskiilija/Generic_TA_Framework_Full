@@ -53,7 +53,7 @@ public class VerifyErrorPostAlreadyExistingUser extends BaseTestClass {
         Integer expectedStatusCode = 500;
         String expectedError = CommonString.INTERNAL_SERVER_ERROR;
         String expectedException = CommonString.EXPECTED_EXCEPTION;
-        String expectedMessage = CommonString.EXPECTED_MESSAGE_ALREADY_EXISTING_USER;
+        String expectedMessage = String.format(CommonString.EXPECTED_MESSAGE_ALREADY_EXISTING_USER,user.getUsername());
         String expectedPath = ApiCalls.createPostUserApiCall();
 
         ApiError error = RestApiUtils.postUserApiError(user);

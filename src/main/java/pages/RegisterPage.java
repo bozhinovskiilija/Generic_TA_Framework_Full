@@ -72,11 +72,13 @@ public class RegisterPage extends CommonLoggedOutPage{
         log.trace("new RegisterPage()");
     }
 
+    @Step
     public RegisterPage open() {
 
         return open(true);
     }
 
+    @Step
     public RegisterPage open(boolean bVerify) {
         log.debug("Open RegisterPage (" + REGISTER_PAGE_URL + ")");
         openUrl(REGISTER_PAGE_URL);
@@ -86,6 +88,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         return this;
     }
 
+
     public RegisterPage verifyRegisterPage() {
         log.debug("verifyRegisterPage()");
         waitForUrlChange(REGISTER_PAGE_URL, Time.TIME_SHORTER);
@@ -93,12 +96,13 @@ public class RegisterPage extends CommonLoggedOutPage{
         return this;
     }
 
+    @Step
     public boolean isUsernameTextFieldDisplayed() {
         log.debug("isUsernameTextFieldDisplayed()");
         return isWebElementDisplayed(usernameTextField);
     }
 
-
+    @Step
     public RegisterPage typeUsername(String username) {
         log.info("typeUsername(" + username + ")");
         Assert.assertTrue(isUsernameTextFieldDisplayed(), "Username text field is not present on Register page");
@@ -117,7 +121,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         log.debug("isFirstNameTextFieldDisplayed()");
         return isWebElementDisplayed(firstNameTextField);
     }
-
+    @Step
     public RegisterPage typeFirstName(String sFirstName) {
         log.debug("typeFirstName(" + sFirstName + ")");
         Assert.assertTrue(isFirstNameTextFieldDisplayed(), "First Name Text Field is NOT displayed on Register Page");
@@ -136,6 +140,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         return isWebElementDisplayed(lastNameTextField);
     }
 
+    @Step
     public RegisterPage typeLastName(String sLastName) {
         log.debug("typeLastName(" + sLastName + ")");
         Assert.assertTrue(isLastNameTextFieldDisplayed(), "Last Name Text Field is NOT displayed on Register Page");
@@ -154,6 +159,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         return isWebElementDisplayed(emailTextField);
     }
 
+    @Step
     public RegisterPage typeEmail(String sEmail) {
         log.debug("typeEmail(" + sEmail + ")");
         Assert.assertTrue(isEmailTextFieldDisplayed(), "Email Text Field is NOT displayed on Register Page");
@@ -167,11 +173,13 @@ public class RegisterPage extends CommonLoggedOutPage{
         return getValueFromWebElement(emailTextField);
     }
 
+    @Step
     public boolean isAboutTextFieldDisplayed() {
         log.debug("isAboutTextFieldDisplayed()");
         return isWebElementDisplayed(aboutTextField);
     }
 
+    @Step
     public RegisterPage typeAbout(String sAbout) {
         log.debug("typeAbout(" + sAbout + ")");
         Assert.assertTrue(isAboutTextFieldDisplayed(), "About Text Field is NOT displayed on Login Page");
@@ -190,6 +198,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         return isWebElementDisplayed(secretQuestionTextField);
     }
 
+    @Step
     public RegisterPage typeSecretQuestion(String sSecretQuestion) {
         log.debug("typeSecretQuestion(" + sSecretQuestion + ")");
         Assert.assertTrue(isSecretQuestionTextFieldDisplayed(), "Secret Question Text Field is NOT displayed on Login Page");
@@ -208,6 +217,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         return isWebElementDisplayed(secretAnswerTextField);
     }
 
+    @Step
     public RegisterPage typeSecretAnswer(String sSecretAnswer) {
         log.debug("typeSecretAnswer(" + sSecretAnswer + ")");
         Assert.assertTrue(isSecretAnswerTextFieldDisplayed(), "Secret Answer Text Field is NOT displayed on Login Page");
@@ -226,6 +236,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         return isWebElementDisplayed(passwordTextField);
     }
 
+    @Step
     public RegisterPage typePassword(String sPassword) {
         log.debug("typePassword(" + sPassword + ")");
         Assert.assertTrue(isPasswordTextFieldDisplayed(), "Password Text Field is NOT displayed on Login Page");
@@ -244,6 +255,7 @@ public class RegisterPage extends CommonLoggedOutPage{
         return isWebElementDisplayed(confirmPasswordTextField);
     }
 
+    @Step
     public RegisterPage typeConfirmPassword(String sPassword) {
         log.debug("typeConfirmPassword(" + sPassword + ")");
         Assert.assertTrue(isConfirmPasswordTextFieldDisplayed(), "Confirm Password Text Field is NOT displayed on Login Page");

@@ -65,6 +65,8 @@ public class Tooltip extends BaseTestClass {
         Assert.assertEquals(tooltopText,expectedUselessTooltipText,"tooltip text is not correct");
         DateTimeUtils.wait(Time.TIME_DEMONSTRATION);
 
+        Assert.fail("Test failed");
+
     }
 
     @AfterMethod(alwaysRun = true)

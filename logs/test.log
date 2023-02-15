@@ -1,67 +1,72 @@
-2023-02-14 16:43:35,688 INFO [SUITE STARTED] Regression Suite
-2023-02-14 16:43:35,698 INFO Update Jiratrue
-2023-02-14 16:43:37,614 INFO setupDriver()
-2023-02-14 16:43:37,614 INFO setupDriver()
-2023-02-14 16:43:37,614 INFO setupDriver()
-2023-02-14 16:43:37,619 INFO setupDriver()
-2023-02-14 16:43:37,620 INFO setupDriver()
-2023-02-14 16:44:00,105 INFO [TEST STARTED] tests.login.UnsuccessfulLoginWrongPassword
-2023-02-14 16:44:04,640 INFO [TEST FAILED] tests.login.UnsuccessfulLoginWrongPassword
-2023-02-14 16:44:04,641 INFO Taking ScreenShot from Listener!
-2023-02-14 16:44:10,854 INFO [TEST STARTED] tests.heroes.DeleteHero
-2023-02-14 16:44:10,883 INFO [TEST SKIPPED] tests.heroes.DeleteHero
-2023-02-14 16:44:10,993 INFO Quit driver
-2023-02-14 16:44:11,175 INFO [TEST STARTED] tests.heroes.AddNewHero
-2023-02-14 16:44:11,180 INFO [TEST SKIPPED] tests.heroes.AddNewHero
-2023-02-14 16:44:11,190 INFO Quit driver
-2023-02-14 16:44:12,387 INFO [TEST STARTED] tests.practice.Tooltip
-2023-02-14 16:44:12,444 INFO [TEST STARTED] tests.login.SuccessfulLoginLogout
-2023-02-14 16:44:15,543 INFO [TEST FAILED] tests.practice.Tooltip
-2023-02-14 16:44:15,544 INFO Taking ScreenShot from Listener!
-2023-02-14 16:44:16,519 INFO Screenshot for test 'tests.practice.Tooltip' is saved in file: C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\\screenshots\\tests.practice.Tooltip_230214164415.png
-2023-02-14 16:44:16,559 WARN Listener cannot get Jira Details for test 'tests.practice.Tooltip'!
-2023-02-14 16:44:16,622 INFO Quit driver
-2023-02-14 16:44:17,342 INFO typeUsername(successloginlogout230214164359)
-2023-02-14 16:44:19,205 INFO typePassword(Password123)
-2023-02-14 16:44:28,228 INFO setupDriver()
-2023-02-14 16:44:29,002 INFO setupDriver()
-2023-02-14 16:44:36,905 INFO setupDriver()
-2023-02-14 16:44:37,119 INFO [TEST FAILED] tests.login.SuccessfulLoginLogout
-2023-02-14 16:44:37,120 INFO Taking ScreenShot from Listener!
-2023-02-14 16:44:42,171 INFO Screenshot for test 'tests.login.SuccessfulLoginLogout' is saved in file: C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\\screenshots\\tests.login.SuccessfulLoginLogout_230214164437.png
-2023-02-14 16:44:42,222 INFO JiraID: JIRA00001
-2023-02-14 16:44:42,227 INFO Owner: Regression Team
-2023-02-14 16:44:42,360 INFO Quit driver
-2023-02-14 16:44:46,706 INFO [TEST STARTED] tests.register.SuccessfulRegister
-2023-02-14 16:44:48,501 INFO [TEST STARTED] tests.practice.VerifyDragAndDrop
-2023-02-14 16:44:50,001 INFO [TEST FAILED] tests.register.SuccessfulRegister
-2023-02-14 16:44:50,002 INFO Taking ScreenShot from Listener!
-2023-02-14 16:44:50,004 INFO JiraID: JIRA00026
-2023-02-14 16:44:50,004 INFO Owner: Users Team
-2023-02-14 16:44:50,934 INFO Quit driver
-2023-02-14 16:44:52,274 INFO [TEST FAILED] tests.practice.VerifyDragAndDrop
-2023-02-14 16:44:52,274 INFO Taking ScreenShot from Listener!
-2023-02-14 16:44:54,669 INFO Screenshot for test 'tests.practice.VerifyDragAndDrop' is saved in file: C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\\screenshots\\tests.practice.VerifyDragAndDrop_230214164452.png
-2023-02-14 16:44:54,687 INFO JiraID: JIRA00003
-2023-02-14 16:44:54,687 INFO Owner: Regression Team
-2023-02-14 16:45:00,523 INFO Quit driver
-2023-02-14 16:45:03,152 INFO [TEST STARTED] tests.users.AddNewUserTest
-2023-02-14 16:45:05,962 INFO [TEST FAILED] tests.login.UnsuccessfulLoginWrongPassword
-2023-02-14 16:45:05,963 INFO Taking ScreenShot from Listener!
-2023-02-14 16:45:06,267 INFO [TEST FAILED] tests.users.AddNewUserTest
-2023-02-14 16:45:06,267 INFO Taking ScreenShot from Listener!
-2023-02-14 16:45:07,691 INFO setupDriver()
-2023-02-14 16:45:11,195 INFO Screenshot for test 'tests.users.AddNewUserTest' is saved in file: C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\\screenshots\\tests.users.AddNewUserTest_230214164506.png
-2023-02-14 16:45:11,224 INFO JiraID: JIRA00057
-2023-02-14 16:45:11,226 INFO Owner: Users Team
-2023-02-14 16:45:11,239 INFO Quit driver
-2023-02-14 16:45:25,699 INFO [TEST STARTED] tests.users.VerifyUserDetails
-2023-02-14 16:45:30,622 INFO Login(verifyuserdetails230214164523,Password123)
-2023-02-14 16:45:30,623 INFO typeUsername(verifyuserdetails230214164523)
-2023-02-14 16:45:32,019 INFO typePassword(Password123)
-2023-02-14 16:45:43,005 INFO search(verifyuserdetails230214164523)
-2023-02-14 16:45:52,092 INFO [TEST SUCCESS] tests.users.VerifyUserDetails
-2023-02-14 16:45:52,092 INFO JiraID: JIRA00008
-2023-02-14 16:45:52,093 INFO Owner: Users Team
-2023-02-14 16:45:52,106 INFO Quit driver
-2023-02-14 16:46:06,240 INFO [SUITE FINISHED] Regression Suite
+2023-02-15 16:41:17,159 INFO [SUITE STARTED] Regression Suite
+2023-02-15 16:41:17,164 INFO Update Jiratrue
+2023-02-15 16:41:18,239 INFO setupDriver()
+2023-02-15 16:41:33,539 INFO [TEST STARTED] tests.heroes.AddNewHero
+2023-02-15 16:41:37,784 INFO Login(addnewhero230215164125,Password123)
+2023-02-15 16:41:37,786 INFO typeUsername(addnewhero230215164125)
+2023-02-15 16:41:38,401 INFO typePassword(Password123)
+2023-02-15 16:42:05,200 INFO Saved User: User {Username: addnewhero230215164125, Password: $2a$10$A3s3sNRBjROScSRR1vQWxuLODXWZ.vepMkVSmc.2oMRGnznQZXrIy, Email: addnewhero230215164125@mail.com, Name: Leigh Brakus, About: Chuck Norris can access the DB from the UI., Secret Question: Question?, Secret Answer: Answer, Created at: Wed Feb 15 16:41:28 CET 2023, Hero count: 1, Heroes: [Hero {Hero Name: NewHero230215164133, Hero Class: Ranger, Hero Level: 67, Username: addnewhero230215164125, Created at: Wed Feb 15 16:41:53 CET 2023}]}
+2023-02-15 16:42:05,206 INFO [TEST FAILED] tests.heroes.AddNewHero
+2023-02-15 16:42:05,207 INFO Taking ScreenShot from Listener!
+2023-02-15 16:42:05,711 INFO Screenshot for test 'tests.heroes.AddNewHero' is saved in file: C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\\screenshots\\tests.heroes.AddNewHero_230215164205.png
+2023-02-15 16:42:05,725 INFO JiraID: JIRA00009
+2023-02-15 16:42:05,726 INFO Owner: Heroes Team
+2023-02-15 16:42:05,765 INFO Quit driver
+2023-02-15 16:42:07,729 INFO setupDriver()
+2023-02-15 16:42:11,601 INFO [TEST STARTED] tests.heroes.DeleteHero
+2023-02-15 16:42:11,604 INFO [TEST SKIPPED] tests.heroes.DeleteHero
+2023-02-15 16:42:11,609 INFO Quit driver
+2023-02-15 16:42:11,935 INFO [TEST STARTED] tests.login.ReadDataFromCSV
+2023-02-15 16:42:13,270 INFO User {Username: dedoje, Password: Pass123, Email: deda@mail.com, Name: Deda Hadži-Dedić, About: About Me Text, Secret Question: Question?, Secret Answer: Answer, Created at: null, Hero count: 0, Heroes: []}
+2023-02-15 16:42:13,271 INFO [TEST SUCCESS] tests.login.ReadDataFromCSV
+2023-02-15 16:42:13,271 INFO JiraID: JIRA00054
+2023-02-15 16:42:13,271 INFO Owner: Regression Team
+2023-02-15 16:42:13,293 INFO setupDriver()
+2023-02-15 16:42:19,070 INFO [TEST STARTED] tests.login.SuccessfulLoginLogout
+2023-02-15 16:42:22,955 INFO typeUsername(successloginlogout230215164216)
+2023-02-15 16:42:23,397 INFO typePassword(Password123)
+2023-02-15 16:42:33,702 INFO [TEST FAILED] tests.login.SuccessfulLoginLogout
+2023-02-15 16:42:33,702 INFO Taking ScreenShot from Listener!
+2023-02-15 16:42:34,422 INFO Screenshot for test 'tests.login.SuccessfulLoginLogout' is saved in file: C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\\screenshots\\tests.login.SuccessfulLoginLogout_230215164234.png
+2023-02-15 16:42:34,435 INFO JiraID: JIRA00001
+2023-02-15 16:42:34,435 INFO Owner: Regression Team
+2023-02-15 16:42:34,447 INFO Quit driver
+2023-02-15 16:42:36,440 INFO setupDriver()
+2023-02-15 16:42:39,594 INFO [TEST STARTED] tests.login.UnsuccessfulLoginWrongPassword
+2023-02-15 16:42:43,562 INFO typeUsername(admin)
+2023-02-15 16:42:43,910 INFO typePassword(password!)
+2023-02-15 16:42:50,059 INFO [TEST SUCCESS] tests.login.UnsuccessfulLoginWrongPassword
+2023-02-15 16:42:50,060 WARN Listener can not get jira details for test 'tests.login.UnsuccessfulLoginWrongPassword' !
+2023-02-15 16:42:50,065 INFO Quit driver
+2023-02-15 16:42:50,438 INFO setupDriver()
+2023-02-15 16:42:56,166 INFO [TEST STARTED] tests.practice.Tooltip
+2023-02-15 16:43:00,034 INFO Login(uselesstooltip230215164254,Password123)
+2023-02-15 16:43:00,035 INFO typeUsername(uselesstooltip230215164254)
+2023-02-15 16:43:00,565 INFO typePassword(Password123)
+2023-02-15 16:43:11,214 INFO [TEST FAILED] tests.practice.Tooltip
+2023-02-15 16:43:11,214 INFO Taking ScreenShot from Listener!
+2023-02-15 16:43:11,924 INFO Screenshot for test 'tests.practice.Tooltip' is saved in file: C:\Users\ibozhinovski\OneDrive - ENDAVA\Desktop\GenericTAFramework\\screenshots\\tests.practice.Tooltip_230215164311.png
+2023-02-15 16:43:11,934 WARN Listener cannot get Jira Details for test 'tests.practice.Tooltip'!
+2023-02-15 16:43:11,943 INFO Quit driver
+2023-02-15 16:43:13,874 INFO setupDriver()
+2023-02-15 16:43:17,316 INFO [TEST STARTED] tests.register.SuccessfulRegister
+2023-02-15 16:43:25,337 INFO New user User {Username: successfulregister230215164317, Password: Password123, Email: successfulregister230215164317@mail.com, Name: Manual Littel, About: Chuck Norris's keyboard doesn't have a Ctrl key because nothing controls Chuck Norris., Secret Question: Question?, Secret Answer: Answer, Created at: null, Hero count: 0, Heroes: []}
+2023-02-15 16:43:25,345 INFO typeUsername(successfulregister230215164317)
+2023-02-15 16:43:34,825 INFO User {Username: successfulregister230215164317, Password: Password123, Email: successfulregister230215164317@mail.com, Name: Manual Littel, About: Chuck Norris's keyboard doesn't have a Ctrl key because nothing controls Chuck Norris., Secret Question: Question?, Secret Answer: Answer, Created at: Wed Feb 15 16:43:31 CET 2023, Hero count: 0, Heroes: []}
+2023-02-15 16:43:34,826 INFO User {Username: successfulregister230215164317, Password: $2a$10$vjzGKPBbvbNN1U3Gp/EsdOLKOJSgeeQrX/Yz.FN2.NDZ/OYkisMPe, Email: successfulregister230215164317@mail.com, Name: Manual Littel, About: Chuck Norris's keyboard doesn't have a Ctrl key because nothing controls Chuck Norris., Secret Question: Question?, Secret Answer: Answer, Created at: Wed Feb 15 16:43:27 CET 2023, Hero count: 0, Heroes: []}
+2023-02-15 16:43:34,833 INFO [TEST FAILED] tests.register.SuccessfulRegister
+2023-02-15 16:43:34,833 INFO Taking ScreenShot from Listener!
+2023-02-15 16:43:34,833 INFO JiraID: JIRA00026
+2023-02-15 16:43:34,833 INFO Owner: Users Team
+2023-02-15 16:43:34,842 INFO Quit driver
+2023-02-15 16:43:36,217 INFO setupDriver()
+2023-02-15 16:43:40,942 INFO [TEST STARTED] tests.users.VerifyUserDetails
+2023-02-15 16:43:44,795 INFO Login(verifyuserdetails230215164338,Password123)
+2023-02-15 16:43:44,796 INFO typeUsername(verifyuserdetails230215164338)
+2023-02-15 16:43:45,943 INFO typePassword(Password123)
+2023-02-15 16:43:55,531 INFO search(verifyuserdetails230215164338)
+2023-02-15 16:44:02,371 INFO [TEST SUCCESS] tests.users.VerifyUserDetails
+2023-02-15 16:44:02,371 INFO JiraID: JIRA00078
+2023-02-15 16:44:02,371 INFO Owner: Users Team
+2023-02-15 16:44:02,377 INFO Quit driver
+2023-02-15 16:44:03,979 INFO [SUITE FINISHED] Regression Suite

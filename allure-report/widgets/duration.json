@@ -1,50 +1,90 @@
 [ {
-  "uid" : "7df6179749cb1342",
-  "name" : "testUnsuccessfulLoginWrongPassword",
+  "uid" : "8015ce075cc116e9",
+  "name" : "testAddNewHero",
   "time" : {
-    "start" : 1670978622844,
-    "stop" : 1670978649755,
-    "duration" : 26911
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "f6236476c0724db8",
-  "name" : "testAddingNewUser",
-  "time" : {
-    "start" : 1670978622845,
-    "stop" : 1670978683282,
-    "duration" : 60437
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "f3ed2c3a8aeb0abc",
-  "name" : "testRegisterNewUser",
-  "time" : {
-    "start" : 1670978623918,
-    "stop" : 1670978649077,
-    "duration" : 25159
+    "start" : 1676475693613,
+    "stop" : 1676475725738,
+    "duration" : 32125
   },
   "status" : "failed",
-  "severity" : "normal"
+  "severity" : "critical"
 }, {
-  "uid" : "cc96456f757cfb62",
+  "uid" : "b03813eb8f0b3137",
+  "name" : "testVerifyUserDetails",
+  "time" : {
+    "start" : 1676475820946,
+    "stop" : 1676475842371,
+    "duration" : 21425
+  },
+  "status" : "passed",
+  "severity" : "critical"
+}, {
+  "uid" : "7ab8df391db34e52",
   "name" : "setupTest",
   "time" : {
-    "start" : 1670978634806,
-    "stop" : 1670978634810,
-    "duration" : 4
+    "start" : 1676475731593,
+    "stop" : 1676475731593,
+    "duration" : 0
   },
   "status" : "failed",
   "severity" : "normal"
 }, {
-  "uid" : "add423770f5b89ae",
+  "uid" : "20eb527ddb72df56",
   "name" : "testSuccessfulLoginLogout",
   "time" : {
-    "start" : 1670978634860,
-    "stop" : 1670978634861,
-    "duration" : 1
+    "start" : 1676475739074,
+    "stop" : 1676475754436,
+    "duration" : 15362
+  },
+  "status" : "failed",
+  "severity" : "critical"
+}, {
+  "uid" : "f458fd78c919f1cc",
+  "name" : "testRegisterNewUser",
+  "time" : {
+    "start" : 1676475797322,
+    "stop" : 1676475814834,
+    "duration" : 17512
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "911a9f06dee0f942",
+  "name" : "testReadDataFromCSVFile",
+  "time" : {
+    "start" : 1676475731937,
+    "stop" : 1676475733273,
+    "duration" : 1336
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a97f885f06f88687",
+  "name" : "testUnsuccessfulLoginWrongPassword",
+  "time" : {
+    "start" : 1676475759598,
+    "stop" : 1676475770061,
+    "duration" : 10463
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "16588fff7ed499a",
+  "name" : "testUselessTooltip",
+  "time" : {
+    "start" : 1676475776170,
+    "stop" : 1676475791935,
+    "duration" : 15765
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "ee4c2ebdec3ece01",
+  "name" : "testDeleteHero",
+  "time" : {
+    "start" : 1676475731603,
+    "stop" : 1676475731605,
+    "duration" : 2
   },
   "status" : "skipped",
   "severity" : "critical"

@@ -10,6 +10,8 @@ import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 import io.qameta.allure.Allure;
+import io.qameta.allure.AllureLifecycle;
+import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -43,6 +45,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
     //different instance of test in different thread
     private static final ThreadLocal<ExtentTest> extentTestThread = new ThreadLocal<>();
+    private static final ThreadLocal<Allure> extentTestThread2 = new ThreadLocal<>();
     private static ExtentReports extentReport = null;
 
 
@@ -140,14 +143,6 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
     @Override
     public void onTestFailure(final ITestResult result) {
-        //ITestListener.super.onTestFailure(result);
-
-        /* MY Implementation
-
-        ITestContext context = result.getTestContext();
-        driver = (WebDriver) context.getAttribute("WebDriver");
-        Allure.addAttachment(UUID.randomUUID().toString(), new ByteArrayInputStream(((TakesScreenshot)driver).getScreenshotAs(
-            OutputType.BYTES)));*/
 
         String testName = result.getTestClass().getName();
         log.info("[TEST FAILED] " + testName);
@@ -162,7 +157,9 @@ public class TestListener extends LoggerUtils implements ITestListener {
                         screenShotName = screenShotName + "_" + (i + 1);
                     }
                     //String pathToScreenShot = ScreenshotUtils.takeScreenShot(drivers[i], screenShotName);
-                    //Allure.addAttachment(UUID.randomUUID().toString(),pathToScreenShot);
+
+                    Allure.addAttachment(UUID.randomUUID().toString(), new ByteArrayInputStream(((TakesScreenshot)drivers[i]).getScreenshotAs(OutputType.BYTES)));
+
 
                     String sRelativeScreenShotPath = takeAndCopyScreenshots(drivers[i], screenShotName);
                     if(sRelativeScreenShotPath != null) {
@@ -299,6 +296,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
         return errorLog;
     }
+
 
     private static String takeAndCopyScreenshots(WebDriver driver, String testName){
 

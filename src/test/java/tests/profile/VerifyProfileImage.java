@@ -1,6 +1,7 @@
 package tests.profile;
 
 import data.CommonString;
+import data.Groups;
 import data.Time;
 import objects.User;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +23,8 @@ import utils.ScreenshotUtils;
 
 import java.awt.image.BufferedImage;
 
+
+@Test(groups = {Groups.USERS})
 public class VerifyProfileImage extends BaseTestClass {
 
     private final String sTestName = this.getClass().getName();

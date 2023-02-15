@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="2" failed="2" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-15T15:58:07 CET" name="Command line suite" finished-at="2023-02-15T15:59:24 CET" duration-ms="76825">
+    <groups>
+      <group name="database">
+        <method signature="DatabaseTest.testDatabase()[pri:0, instance:tests.database.DatabaseTest@7894f09b]" name="testDatabase" class="tests.database.DatabaseTest"/>
+      </group> <!-- database -->
+      <group name="sanity">
+        <method signature="AddNewUserTest.testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@25748410]" name="testAddingNewUser" class="tests.users.AddNewUserTest"/>
+      </group> <!-- sanity -->
+      <group name="users">
+        <method signature="AddNewUserTest.testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@25748410]" name="testAddingNewUser" class="tests.users.AddNewUserTest"/>
+      </group> <!-- users -->
+    </groups>
+    <test started-at="2023-02-15T15:58:07 CET" name="Command line test" finished-at="2023-02-15T15:59:24 CET" duration-ms="76825">
+      <class name="tests.users.AddNewUserTest">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.users.AddNewUserTest@25748410]" started-at="2023-02-15T15:59:05 CET" name="setupTest" finished-at="2023-02-15T15:59:08 CET" duration-ms="3078" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4a467f08]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@25748410]" started-at="2023-02-15T15:59:08 CET" name="testAddingNewUser" finished-at="2023-02-15T15:59:23 CET" duration-ms="14453" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[User 'dedoje' is NOT present in Users Table! expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: User 'dedoje' is NOT present in Users Table! expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertTrue(Assert.java:45)
+at pages.UsersPage.getDisplayNameInUsersTable(UsersPage.java:159)
+at tests.users.AddNewUserTest.testAddingNewUser(AddNewUserTest.java:67)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:77)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:159)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:106)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddingNewUser -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.users.AddNewUserTest@25748410]" started-at="2023-02-15T15:59:23 CET" name="tearDownTest" finished-at="2023-02-15T15:59:24 CET" duration-ms="394" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testAddingNewUser status=FAILURE method=AddNewUserTest.testAddingNewUser()[pri:0, instance:tests.users.AddNewUserTest@25748410] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.users.AddNewUserTest -->
+      <class name="tests.database.DatabaseTest">
+        <test-method is-config="true" signature="setupTest(org.testng.ITestContext)[pri:0, instance:tests.database.DatabaseTest@7894f09b]" started-at="2023-02-15T15:58:08 CET" name="setupTest" finished-at="2023-02-15T15:58:14 CET" duration-ms="6046" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4a467f08]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTest -->
+        <test-method signature="testDatabase()[pri:0, instance:tests.database.DatabaseTest@7894f09b]" started-at="2023-02-15T15:58:14 CET" name="testDatabase" finished-at="2023-02-15T15:58:35 CET" duration-ms="21248" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Exception in method getUsername:Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Exception in method getUsername:Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+at org.testng.Assert.fail(Assert.java:99)
+at utils.DatabaseUtils.getUserID(DatabaseUtils.java:52)
+at tests.database.DatabaseTest.testDatabase(DatabaseTest.java:59)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:77)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:159)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:106)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDatabase -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:tests.database.DatabaseTest@7894f09b]" started-at="2023-02-15T15:58:35 CET" name="tearDownTest" finished-at="2023-02-15T15:58:36 CET" duration-ms="1166" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testDatabase status=FAILURE method=DatabaseTest.testDatabase()[pri:0, instance:tests.database.DatabaseTest@7894f09b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+      </class> <!-- tests.database.DatabaseTest -->
+      <class name="tests.login.LoginTest">
+        <test-method signature="testSuccessfulLoginLogout()[pri:0, instance:tests.login.LoginTest@485a3466]" started-at="2023-02-15T15:58:36 CET" name="testSuccessfulLoginLogout" finished-at="2023-02-15T15:58:50 CET" duration-ms="13800" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSuccessfulLoginLogout -->
+        <test-method signature="testUnsuccessfulLoginWrongPassword()[pri:0, instance:tests.login.LoginTest@485a3466]" started-at="2023-02-15T15:58:50 CET" name="testUnsuccessfulLoginWrongPassword" finished-at="2023-02-15T15:59:05 CET" duration-ms="15363" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUnsuccessfulLoginWrongPassword -->
+      </class> <!-- tests.login.LoginTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>

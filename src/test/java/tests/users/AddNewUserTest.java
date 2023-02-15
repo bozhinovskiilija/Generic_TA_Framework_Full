@@ -24,7 +24,7 @@ import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
 @Jira(jiraID = "JIRA00057", owner = "Users Team")
-@Test(groups = {REGRESSION, SANITY, Groups.USERS})
+@Test(groups = {SANITY, Groups.USERS})
 public class AddNewUserTest extends BaseTestClass {
 
     private final String testName = this.getClass().getName();

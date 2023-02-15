@@ -8,6 +8,7 @@ import data.Time;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import listeners.TestListener;
 import objects.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -15,6 +16,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.WelcomePage;
@@ -27,9 +29,9 @@ import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
 
 
-//@Listeners(TestListener.class)
+@Listeners(TestListener.class)
 @Jira(jiraID = "JIRA00001")
-@Test(groups = {REGRESSION, SANITY, LOGIN}, testName = "JIRA00001E", description = "JIRA00001D")
+@Test(groups = {REGRESSION, SANITY, LOGIN})
 public class SuccessfulLoginLogout extends BaseTestClass {
 
     /*If we want to you all the benefits from ITestContext and

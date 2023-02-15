@@ -1,5 +1,83 @@
 {
-  "252057ac553e481e5b0ed15ea3a642" : {
+  "ddd76cda8bf5761c22a4848e89c40740" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f458fd78c919f1cc",
+      "status" : "failed",
+      "statusDetails" : "Test failed",
+      "time" : {
+        "start" : 1676475797322,
+        "stop" : 1676475814834,
+        "duration" : 17512
+      }
+    } ]
+  },
+  "33e3f3dd9c932d55814faa6b1606a0a4" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a97f885f06f88687",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676475759598,
+        "stop" : 1676475770061,
+        "duration" : 10463
+      }
+    } ]
+  },
+  "dc0be58a2035b048d6e8a17705bac232" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "911a9f06dee0f942",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676475731937,
+        "stop" : 1676475733273,
+        "duration" : 1336
+      }
+    } ]
+  },
+  "b934ba7e28bdca3ad271022b9c927833" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "20eb527ddb72df56",
+      "status" : "failed",
+      "statusDetails" : "Test failed",
+      "time" : {
+        "start" : 1676475739074,
+        "stop" : 1676475754436,
+        "duration" : 15362
+      }
+    } ]
+  },
+  "ecfedf508003701d6525bae11127edaf" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -9,55 +87,17 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "add423770f5b89ae",
+      "uid" : "ee4c2ebdec3ece01",
       "status" : "skipped",
-      "statusDetails" : "Wrong Response Status Code in postUser(SuccessfulLoginLogout) Api Call! Response Body: {\"timestamp\":1670978631612,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of Username!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
+      "statusDetails" : "Wrong Response Status Code in postUser(addnewhero230215164210) Api Call! Response Body: {\"timestamp\":1676475728096,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of About!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
       "time" : {
-        "start" : 1670978634860,
-        "stop" : 1670978634861,
-        "duration" : 1
+        "start" : 1676475731603,
+        "stop" : 1676475731605,
+        "duration" : 2
       }
     } ]
   },
-  "24be7bf78bb29fc747e582525da1ab29" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f6236476c0724db8",
-      "status" : "passed",
-      "time" : {
-        "start" : 1670978622845,
-        "stop" : 1670978683282,
-        "duration" : 60437
-      }
-    } ]
-  },
-  "e2d8bd0d7934f5839786f4887746e7e7" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "7df6179749cb1342",
-      "status" : "passed",
-      "time" : {
-        "start" : 1670978622844,
-        "stop" : 1670978649755,
-        "duration" : 26911
-      }
-    } ]
-  },
-  "ae7e213f74ae15244f2f41c1f30e17b" : {
+  "d8e52318abff32ceb92137dae5923b95" : {
     "statistic" : {
       "failed" : 1,
       "broken" : 0,
@@ -67,17 +107,17 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "cc96456f757cfb62",
+      "uid" : "7ab8df391db34e52",
       "status" : "failed",
-      "statusDetails" : "Wrong Response Status Code in postUser(SuccessfulLoginLogout) Api Call! Response Body: {\"timestamp\":1670978631612,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of Username!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
+      "statusDetails" : "Wrong Response Status Code in postUser(addnewhero230215164210) Api Call! Response Body: {\"timestamp\":1676475728096,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of About!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
       "time" : {
-        "start" : 1670978634806,
-        "stop" : 1670978634810,
-        "duration" : 4
+        "start" : 1676475731593,
+        "stop" : 1676475731593,
+        "duration" : 0
       }
     } ]
   },
-  "49b1c778a763640d08660c1faea2445b" : {
+  "405a4ddb056850e9fa7e88d8d321a488" : {
     "statistic" : {
       "failed" : 1,
       "broken" : 0,
@@ -87,13 +127,52 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "f3ed2c3a8aeb0abc",
+      "uid" : "8015ce075cc116e9",
       "status" : "failed",
-      "statusDetails" : "'SignUp' button is not enabled expected [true] but found [false]",
+      "statusDetails" : "Test failed",
       "time" : {
-        "start" : 1670978623918,
-        "stop" : 1670978649077,
-        "duration" : 25159
+        "start" : 1676475693613,
+        "stop" : 1676475725738,
+        "duration" : 32125
+      }
+    } ]
+  },
+  "a9224261c4612de17c2708873c2617fe" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "16588fff7ed499a",
+      "status" : "failed",
+      "statusDetails" : "Test failed",
+      "time" : {
+        "start" : 1676475776170,
+        "stop" : 1676475791935,
+        "duration" : 15765
+      }
+    } ]
+  },
+  "bc91b100c04557ea70a50ec1c1274012" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b03813eb8f0b3137",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676475820946,
+        "stop" : 1676475842371,
+        "duration" : 21425
       }
     } ]
   }

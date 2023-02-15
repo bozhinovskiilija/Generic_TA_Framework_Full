@@ -4,37 +4,73 @@
   "children" : [ {
     "name" : "Product defects",
     "children" : [ {
-      "name" : "'SignUp' button is not enabled expected [true] but found [false]",
+      "name" : "Test failed",
       "children" : [ {
-        "name" : "testRegisterNewUser",
-        "uid" : "f3ed2c3a8aeb0abc",
-        "parentUid" : "6095f277c93aeb64f5c0d8d34b164bf0",
+        "name" : "testAddNewHero",
+        "uid" : "8015ce075cc116e9",
+        "parentUid" : "2be893c90855c4f76ef4dddda6943db8",
         "status" : "failed",
         "time" : {
-          "start" : 1670978623918,
-          "stop" : 1670978649077,
-          "duration" : 25159
+          "start" : 1676475693613,
+          "stop" : 1676475725738,
+          "duration" : 32125
         },
         "flaky" : false,
-        "parameters" : [ ]
+        "parameters" : [ "true" ]
+      }, {
+        "name" : "testSuccessfulLoginLogout",
+        "uid" : "20eb527ddb72df56",
+        "parentUid" : "2be893c90855c4f76ef4dddda6943db8",
+        "status" : "failed",
+        "time" : {
+          "start" : 1676475739074,
+          "stop" : 1676475754436,
+          "duration" : 15362
+        },
+        "flaky" : false,
+        "parameters" : [ "true" ]
+      }, {
+        "name" : "testUselessTooltip",
+        "uid" : "16588fff7ed499a",
+        "parentUid" : "2be893c90855c4f76ef4dddda6943db8",
+        "status" : "failed",
+        "time" : {
+          "start" : 1676475776170,
+          "stop" : 1676475791935,
+          "duration" : 15765
+        },
+        "flaky" : false,
+        "parameters" : [ "true" ]
+      }, {
+        "name" : "testRegisterNewUser",
+        "uid" : "f458fd78c919f1cc",
+        "parentUid" : "2be893c90855c4f76ef4dddda6943db8",
+        "status" : "failed",
+        "time" : {
+          "start" : 1676475797322,
+          "stop" : 1676475814834,
+          "duration" : 17512
+        },
+        "flaky" : false,
+        "parameters" : [ "true" ]
       } ],
-      "uid" : "6095f277c93aeb64f5c0d8d34b164bf0"
+      "uid" : "2be893c90855c4f76ef4dddda6943db8"
     }, {
-      "name" : "Wrong Response Status Code in postUser(SuccessfulLoginLogout) Api Call! Response Body: {\"timestamp\":1670978631612,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of Username!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
+      "name" : "Wrong Response Status Code in postUser(addnewhero230215164210) Api Call! Response Body: {\"timestamp\":1676475728096,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"java.lang.IllegalArgumentException\",\"message\":\"Incorrect format of About!\",\"path\":\"/api/users/add\"} expected [200] but found [500]",
       "children" : [ {
         "name" : "setupTest",
-        "uid" : "cc96456f757cfb62",
-        "parentUid" : "b18ae225df837d5f9b3cb696c30c7c56",
+        "uid" : "7ab8df391db34e52",
+        "parentUid" : "486d7ca761fa3b49a9f9456412cd3fa1",
         "status" : "failed",
         "time" : {
-          "start" : 1670978634806,
-          "stop" : 1670978634810,
-          "duration" : 4
+          "start" : 1676475731593,
+          "stop" : 1676475731593,
+          "duration" : 0
         },
         "flaky" : false,
-        "parameters" : [ ]
+        "parameters" : [ "true" ]
       } ],
-      "uid" : "b18ae225df837d5f9b3cb696c30c7c56"
+      "uid" : "486d7ca761fa3b49a9f9456412cd3fa1"
     } ],
     "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
   } ]

@@ -40,8 +40,8 @@ public class SuccessfulRegister extends BaseTestClass {
     @BeforeMethod
     public void setupTest(ITestContext testContext) {
         log.debug("[SETUP TEST] " + sTestName);
+
         driver = setUpDriver();
-        //testContext.setAttribute("WebDriver", driver);
         testContext.setAttribute(sTestName + ".drivers", new WebDriver[]{driver});
         user = User.createNewUniqueUser("SuccessfulRegister");
     }
@@ -90,6 +90,8 @@ public class SuccessfulRegister extends BaseTestClass {
         softAssert.assertEquals(savedUser.getSecretAnswer(), user.getSecretAnswer(), "Secret Answer is NOT correct!");
         softAssert.assertEquals(savedUser.getHeroCount(), user.getHeroCount(), "Hero Count is NOT correct!");
         softAssert.assertAll("Wrong User Details are saved in Database for User '" + user.getUsername() + "'!");
+
+        Assert.fail("Test failed");
     }
 
 

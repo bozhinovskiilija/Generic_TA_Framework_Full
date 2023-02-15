@@ -52,7 +52,7 @@ public class DatabaseTest extends BaseTestClass {
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Story("Basic Database tests")
-    public void testApiForNonExistingUser() {
+    public void testDatabase() {
 
         log.debug("[START TEST] " + testName);
 

@@ -114,6 +114,8 @@ public class AddNewHero extends BaseTestClass {
      //   softAssert2.assertTrue(DateTimeUtils.compareDateTimes(usersHero.getCreatedAt(), hero.getCreatedAt(), 10), "CreatedAt Date is NOT correct!");
         softAssert2.assertAll("Hero Details for Hero '" + hero.getHeroName() + "' are not correct!");
 
+        Assert.fail("Test failed");
+
 
     }
 

@@ -72,7 +72,7 @@ at java.base/java.lang.Thread.run(Thread.java:833)
   <testcase classname="tests.api.VerifyErrorPostAlreadyExistingUser" name="testVerifyErrorPostAlreadyExistingUser" time="0.0">
     <ignored/>
   </testcase> <!-- testVerifyErrorPostAlreadyExistingUser -->
-  <testcase classname="tests.login.DemoTest" name="testDemoTest" time="0.0">
+  <testcase classname="tests.login.ReadDataFromCSV" name="testDemoTest" time="0.0">
     <ignored/>
   </testcase> <!-- testDemoTest -->
   <testcase classname="tests.api.VerifyErrorGetNonExistingUser" name="testApiForNonExistingUser" time="0.0">

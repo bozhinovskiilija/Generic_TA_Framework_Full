@@ -1,0 +1,196 @@
+{
+  "uid" : "b03813eb8f0b3137",
+  "name" : "testVerifyUserDetails",
+  "fullName" : "tests.users.VerifyUserDetails.testVerifyUserDetails",
+  "historyId" : "bc91b100c04557ea70a50ec1c1274012",
+  "time" : {
+    "start" : 1676475820946,
+    "stop" : 1676475842371,
+    "duration" : 21425
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "setupTest",
+    "time" : {
+      "start" : 1676475816215,
+      "stop" : 1676475820940,
+      "duration" : 4725
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open login page",
+      "time" : {
+        "start" : 1676475820947,
+        "stop" : 1676475822791,
+        "duration" : 1844
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "Open Login Page",
+        "time" : {
+          "start" : 1676475820948,
+          "stop" : 1676475822791,
+          "duration" : 1843
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ {
+          "name" : "verify",
+          "value" : "false"
+        } ],
+        "hasContent" : true,
+        "stepsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "attachmentsCount" : 0
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : true,
+      "stepsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Type user name",
+      "time" : {
+        "start" : 1676475824796,
+        "stop" : 1676475825942,
+        "duration" : 1146
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "username",
+        "value" : "verifyuserdetails230215164338"
+      } ],
+      "hasContent" : true,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Type password",
+      "time" : {
+        "start" : 1676475825943,
+        "stop" : 1676475827650,
+        "duration" : 1707
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "password",
+        "value" : "Password123"
+      } ],
+      "hasContent" : true,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Click login button",
+      "time" : {
+        "start" : 1676475827650,
+        "stop" : 1676475829690,
+        "duration" : 2040
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 5,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  },
+  "afterStages" : [ {
+    "name" : "tearDownTest",
+    "time" : {
+      "start" : 1676475842377,
+      "stop" : 1676475843977,
+      "duration" : 1600
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "tests.users.VerifyUserDetails"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.users.VerifyUserDetails"
+  }, {
+    "name" : "testMethod",
+    "value" : "testVerifyUserDetails"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Regression Suite"
+  }, {
+    "name" : "suite",
+    "value" : "Regression Tests"
+  }, {
+    "name" : "subSuite",
+    "value" : "tests.users.VerifyUserDetails"
+  }, {
+    "name" : "host",
+    "value" : "EN310366"
+  }, {
+    "name" : "thread",
+    "value" : "27420@EN310366.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "story",
+    "value" : "Successful Login"
+  }, {
+    "name" : "severity",
+    "value" : "critical"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "updateJira",
+    "value" : "true"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "critical",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "b03813eb8f0b3137.json",
+  "parameterValues" : [ "true" ]
+}
