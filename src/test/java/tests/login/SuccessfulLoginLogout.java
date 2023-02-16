@@ -22,6 +22,7 @@ import pages.LoginPage;
 import pages.WelcomePage;
 import tests.BaseTestClass;
 import utils.DateTimeUtils;
+import utils.JiraPolicy;
 import utils.RestApiUtils;
 
 import static data.Groups.LOGIN;
@@ -68,6 +69,7 @@ public class SuccessfulLoginLogout extends BaseTestClass {
     }
 
 
+    @JiraPolicy(logTicketReady=true)
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Story("Successful Login")
@@ -93,9 +95,9 @@ public class SuccessfulLoginLogout extends BaseTestClass {
         DateTimeUtils.wait(Time.TIME_SHORT);
 
         String actualSuccessMessage = loginPage.getSuccessMessage();
-        Assert.assertEquals(actualSuccessMessage, expectedLogoutSuccessMessage, "Wrong logout success message");
+        Assert.assertEquals(actualSuccessMessage, "wrong expected", "Wrong logout success message");
 
-        Assert.fail("Test failed");
+        //Assert.fail("Test failed");
     }
 
 

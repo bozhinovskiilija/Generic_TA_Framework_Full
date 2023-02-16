@@ -99,7 +99,7 @@ public class AddNewHero extends BaseTestClass {
         SoftAssert softAssert1 = new SoftAssert();
         softAssert1.assertEquals(savedHero.getUsername(), hero.getUsername(), "Username is NOT correct!");
         softAssert1.assertEquals(savedHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct!");
-        softAssert1.assertEquals(savedHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct!");
+        softAssert1.assertEquals(savedHero.getHeroLevel(), hero.getHeroClass(), "Hero Level is NOT correct!");
         //softAssert1.assertTrue(DateTimeUtils.compareDateTimes(savedHero.getCreatedAt(), hero.getCreatedAt(), 10), "CreatedAt Date is NOT correct!");
         softAssert1.assertAll("Hero Details for Hero '" + hero.getHeroName() + "' are not correct!");
 
@@ -110,11 +110,11 @@ public class AddNewHero extends BaseTestClass {
         SoftAssert softAssert2 = new SoftAssert();
         softAssert2.assertEquals(usersHero.getUsername(), hero.getUsername(), "Username is NOT correct!");
         softAssert2.assertEquals(usersHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct!");
-        softAssert2.assertEquals(usersHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct!");
+        softAssert2.assertEquals(usersHero.getHeroLevel(), hero.getHeroClass(), "Hero Level is NOT correct!");
      //   softAssert2.assertTrue(DateTimeUtils.compareDateTimes(usersHero.getCreatedAt(), hero.getCreatedAt(), 10), "CreatedAt Date is NOT correct!");
         softAssert2.assertAll("Hero Details for Hero '" + hero.getHeroName() + "' are not correct!");
 
-        Assert.fail("Test failed");
+        //Assert.fail("Test failed");
 
 
     }

@@ -13,6 +13,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.AllureLifecycle;
 import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.ExtentReportUtils;
+import utils.JiraPolicy;
+import utils.JiraServiceProvider;
 import utils.LoggerUtils;
 import utils.PropertiesUtils;
 import utils.ScreenshotUtils;
@@ -195,8 +198,33 @@ public class TestListener extends LoggerUtils implements ITestListener {
         String errorLog = createFailedTestErrorLog(result);
         extentTestThread.get().fail(errorLog);
 
-    }
+        /* jira integration */
 
+
+        boolean isTicketReady = true;
+
+        if (isTicketReady) {
+
+            // Raising ticket in JIRA
+            Jira jira = getJiraDetails(result);
+
+            System.out.println("Ticket ready for JIRA? : " + isTicketReady);
+
+            JiraServiceProvider jiraSp = new JiraServiceProvider("https://bozhinovski.atlassian.net/", "ilija.bozhinovski@gmail.com", "ATATT3xFfGF0MQAD7VTcW3S2ex-i3BaZ-V7EG4GfL0MqFtwNOY0jpoYHu3K6GiRIKUFQTyPi5y9O28c-7-2xHf2JslbGgbAxJF_bNKi5GLH7LrMbFTpnfZ-uZk69tY-v6sFIJIvUMa13GdOxVddm2G_86Cl7BpGybF-HsO2sN3thLCoDZqRBmOM=98887450", "GT");
+
+            String issueSummary = result.getMethod().getConstructorOrMethod().getMethod().getName()
+
+                + " => Task ID: " + jira.jiraID();
+
+            String issueDescription = result.getThrowable().getMessage() + "\n";
+
+            issueDescription.concat(ExceptionUtils.getFullStackTrace(result.getThrowable()));
+
+            //add issue types in jira -> project setting -> Issue types -> Add issue type (Bug, Tast, Epic)
+            jiraSp.createJiraTicket("Bug", issueSummary, issueDescription, "Name of issue creator");
+
+        }
+    }
 
     @Override
     public void onTestSkipped(final ITestResult result) {
