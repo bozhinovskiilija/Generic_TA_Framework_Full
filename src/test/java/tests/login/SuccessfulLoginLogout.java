@@ -95,7 +95,7 @@ public class SuccessfulLoginLogout extends BaseTestClass {
         DateTimeUtils.wait(Time.TIME_SHORT);
 
         String actualSuccessMessage = loginPage.getSuccessMessage();
-        Assert.assertEquals(actualSuccessMessage, "wrong expected", "Wrong logout success message");
+        Assert.assertEquals(actualSuccessMessage, expectedLogoutSuccessMessage, "Wrong logout success message");
 
         //Assert.fail("Test failed");
     }

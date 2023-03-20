@@ -210,7 +210,7 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
             System.out.println("Ticket ready for JIRA? : " + isTicketReady);
 
-            JiraServiceProvider jiraSp = new JiraServiceProvider("https://bozhinovski.atlassian.net/", "ilija.bozhinovski@gmail.com", "ATATT3xFfGF0MQAD7VTcW3S2ex-i3BaZ-V7EG4GfL0MqFtwNOY0jpoYHu3K6GiRIKUFQTyPi5y9O28c-7-2xHf2JslbGgbAxJF_bNKi5GLH7LrMbFTpnfZ-uZk69tY-v6sFIJIvUMa13GdOxVddm2G_86Cl7BpGybF-HsO2sN3thLCoDZqRBmOM=98887450", "GT");
+            JiraServiceProvider jiraSp = new JiraServiceProvider("https://bozhinovski.atlassian.net/", "ilija.bozhinovski@gmail.com", "ATATT3xFfGF0EW9iZndOpXYsKUrJeq4ButfrGlFvO7T6ISNL2Pla_jVD_VkcstLta33M1Qo6xwdIyyqlvkG5KN21B7aDGHoFeGqFnmbP3iP7Dsu8PurWuOMePgLT0CXFX1cYHRv59qX1_xIoTlUuIYLhbeVZmtv_YVQB61RNSI8j_cbSh2jhf4o=F57FB8AE", "GT");
 
             String issueSummary = result.getMethod().getConstructorOrMethod().getMethod().getName()
 
@@ -220,8 +220,12 @@ public class TestListener extends LoggerUtils implements ITestListener {
 
             issueDescription.concat(ExceptionUtils.getFullStackTrace(result.getThrowable()));
 
-            //add issue types in jira -> project setting -> Issue types -> Add issue type (Bug, Tast, Epic)
-            jiraSp.createJiraTicket("Bug", issueSummary, issueDescription, "Name of issue creator");
+            String assignee = "ilija bozhinovski";
+            String label = "QA";
+          //  String comment = "Test comment";
+
+            //add issue types in jira app -> project setting -> Issue types -> Add issue type (Bug, Tast, Epic)
+            jiraSp.createJiraTicket("Bug", issueSummary, issueDescription, assignee);
 
         }
     }

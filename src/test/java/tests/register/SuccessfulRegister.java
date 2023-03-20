@@ -4,7 +4,6 @@ import annotations.Jira;
 import data.CommonString;
 import data.Groups;
 import data.Time;
-import listeners.TestListener;
 import objects.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -12,7 +11,6 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.LoginPage;
@@ -90,8 +88,6 @@ public class SuccessfulRegister extends BaseTestClass {
         softAssert.assertEquals(savedUser.getSecretAnswer(), user.getSecretAnswer(), "Secret Answer is NOT correct!");
         softAssert.assertEquals(savedUser.getHeroCount(), user.getHeroCount(), "Hero Count is NOT correct!");
         softAssert.assertAll("Wrong User Details are saved in Database for User '" + user.getUsername() + "'!");
-
-        Assert.fail("Test failed");
     }
 
 
@@ -103,6 +99,7 @@ public class SuccessfulRegister extends BaseTestClass {
             cleanUp();
         }
     }
+
 
     private void cleanUp() {
         log.debug("cleanUp()");

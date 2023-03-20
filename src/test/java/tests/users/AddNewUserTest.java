@@ -20,11 +20,11 @@ import tests.BaseTestClass;
 import utils.DateTimeUtils;
 import utils.PropertiesUtils;
 
-import static data.Groups.REGRESSION;
 import static data.Groups.SANITY;
+import static data.Groups.USERS;
 
 @Jira(jiraID = "JIRA00057", owner = "Users Team")
-@Test(groups = {SANITY, Groups.USERS})
+@Test(groups = {SANITY, USERS})
 public class AddNewUserTest extends BaseTestClass {
 
     private final String testName = this.getClass().getName();

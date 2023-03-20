@@ -110,7 +110,7 @@ public class AddNewHero extends BaseTestClass {
         SoftAssert softAssert2 = new SoftAssert();
         softAssert2.assertEquals(usersHero.getUsername(), hero.getUsername(), "Username is NOT correct!");
         softAssert2.assertEquals(usersHero.getHeroClass(), hero.getHeroClass(), "Hero Class is NOT correct!");
-        softAssert2.assertEquals(usersHero.getHeroLevel(), hero.getHeroClass(), "Hero Level is NOT correct!");
+        softAssert2.assertEquals(usersHero.getHeroLevel(), hero.getHeroLevel(), "Hero Level is NOT correct!");
      //   softAssert2.assertTrue(DateTimeUtils.compareDateTimes(usersHero.getCreatedAt(), hero.getCreatedAt(), 10), "CreatedAt Date is NOT correct!");
         softAssert2.assertAll("Hero Details for Hero '" + hero.getHeroName() + "' are not correct!");
 

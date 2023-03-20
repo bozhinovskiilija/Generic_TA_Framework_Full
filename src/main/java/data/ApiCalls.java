@@ -15,6 +15,8 @@ public class ApiCalls {
 
     private static final String DELETE_HERO = "/api/heroes/deleteByName/";
 
+    private static final String EDIT_USER = "/api/users/edit";
+
 
     public static String createCheckIfUserExistsApiCall(String sUsername) {
         return CHECK_IF_USER_EXISTS + sUsername;
@@ -47,6 +49,10 @@ public class ApiCalls {
 
     public static String createDeleteHeroApiCall(String heroName) {
         return DELETE_HERO + heroName;
+    }
+
+    public static String createEditUserApiCall() {
+        return EDIT_USER;
     }
 
 }

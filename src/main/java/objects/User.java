@@ -287,9 +287,65 @@ public class User {
         return new User(username);
     }
 
-    public void clearEmail(){
+    public void clearUsername() {
+        this.username = null;
+    }
 
-        setEmail(null);
+    public void clearPassword() {
+        this.password = null;
+    }
+
+    public void clearEmail() {
+        this.email = null;
+    }
+
+    public void clearFirstName() {
+        this.firstName = null;
+    }
+
+    public void clearLastName() {
+        this.lastName = null;
+    }
+
+    public void clearAbout() {
+        this.about = null;
+    }
+
+    public void clearSecretQuestion() {
+        this.secretQuestion = null;
+    }
+
+    public void clearSecretAnswer() {
+        this.secretAnswer = null;
+    }
+
+    public void clearCreatedAt() {
+        this.createdAt = null;
+    }
+
+    public void clearHeroes() {
+        this.heroes = null;
+        this.heroCount = 0;
+    }
+
+    private void clearAllDetails() {
+        clearUsername();
+        clearPassword();
+        clearEmail();
+        clearFirstName();
+        clearLastName();
+        clearAbout();
+        clearSecretQuestion();
+        clearSecretAnswer();
+        clearCreatedAt();
+        clearHeroes();
+    }
+
+    private User() {
+        clearAllDetails();
+    }
+    public static User createUserTemplate() {
+        return new User();
     }
 
     public static User readUserFromCSVFile(String username){

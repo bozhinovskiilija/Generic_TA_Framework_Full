@@ -11,6 +11,9 @@ import objects.User;
 import org.testng.Assert;
 import pages.BasePageClass;
 
+
+//Rest clients for users and heroes
+
 public class RestApiUtils extends LoggerUtils {
 
     private static final String BASE_URL = BasePageClass.getBaseUrl();
@@ -303,6 +306,53 @@ public class RestApiUtils extends LoggerUtils {
 
     public static void deleteHero(String sHeroName) {
         deleteHero(sHeroName, ADMIN_USERNAME, ADMIN_PASSWORD);
+    }
+
+    // ---------------------
+    // ----- EDIT USER -----
+    // ---------------------
+
+    private static Response editUserApiCall(User user, String sAuthUser, String sAuthPass) {
+        String sApiCall = BASE_URL + ApiCalls.createEditUserApiCall();
+        Response response = null;
+        try {
+            Gson gson = new Gson();
+            String json = gson.toJson(user, User.class);
+            response = RestAssured.given().auth().basic(sAuthUser, sAuthPass)
+                .headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON)
+                .body(json)
+                .when().redirects().follow(false)
+                .put(sApiCall);
+        } catch (Exception e) {
+            Assert.fail("Exception in editUser(" + user.getUsername() + ") Api Call: " + e.getMessage());
+        }
+        return response;
+    }
+
+    /**
+     * API Call: Edit User
+     *
+     * @param user      {User} User
+     * @param sAuthUser {String} Authorization Username
+     * @param sAuthPass {String} Authorization Password
+     */
+    public static void editUser(User user, String sAuthUser, String sAuthPass) {
+        log.debug("editUser(" + user.getUsername() + ")");
+        Assert.assertTrue(checkIfUserExists(user.getUsername(), sAuthUser, sAuthPass), "User '" + user.getUsername() + "' doesn't exist!");
+        Response response = editUserApiCall(user, sAuthUser, sAuthPass);
+        int status = response.getStatusCode();
+        String sResponseBody = response.getBody().asString();
+        Assert.assertEquals(status, 200, "Wrong Response Status Code in editUser(" + user.getUsername() + ") Api Call! Response Body: " + sResponseBody);
+    }
+
+    /**
+     * API Call: Edit User
+     *
+     * @param user {User} User
+     */
+    public static void editUser(User user) {
+
+        editUser(user, ADMIN_USERNAME, ADMIN_PASSWORD);
     }
 
 }

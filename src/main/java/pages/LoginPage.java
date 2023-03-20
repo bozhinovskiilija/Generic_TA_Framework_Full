@@ -104,7 +104,7 @@ public class LoginPage extends CommonLoggedOutPage {
     @Step("Type password")
     public LoginPage typePassword(String password) {
         log.info("typePassword(" + password + ")");
-        Assert.assertTrue(isUsernameTextFieldDisplayed(), "Username text field is not present on login page");
+        Assert.assertTrue(isPasswordTextFieldDisplayed(), "Password text field is not present on login page");
         WebElement passwordTextField = getWebElement(passwordTextFieldLocator, Time.TIME_SHORTER);
         clearAndTypeTextToWebElement(passwordTextField, password);
         return this;
